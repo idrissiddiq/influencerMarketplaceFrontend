@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+*{
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.navbar__wrapper {
+    background-color: #363740 !important;
+    height: 97px;
+}
+
+.subnavbar__wrapper {
+    margin-left: 7.6rem;
+}
+
+.left-text {
+    font-size: 24px;
+}
+
+.left-text span{
+    display: block;
+}
+
+#navbarNav{
+    margin-left : 2rem;
+}
+
+nav, .btn-logout {
+    font-size: 12px;
+}
+
+nav ul a, .btn-logout {
+    padding-top: 32px !important;
+    padding-right: 14px !important;
+    width : 94px;
+    height : 88px;
+    text-align: center;
+}
+
+nav ul a:hover, .bagian__logout:hover {
+    background-color : rgba(196, 196, 196, 0.29);
+    transition: all 0.3s;
+}
+
+.btn-logout{
+    color : white;
+}

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+
+<head>
+</head>
+
+<body>
+    <i layout:fragment="icon" class="bi bi-book logo"></i>
+    <span layout:fragment="text-icon" class="logo__text">Daftar Materi </span>
+
+    <section layout:fragment="content">
+
+        <!-- Create Subject Modal -->
+        <div class="modal fade" id="modalSubject" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">New Subject</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form id="modalForm">
+                            <label for="subject_name" class="form-label">Name : </label>
+                            <input id="subject_name" type="text" class="form-control" placeholder="Subject Name" />
+                            <label for="subject_persentase" class="form-label">Persentase : </label>
+                            <input id="subject_persentase" type="text" class="form-control" placeholder="Persentase" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" id="submitCreateModalSubject">Simpan</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Update Modal Subject-->
+        <div class="modal fade" id="updateModalSubject" tabindex="-1" aria-labelledby="updateModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="updateModalLabel">Update Subject</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="updateForm">
+                            <input type="hidden" id="updateSubjectId">
+                            <input type="hidden" id="updateSubjectSilabus">
+                            <label for="updateSubjectName" class="form-label">Name : </label>
+                            <input id="updateSubjectName" type="text" class="form-control" placeholder="Subject Name" />
+                            <label for="updateSubjectPersentase" class="form-label">Persentase : </label>
+                            <input id="updateSubjectPersentase" type="text" class="form-control"
+                                placeholder="Persentase" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" id="submitUpdateModalSubject">Simpan</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="container table__container">
+            <div class="row table__wrapper">
+                <!-- Create Modal -->
+                <div class="button__wrapper">
+                    <!-- Create Subject Modal Button -->
+                    <button type="button" class="btn btn-primary ms-2" data-bs-toggle="modal"
+                        data-bs-target="#modalSubject">
+                        Create Subject
+                    </button>
+                </div>
+                <table class="table table-striped" id="tabel_subject">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Persentase</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </section>
+
+    <script layout:fragment="scripts">
+        $(document).ready(function () {
+
+
+
+        });
+        //Inisialisasi data table dengan ajax
+        var tb_subject = $('#tabel_subject').DataTable({
+            ajax: {
+                url: '/subject/silabus/' + window.location.href.split('/')[5],
+                dataSrc: 'data'
+            },
+            columns: [
+                {
+                    data: null,
+                    render: function (data, type, row, meta) {
+                        count = meta.row + meta.settings._iDisplayStart + 1;
+                        return count;
+                    }
+                },
+                { data: 'name' },
+                { data: 'persentase' },
+                {
+                    data: null,
+                    render: function (data) {
+                        return `<a class="btn btn-sm btn-primary ms-2"
+                        href='/silabus/subject/subsubject/${data.id}'>
+               Detail
+                  </a>
+                        <button type="button" class="btn btn-sm btn-success ms-2" id="btnEditModal" data-bs-toggle="modal" data-bs-target="#updateModalSubject"
+              onclick='getDataSubjectById(${data.id})'>
+               Update
+                  </button>
+                    <button class="btn btn-sm btn-danger" href="/subject/delete/${data.id}" id="deleteBtn" type="button" onclick="deleteSubjectById(${data.id})">Delete</button>`;
+                    }
+                }
+            ],
+            "filter": false,
+            "ordering": false,
+            "lengthChange": false,
+            "language": {
+                "info": "_START_ - _END_ of _TOTAL_ items",
+                "infoEmpty": "0 to 0 of 0 items",
+                "infoFiltered": "(filtered from _MAX_ items)",
+            }
+        });
+
+        $('#submitCreateModalSubject').click((e) => {
+            e.preventDefault();
+            submitCreateModalSubject();
+        });
+
+        $('#submitUpdateModalSubject').click((e) => {
+            e.preventDefault();
+            submitUpdateModalSubject();
+        });
+
+        function submitCreateModalSubject() {
+            var subject_name = $('#subject_name').val();
+            var subject_persentase = $('#subject_persentase').val();
+            var silabus_id = window.location.href.split('/')[5];
+            if (subject_name != '') {
+                if (subject_persentase != '') {
+                    if (!isNaN(subject_persentase)) {
+                        $.ajax({
+                            type: "POST",
+                            url: "/subject/create",
+                            dataType: "json",
+                            data: JSON.stringify({
+                                name: subject_name,
+                                persentase: subject_persentase,
+                                silabusId: silabus_id
+                            }),
+                            contentType: "application/json",
+                            success: function (result) {
+                                $('#modalSubject').modal("hide");
+                                $('.modal-backdrop').remove();
+                                tb_subject.ajax.reload();
+                                $('#silabus_name').val("");
+                                customSweetAlert(result.message);
+                            }
+                        });
+                    } else {
+                        errorSweetAlert('Persentase must be a number.')
+                    }
+                } else {
+                    errorSweetAlert('You are missing persentase.')
+                }
+            } else {
+                errorSweetAlert('You are missing name.')
+            }
+        }
+
+        function submitUpdateModalSubject() {
+            var subject_id = $('#updateSubjectId').val();
+            var subject_name = $('#updateSubjectName').val();
+            var subject_persentase = $('#updateSubjectPersentase').val();
+            var subject_silabus = $('#updateSubjectSilabus').val();
+
+            if (subject_name != '') {
+                if (subject_persentase != '') {
+                    if (!isNaN(subject_persentase)) {
+                        $.ajax({
+                            type: "PUT",
+                            url: "/subject/update/" + subject_id,
+                            dataType: "json",
+                            data: JSON.stringify({
+                                name: subject_name,
+                                persentase: subject_persentase,
+                                silabusId: subject_silabus
+                            }),
+                            contentType: "application/json",
+                            success: function (result) {
+                                $('#updateModalSubject').modal("hide");
+                                $('.modal-backdrop').remove();
+                                tb_subject.ajax.reload();
+                                customSweetAlert(result.message);
+                            }
+                        });
+                    } else {
+                        errorSweetAlert('Persentase must be a number.')
+                    }
+                } else {
+                    errorSweetAlert('You are missing subject persentase.')
+                }
+            } else {
+                errorSweetAlert('You are missing subject name.')
+            }
+        }
+
+        function getDataSubjectById(id) {
+            $.ajax({
+                type: "GET",
+                url: "/subject/" + id,
+                data: "data",
+                dataType: "JSON",
+                success: function (response) {
+                    var x = response.data;
+                    $("#updateSubjectId").val(x.id);
+                    $("#updateSubjectName").val(x.name);
+                    $("#updateSubjectPersentase").val(x.persentase);
+                    $("#updateSubjectSilabus").val(x.silabus.id);
+                },
+            });
+        }
+
+        function deleteSubjectById(id) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showDenyButton: true,
+                confirmButtonColor: '#3085d6',
+                denyButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!',
+                denyButtonText: 'Batalkan'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    deleteData('/subject/delete/' + id);
+                } else if (result.isDenied) {
+                    Swal.fire(
+                        'Canceled!',
+                        'Your data has not been deleted.',
+                        'success'
+                    )
+                }
+            })
+        }
+
+        function deleteData(end_point) {
+            $.ajax({
+                type: "DELETE",
+                url: end_point,
+                dataType: "json",
+                success: function (result) {
+                    tb_subject.ajax.reload();
+                    customSweetAlert(result.message);
+                }
+            });
+        }
+
+    </script>
+
+</body>
+
+</html>

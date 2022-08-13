@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+
+<head>
+</head>
+
+<body>
+    <i layout:fragment="icon" class="bi bi-person logo"></i>
+    <span layout:fragment="text-icon" class="logo__text">My Profile </span>
+
+    <section layout:fragment="content">
+        <div class="container form__container">
+            <div class="row">
+                <div class="col form_wrapper">
+                    <form>
+                        <div class="col">
+                            <label for="fullname" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="fullname" disabled>
+                        </div>
+                        <div class="col" style="margin-top: 0.5rem;">
+                            <label for="role" class="form-label">Role</label>
+                            <input type="text" class="form-control" id="role" disabled>
+                        </div>
+                        <div class="col btn__forgotpassword">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#forgotPasswordModal">Forgot Password</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Update Modal Password-->
+        <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="updateModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="forgotPasswordModalLabel">Forgot Password</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="updateForm">
+                            <label for="new_password" class="form-label">Password Baru : </label>
+                            <input id="new_password" type="password" class="form-control"
+                                placeholder="Password Baru" />
+                            <label for="confirm_password" class="form-label">Konfirmasi Password Baru : </label>
+                            <input id="confirm_password" type="password" class="form-control"
+                                placeholder="Konfirmasi Password Baru" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" id="submitModalUpdatePassword">Simpan</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+</body>
+<script layout:fragment="scripts">
+    $.ajax({
+        type: "GET",
+        url: "employee/profile",
+        data: "data",
+        dataType: "json",
+        success: function (response) {
+            var x = response.data;
+            $('#role').val(x.roleName);
+            $('#fullname').val(x.username);
+        }
+    });
+
+    $('#submitModalUpdatePassword').click((e) => {
+        e.preventDefault();
+        submitUpdatePassword();
+    });
+
+    function submitUpdatePassword() {
+        var new_password = $('#new_password').val();
+        var confirm_password = $('#confirm_password').val();
+
+        if (new_password != '') {
+            if (new_password === confirm_password) {
+                $.ajax({
+                    type: "PUT",
+                    url: "employee/change_password",
+                    dataType: "json",
+                    data: JSON.stringify({
+                        newPassword: new_password
+                    }),
+                    contentType: "application/json",
+                    success: function (result) {
+                        $('#forgotPasswordModal').modal("hide");
+                        $('.modal-backdrop').remove();
+                        customSweetAlert(result.message);
+                    }
+                });
+            }
+            else {
+                alert("Password tidak sama!");
+            }
+
+        } else {
+            alert('You are missing password.')
+        }
+    }
+
+    function customSweetAlert(msg) {
+        Swal.fire(
+            'Status Action?',
+            msg,
+            'success'
+        ).then(() => {
+            $('.btn-logout')[0].click();
+        });
+    }
+</script>
+
+</html>

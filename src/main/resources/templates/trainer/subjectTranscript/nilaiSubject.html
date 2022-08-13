@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+    <head>
+        <title>peserta</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <section layout:fragment="judulHero">
+            <h4> Daftar Subject </h4>
+        </section>
+        <section layout:fragment="content">
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4" style="margin-right:  8rem">
+                <button type="button" class="btn btn-primary ms-2" data-bs-toggle="modal" data-bs-target="#modalPilihSubject">Detail Nilai</button>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="modalPilihSubject" tabindex="-1" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Pilih Subject</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <a href="#" id="hidden_trigger_a" style="visibility: hidden" >Check</a>
+                        <div class="modal-body">
+                            <form id="modalForm">
+                                <label for="id_subject" class="form-label">Subject : </label>
+                                <select id="id_subject" class="form-select">
+
+                                </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" id="submitModalTrainer" >Pilih</button> 
+
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!--tabel-->
+            <div class="container table__container" style="background-color: white; margin-top: 1rem;">
+                <div class="row table__wrapper">
+                    <table class="table table-striped" id="tabel_sts">
+                        <thead>
+                            <tr>
+                                <th>Nama</th>
+                                <th>Database</th>
+                                <th>Back End</th>
+                                <th>Front End</th>
+                                <th>Tugas Akhir</th>
+                                <!--<th>Grade</th>-->
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+        <script layout:fragment="scripts">
+            $(document).ready(function () {
+                tampilNilaiSubject();
+                getAllSubjectByClassId();
+
+            });
+            //Inisialisasi data table dengan ajax
+            var class_id = window.location.href.split('/')[5];
+            var tb = $('#tabel_sts').DataTable({
+                "drawCallback": function (settings) {
+                    let count = $('td').length;
+                    for (let i = 0; i <= count; i++) {
+                        if ($('td').eq(i).html() === '0') {
+                            $('td').eq(i).html("Tidak Tersedia");
+                        }
+                    }
+                },
+                ajax: {
+                    url: '/subject_transcript/' + class_id,
+                    dataSrc: 'data'
+                }
+                ,
+                columns: [
+                    {data: 'fullname'},
+                    {data: 'dataBase'},
+                    {data: 'backEnd'},
+                    {data: 'frontEnd'},
+                    {data: 'tugasAkhir'}
+//                    {data: 'gradeName'}
+
+                ],
+                "filter": false,
+                "ordering": false,
+                "lengthChange": false,
+                "language": {
+                    "info": "_START_ - _END_ of _TOTAL_ items",
+                    "infoEmpty": "0 to 0 of 0 items",
+                    "infoFiltered": "(filtered from _MAX_ items)",
+                }
+            });
+
+
+            function tampilNilaiSubject() {
+                var table = document.getElementById("tabel_sts");
+                let count = $('td').length;
+                for (let i = 0; i <= count; i++) {
+                    if ($('td').eq(i).html() === '0') {
+                        $('td').eq(i).html("Pending");
+                    }
+                }
+            }
+            ;
+
+            //bisa
+            $('#submitModalTrainer').click((e) => {
+                e.preventDefault();
+                var class_id = window.location.href.split('/')[5];
+                var id_subject = $('#id_subject').val();
+                console.log(id_subject);
+                $('#hidden_trigger_a').attr('href', '/subsubject_transcript/kelas/' + class_id + "/" + id_subject);
+                $('#hidden_trigger_a')[0].click();
+            });
+
+            function getAllSubjectByClassId() {
+                $.ajax({
+                    type: "GET",
+                    url: "/subject/class/" + window.location.href.split('/')[5],
+                    data: "data",
+                    dataType: "json",
+                    success: function (response) {
+                        let row = "";
+                        response.data.forEach(data => {
+                            row += `
+                        <option value=${data.subjectId}>${data.subjectName}</option>
+                        `
+                        });
+                        $('#id_subject').append(row);
+                    }
+                });
+            }
+        </script>
+    </body>
+</html>

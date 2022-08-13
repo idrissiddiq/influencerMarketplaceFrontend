@@ -1,0 +1,42 @@
+.hero__wrapper{
+    height: 275px;
+    left: 0px;
+    top: 95px;    
+    background-color: #363740 !important;
+    padding-top : 45px;
+    border : 1px solid #363740;
+    border-radius: 0px 0px 20px 20px ;
+}
+
+.hero__text{
+    font-size : 48px;
+    font-weight: 700;
+    color : white;
+}
+
+.logo__wrapper{
+    margin-left : 15rem;
+    margin-top: 7rem;
+    text-align: left;
+    max-width: fit-content;
+}
+
+.logo{
+    color :  white;
+    font-size: 24px;
+}
+.logo__text{
+    font-size: 20px;
+    margin-left : 10px;
+    color : white;
+}
+
+.bagian__logout{
+    right : 0;
+    position: absolute;
+}
+
+.logout__text
+{
+    font-size : 16px !important;
+}

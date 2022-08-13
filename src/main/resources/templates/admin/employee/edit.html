@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+
+<head>
+</head>
+
+<body>
+    <section layout:fragment="content">
+        <p>Daftar Employee</p>
+        <form novalidate th:action="@{/employee/edit/{id} (id = ${employee.id})}" th:object="${employee}" th:method="PUT">
+            <label for="id">ID : </label>
+            <input class="form-control form-control-sm" type="number" th:field="*{id}" placeholder="employee id" /><br>
+                            <label for="name">Name : </label>
+            <input class="form-control form-control-sm" type="text" th:field="*{fullname}" placeholder="employee full name" /><br>
+            <label for="name">Email : </label>
+            <input class="form-control form-control-sm" type="email" th:field="*{email}" placeholder="employee email" /><br>
+            <label for="job">Job : </label>
+            <input class="form-control form-control-sm" type="text" th:field="*{job.id}" placeholder="employee job" /><br>
+            
+            <div class="input-group-append">
+            <button class="btn btn-primary ms-2" type="submit" th:value="Submit">Submit</button>
+          </div>
+        </form>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <section layout:fragment="content">
+            <p>Daftar transcript</p>
+
+            <div class="wrapper-table">
+                <table class="table table-striped" id="tabel_transcript">
+                    <thead>
+                        <tr>
+                            <th>employee id</th>
+                            <th>detail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+            
+             <div class="wrapper-table">
+            <table class="table table-striped" id="tabel_subjecttrans">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Subject Materi</th>
+                        <th>Nilai</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+        </section>
+        <script layout:fragment="scripts">
+            //Inisialisasi data table dengan ajax
+            var tb = $('#tabel_transcript').DataTable({
+                ajax: {
+                    url: '/transcript/getAll',
+                    dataSrc: 'data'
+                },
+                columns: [
+                    {data: 'id'},
+                    {
+                        data: null,
+                        render: function (data) {
+                            return `<button class="btn btn-sm btn-primary ms-2" onclick='dtSubTrans(${data.id})'>
+                                        Detail
+                                    </button>`;
+                        }
+                    }
+                ]
+            });
+
+            //Inisialisasi data table dengan ajax
+            function dtSubTrans(id) {
+                var tb_subject_transcript = $('#tabel_subjecttrans').DataTable({
+                    ajax: {
+                        url: '/subject_transcript/transcript/' + id,
+                        dataSrc: 'data'
+                    },
+                    columns: [
+                    {data: 'id'},
+                    {data: 'subject.name'},
+                    {data: 'nilai'},
+                    {data: 'grade.name'}
+                ]
+            });
+            }
+        </script>
+    </body>
+</html>

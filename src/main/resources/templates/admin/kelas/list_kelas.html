@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+
+<head>
+</head>
+
+<body>
+    <i layout:fragment="icon" class="bi bi-bookmark logo"></i>
+    <span layout:fragment="text-icon" class="logo__text additional-text">Daftar Kelas </span>
+
+    <section layout:fragment="content">
+        <!-- Modal Tambah peserta -->
+        <div class="modal fade" id="modalAddPeserta" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Form Tambah Peserta</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form id="modalForm">
+                            <label for="id_peserta" class="form-label">ID - Nama Peserta : </label>
+                            <select id="id_peserta" class="form-select">
+
+                            </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" id="submitModalPeserta">Simpan</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Tambah Trainer -->
+        <div class="modal fade" id="modalAddTrainer" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Form Tambah Trainer</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form id="modalForm">
+                            <label for="id_trainer" class="form-label">Nama Trainer : </label>
+                            <select id="id_trainer" class="form-select">
+
+                            </select>
+
+                            <label for="id_subject" class="form-label">Subject : </label>
+                            <select id="id_subject" class="form-select">
+
+                            </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" id="submitModalTrainer">Simpan</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- bagian trainer -->
+        <div class="container table__container">
+            <div class="row table__wrapper">
+                <h1 class="table-header-text">Daftar Trainer</h1>
+                <div class="button__wrapper">
+                    <!-- Create Modal -->
+                    <button type="button" class="btn btn-primary ms-2" data-bs-toggle="modal"
+                        data-bs-target="#modalAddTrainer">
+                        Tambah Trainer
+                    </button>
+                </div>
+
+                <table class="table table-striped" id="tabel_trainer">
+                    <thead>
+                        <tr>
+
+                            <th>No</th>
+                            <th>Subject</th>
+                            <th>Nama</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- bagian peserta -->
+        <div class="container table__container">
+            <div class="row table__wrapper">
+                <h1 class="table-header-text">Daftar Peserta</h1>
+                <div class="button__wrapper">
+                    <!-- Create Modal -->
+                    <button type="button" class="btn btn-primary ms-2" data-bs-toggle="modal"
+                        data-bs-target="#modalAddPeserta">
+                        Tambah Peserta
+                    </button>
+                </div>
+                <table class="table table-striped" id="tabel_peserta">
+                    <thead>
+                        <tr>
+
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </section>
+
+    <script layout:fragment="scripts">
+
+        $(document).ready(function () {
+            getAllAvailablePeserta();
+            getAllTrainer();
+            getAllSubjectByClassId();
+            var current_text = $('.additional-text').html();
+            $('.additional-text').html(current_text + window.location.href.split('/')[4]);
+
+
+        });
+        //Inisialisasi data table dengan ajax
+        var class_id = window.location.href.split('/')[4];
+        var tb_peserta = $('#tabel_peserta').DataTable({
+            ajax: {
+                url: '/employee/kelas/peserta/' + class_id,
+                dataSrc: 'data'
+            },
+            columns: [
+                {
+                    data: null,
+                    render: function (data, type, row, meta) {
+                        count = meta.row + meta.settings._iDisplayStart + 1;
+                        return count;
+                    }
+                },
+                { data: 'fullname' },
+                {
+                    data: null,
+                    render: function (data) {
+                        return `
+                    <button class="btn btn-sm btn-danger" id="deleteBtn" type="button" onclick="removePesertaFromClass(${data.id})">Delete</button>`;
+                    }
+                }
+            ],
+            "filter": false,
+            "ordering": false,
+            "lengthChange": false,
+            "language": {
+                "info": "_START_ - _END_ of _TOTAL_ items",
+                "infoEmpty": "0 to 0 of 0 items",
+                "infoFiltered": "(filtered from _MAX_ items)",
+            }
+        });
+
+        var tb_trainer = $('#tabel_trainer').DataTable({
+            ajax: {
+                url: '/employee/kelas/trainer/' + class_id,
+                dataSrc: 'data'
+            },
+            columns: [
+                {
+                    data: null,
+                    render: function (data, type, row, meta) {
+                        count = meta.row + meta.settings._iDisplayStart + 1;
+                        return count;
+                    }
+                },
+                { data: 'subjectName' },
+                { data: 'fullname' },
+                {
+                    data: null,
+                    render: function (data) {
+                        return `
+                    <button class="btn btn-sm btn-danger" id="deleteBtn" type="button" onclick="removeTrainerFromClass(${data.trainerSubjectId}, ${data.employeeId})">Delete</button>`;
+                    }
+                }
+            ],
+            "filter": false,
+            "ordering": false,
+            "lengthChange": false,
+            "paging" : false,
+            "language": {
+                "info": "_START_ - _END_ of _TOTAL_ items",
+                "infoEmpty": "0 to 0 of 0 items",
+                "infoFiltered": "(filtered from _MAX_ items)",
+            }
+        });
+
+        $('#submitModalPeserta').click((e) => {
+            e.preventDefault();
+            var id_kelas = window.location.href.split('/')[4];
+            var id_peserta = $('#id_peserta').val();
+
+
+            if (id_peserta) {
+                $.ajax({
+                    type: "POST",
+                    url: "/employee/assign_peserta",
+                    dataType: "json",
+                    data: JSON.stringify({
+                        employeeId: id_peserta,
+                        classId: id_kelas
+                    }),
+                    contentType: "application/json",
+                    success: function (result) {
+                        $('#modalAddPeserta').modal("hide");
+                        $('.modal-backdrop').remove();
+                        tb_peserta.ajax.reload();
+                        customSweetAlert(result.message);
+                        refreshTable();
+                    }
+                });
+            }
+            else {
+                errorSweetAlert('You are missing Peserta.');
+
+            }
+
+        });
+
+        $('#submitModalTrainer').click((e) => {
+            e.preventDefault();
+            var id_subject = $('#id_subject').val();
+            var id_trainer = $('#id_trainer').val();
+            if (id_subject) {
+                if (id_trainer) {
+                    $.ajax({
+                        type: "POST",
+                        url: "/employee/assign_trainer",
+                        dataType: "json",
+                        data: JSON.stringify({
+                            employeeId: id_trainer,
+                            subjectId: id_subject,
+                            classId: window.location.href.split('/')[4]
+                        }),
+                        contentType: "application/json",
+                        success: function (result) {
+                            $('#modalAddTrainer').modal("hide");
+                            $('.modal-backdrop').remove();
+                            tb_trainer.ajax.reload();
+                            customSweetAlert(result.message);
+
+                        }
+                    });
+                } else {
+                    errorSweetAlert('You are missing Subject.');
+                }
+
+            } else {
+                errorSweetAlert('You are missing Trainer.');
+            }
+        });
+
+        function refreshTable() {
+            $('#id_peserta option').remove();
+            getAllAvailablePeserta();
+        }
+
+        function getAllAvailablePeserta() {
+            $.ajax({
+                type: "GET",
+                url: "/employee/available_peserta",
+                data: "data",
+                dataType: "json",
+                success: function (response) {
+                    let row = "";
+                    response.data.forEach(data => {
+                        row += `
+                        <option value=${data.id}>${data.id} - ${data.fullname}</option>
+                        `
+                    });
+                    $('#id_peserta').append(row);
+                }
+            });
+        }
+
+        function getAllTrainer() {
+            $.ajax({
+                type: "GET",
+                url: "/employee/all_trainer",
+                data: "data",
+                dataType: "json",
+                success: function (response) {
+                    let row = "";
+                    response.data.forEach(data => {
+                        row += `
+                        <option value=${data.id}>${data.id} - ${data.fullname}</option>
+                        `
+                    });
+                    $('#id_trainer').append(row);
+                }
+            });
+        }
+
+        function getAllSubjectByClassId() {
+            $.ajax({
+                type: "GET",
+                url: "/subject/class/" + window.location.href.split('/')[4],
+                data: "data",
+                dataType: "json",
+                success: function (response) {
+                    let row = "";
+                    response.data.forEach(data => {
+                        row += `
+                        <option value=${data.subjectId}>${data.subjectName}</option>
+                        `
+                    });
+                    $('#id_subject').append(row);
+                }
+            });
+        }
+
+        function removeTrainerFromClass(trainerSubjectId, employeeId) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showDenyButton: true,
+                confirmButtonColor: '#3085d6',
+                denyButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!',
+                denyButtonText: 'Batalkan'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    removeDataTrainer('/employee/remove_trainer/' + trainerSubjectId + '/' + employeeId);
+                } else if (result.isDenied) {
+                    Swal.fire(
+                        'Canceled!',
+                        'Your data has not been deleted.',
+                        'success'
+                    )
+                }
+            })
+        }
+
+        function removePesertaFromClass(employeeId) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showDenyButton: true,
+                confirmButtonColor: '#3085d6',
+                denyButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!',
+                denyButtonText: 'Batalkan'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    removeDataPeserta('/employee/remove_peserta/' + window.location.href.split('/')[4] + '/' + employeeId);
+                } else if (result.isDenied) {
+                    Swal.fire(
+                        'Canceled!',
+                        'Your data has not been deleted.',
+                        'success'
+                    )
+                }
+            })
+        }
+
+        function removeDataPeserta(end_point) {
+            $.ajax({
+                type: "DELETE",
+                url: end_point,
+                dataType: "json",
+                success: function (result) {
+                    tb_peserta.ajax.reload();
+                    customSweetAlert(result.message);
+                    refreshTable();
+                }
+            });
+        }
+
+        function removeDataTrainer(end_point) {
+            $.ajax({
+                type: "DELETE",
+                url: end_point,
+                dataType: "json",
+                success: function (result) {
+                    tb_trainer.ajax.reload();
+                    customSweetAlert(result.message);
+                }
+            });
+        }
+
+        function customSweetAlert(msg) {
+            Swal.fire(
+                'Status Action?',
+                msg,
+                'success'
+            ).then(() => {
+                $("body").removeAttr("style");
+            });
+        }
+
+        function errorSweetAlert(msg) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: msg
+            })
+        }
+
+    </script>
+</body>
+
+
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <section layout:fragment="judulHero">
+            <h4> Transcript Nilai</h4>
+        </section>
+
+        <section layout:fragment="content">
+            <div id="pdfdonlot">
+                <div th:each="transcript : ${transcripts.data}" class="container table__container " style="background-color: white">
+                    <div class="row ">
+                        <div class="col" >
+                            <div class="row ">
+                                <div class="col-3">Id Karyawan</div>
+                                <div class="col" th:text="': ' + ${transcript.employeeId}">  </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="row ">
+                                <div class="col-3">Kelas</div>
+                                <div class="col" th:text="': ' + ${transcript.classId}">class Id </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col" >
+                            <div class="row ">
+                                <div class="col-3">Nama</div>
+                                <div class="col" th:text="': ' + ${transcript.fullName}">fullName </div>
+                            </div>
+
+                        </div>
+                        <div class="col">
+                            <div class="row ">
+                                <div class="col-3">Tipe Kelas</div>
+                                <div class="col" th:text="': ' + ${transcript.classType}">classType </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col" >
+                            <div class="row ">
+                                <div class="col-3">Nilai</div>
+                                <div class="col" th:text="': ' + ${transcript.nilai}">nilai </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="row ">
+                                <div class="col-3">Tanggal Mulai</div>
+                                <div class="col" th:text="': ' + ${transcript.startDate}">startDate </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col" >
+                            <div class="row ">
+                                <div class="col-3">Grade Nilai</div>
+                                <div class="col" th:text="': ' + ${transcript.gradeName}">gradeName </div>
+                            </div>
+
+                        </div>
+                        <div class="col">
+                            <div class="row ">
+                                <div class="col-3">Tangal Akhir</div>
+                                <div class="col" th:text="': ' + ${transcript.endDate}">endDate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container table__container" style="background-color: white">
+                    <h3>Nilai Subject</h3>
+                    <div class="row table__wrapper">
+                        <table class="table" id="tabel_STS">
+                            <thead>
+                                <tr>
+                                    <th scope="col">No</th>
+                                    <th scope="col">Materi</th>
+                                    <th scope="col">Nilai</th>
+                                    <th scope="col">Grade</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="container table__container" style="background-color: white">
+                    <h3>Nilai SubSubject</h3>
+                    <div class="row table__wrapper">
+                        <table class="table" id="tabel_SSTS">
+                            <thead>
+                                <tr>
+                                    <th scope="col">No</th>
+                                    <th scope="col">Sub Materi</th>
+                                    <th scope="col">Nilai</th>
+                                    <th scope="col">Grade</th>
+                                    <th scope="col">subject id</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <!--<button class="btn btn-primary mt-4"  onclick="window.print();" type="button">Unduh Transcript</button>-->
+                <a class="btn btn-primary mt-4"  href="http://localhost:8082/transcript/rapot" type="button">Unduh Transcript</a>
+            </div>
+
+        </section>
+
+        <script layout:fragment="scripts">
+
+            //Inisialisasi data table dengan ajax
+            var tb_sts = $('#tabel_STS').DataTable({
+                ajax: {
+                    url: '/transcript/sts',
+                    dataSrc: 'data'
+                },
+                columns: [
+                    {data: 'subjectId'},
+                    {data: 'subjectName'},
+                    {data: 'nilai'},
+                    {data: 'gradeName'},
+                ],
+                "filter": false,
+                "ordering": false,
+                "lengthChange": false,
+                "info": false,
+                "paging": false,
+                "language": {
+                    "info": "_START_ - _END_ of _TOTAL_ items",
+                    "infoEmpty": "0 to 0 of 0 items",
+                    "infoFiltered": "(filtered from _MAX_ items)",
+                }
+            });
+
+            //Inisialisasi data table dengan ajax
+            var tb_ssts = $('#tabel_SSTS').DataTable({
+                ajax: {
+                    url: '/transcript/ssts',
+                    dataSrc: 'data'
+                },
+                columns: [
+                    {data: 'subsubjectId'},
+                    {data: 'subsubjectName'},
+                    {data: 'nilai'},
+                    {data: 'gradeName'},
+                    {data: 'subjectId'}
+                ],
+                "filter": false,
+                "ordering": false,
+                "lengthChange": false,
+                "info": false,
+                "paging": false,
+                "language": {
+                    "info": "_START_ - _END_ of _TOTAL_ items",
+                    "infoEmpty": "0 to 0 of 0 items",
+                    "infoFiltered": "(filtered from _MAX_ items)",
+                }
+            });
+
+        </script>
+    </body>
+</html>
