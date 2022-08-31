@@ -31,8 +31,14 @@ public class CampaignController {
         return campaignService.findAllOnlyOpen();
     }
 
+    @GetMapping("/getOnlyMe")
+    public @ResponseBody
+    ResponseListData<Campaign> findMyCampaign(){
+        return campaignService.findMyCampaign();
+    }
+
     @PostMapping("/create")
-    public @ResponseBody ResponseMessage<createCampaignRequest> add(@RequestBody createCampaignRequest request) {
+    public @ResponseBody String add(@RequestBody createCampaignRequest request) {
         System.out.println("CREATED");
         return  campaignService.create(request);
     }

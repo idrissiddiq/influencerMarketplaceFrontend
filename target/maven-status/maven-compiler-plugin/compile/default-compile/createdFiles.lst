@@ -202,6 +202,7 @@ com\example\FinalProject\services\SubSubjectService$7.class
 com\example\FinalProject\services\TranscriptService$4.class
 com\example\FinalProject\services\SubSubjectTranscriptService$1.class
 com\example\FinalProject\models\response\SubSTSTrainer$SubSTSTrainerBuilder.class
+com\example\FinalProject\services\CampaignService$3.class
 com\example\FinalProject\services\TranscriptService.class
 com\example\FinalProject\services\EmployeeService$20.class
 com\example\FinalProject\models\response\LoginResponse.class

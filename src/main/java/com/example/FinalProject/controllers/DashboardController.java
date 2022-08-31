@@ -30,15 +30,33 @@ public class DashboardController {
             return "dashboard_admin";
         }
         if (roles.contains("ROLE_BRAND")){
-            return "dashboard/brand";
+            return "Brand/home";
         }
-        return "dashboard/home";
+        return "Anonym/home";
     }
 
     @GetMapping("/campaign")
     public String indexCampaign() {
-//        Set<String> roles = GetAuthContext.getAuthorityDetail(GetAuthContext.getAuthorization());
-        return "dashboard/homeCampaign";
+        Set<String> roles = GetAuthContext.getAuthorityDetail(GetAuthContext.getAuthorization());
+        if (roles.contains("ROLE_ADMIN")) {
+            return "dashboard_admin";
+        }
+        if (roles.contains("ROLE_BRAND")){
+            return "Brand/listAllCampaign";
+        }
+        return "Anonym/listAllCampaign";
+    }
+
+    @GetMapping("/campaign/me")
+    public String indexMyCampaign() {
+        Set<String> roles = GetAuthContext.getAuthorityDetail(GetAuthContext.getAuthorization());
+        if (roles.contains("ROLE_ADMIN")) {
+            return "dashboard_admin";
+        }
+        if (roles.contains("ROLE_BRAND")){
+            return "Brand/myCampaign";
+        }
+        return "Anonym/listAllCampaign";
     }
 
     @GetMapping("/pdf")

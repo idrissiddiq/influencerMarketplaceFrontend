@@ -33,12 +33,18 @@ public class CampaignService {
         return response.getBody();
     }
 
-    public ResponseMessage<createCampaignRequest> create(createCampaignRequest data){
+    public ResponseListData<Campaign> findMyCampaign(){
+        ResponseEntity<ResponseListData<Campaign>> response = restTemplate.exchange(url + "/me", HttpMethod.GET,
+                null, new ParameterizedTypeReference<ResponseListData<Campaign>>(){} );
+        return response.getBody();
+    }
+
+    public String create(createCampaignRequest data){
         HttpEntity<createCampaignRequest> entity = new HttpEntity(data);
         ResponseEntity<ResponseMessage<createCampaignRequest>> response = restTemplate
                 .exchange(url + "/create", HttpMethod.POST,
                         entity, new ParameterizedTypeReference<ResponseMessage<createCampaignRequest>>(){} );
 
-        return response.getBody();
+        return "Create Success";
     }
 }

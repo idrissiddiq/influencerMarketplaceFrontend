@@ -97,6 +97,52 @@
                             <!--Inject inner HTML with AJAX function getAll()-->
                         </tbody>
                     </table>
+                    <table class="table text-center table-striped table-bordered" id="campaign-table">
+                        <thead class="table-dark">
+                        <tr>
+                            <th class="col-md-2">Id</th>
+                            <th class="col-md-6">Title</th>
+                            <th class="col-md-6">Description</th>
+                            <th class="col-md-4">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!--Inject inner HTML with AJAX function getAll()-->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section-->
+<section class="py-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col">
+                <div class="message-success"></div>
+                <h1 class="h1 fw-bold mb-4">[[${pageTitle}]]</h1>
+                <a type="button" class="btn btn-success my-2 float-end px-4 fw-bold" href="http://localhost:8082/">Influencer</a>
+                <a type="button" class="btn btn-success my-2 float-end px-4 fw-bold" href="http://localhost:8082/campaign">Campaign</a>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="table-responsive">
+                    <table class="table text-center table-striped table-bordered" id="campaign-table">
+                        <thead class="table-dark">
+                        <tr>
+                            <th class="col-md-2">Id</th>
+                            <th class="col-md-6">Title</th>
+                            <th class="col-md-6">Description</th>
+                            <th class="col-md-4">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!--Inject inner HTML with AJAX function getAll()-->
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -122,6 +168,38 @@
                     },
                     {
                         data: 'fullname'
+                    },
+                    {
+                        "data": null,
+                        render: function (data, type, row, meta) {
+                            return `
+
+<!--                            <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal"-->
+<!--                                data-bs-target="#regionEdit" onclick="editById(${data.id})">-->
+<!--                                Edit-->
+<!--                            </button>-->
+<!--                            <button type="button" class="btn btn-sm btn-danger" onclick="deleteById(${data.id})">-->
+<!--                                DELETE-->
+<!--                            </button>-->
+                            `;
+                        }
+                    },
+                ]
+            });
+
+            var getCampaign = $('#campaign-table').DataTable({
+                ajax: {
+                    url: '/campaign/getOnlyOpen',
+                    dataSrc: 'data'
+                },
+                columns: [{
+                        data: 'id'
+                    },
+                    {
+                        data: 'title'
+                    },
+                    {
+                        data: 'description'
                     },
                     {
                         "data": null,
