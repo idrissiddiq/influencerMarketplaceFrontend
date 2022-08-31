@@ -38,7 +38,7 @@ public class CampaignController {
     }
 
     @PostMapping("/create")
-    public @ResponseBody String add(@RequestBody createCampaignRequest request) {
+    public @ResponseBody ResponseMessage<createCampaignRequest> add(@RequestBody createCampaignRequest request) {
         System.out.println("CREATED");
         return  campaignService.create(request);
     }

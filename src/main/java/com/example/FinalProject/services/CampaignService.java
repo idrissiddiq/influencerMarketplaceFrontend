@@ -4,6 +4,8 @@ import com.example.FinalProject.models.Campaign;
 import com.example.FinalProject.models.Grade;
 import com.example.FinalProject.models.Influencer;
 import com.example.FinalProject.models.request.createCampaignRequest;
+import com.example.FinalProject.models.response.AdminDashboardDTO;
+import com.example.FinalProject.models.response.ResponseData;
 import com.example.FinalProject.models.response.ResponseListData;
 import com.example.FinalProject.models.response.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,12 +41,12 @@ public class CampaignService {
         return response.getBody();
     }
 
-    public String create(createCampaignRequest data){
+    public ResponseMessage<createCampaignRequest> create(createCampaignRequest data){
         HttpEntity<createCampaignRequest> entity = new HttpEntity(data);
         ResponseEntity<ResponseMessage<createCampaignRequest>> response = restTemplate
                 .exchange(url + "/create", HttpMethod.POST,
                         entity, new ParameterizedTypeReference<ResponseMessage<createCampaignRequest>>(){} );
 
-        return "Create Success";
+        return response.getBody();
     }
 }
