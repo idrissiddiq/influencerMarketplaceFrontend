@@ -11,7 +11,6 @@ import com.example.FinalProject.models.response.AssignTrainerRequest;
 import com.example.FinalProject.models.response.ChangePasswordDTO;
 import com.example.FinalProject.models.response.EmployeeRequest;
 import com.example.FinalProject.models.response.EmployeeResponse;
-import com.example.FinalProject.models.response.ForgotPasswordRequest;
 import com.example.FinalProject.models.response.PesertaRequest;
 import com.example.FinalProject.models.response.ProfileDTO;
 import com.example.FinalProject.models.response.ResponseData;
@@ -233,12 +232,12 @@ public class EmployeeService {
         return response.getBody();
     }
     
-    public ResponseMessage<ForgotPasswordRequest> forgotPassword(ForgotPasswordRequest data){
-        HttpEntity entity = new HttpEntity(data);
-        ResponseEntity<ResponseMessage<ForgotPasswordRequest>> response = restTemplate.exchange(url + "/register/forgot"
-            ,HttpMethod.POST, null, new ParameterizedTypeReference<ResponseMessage<ForgotPasswordRequest>>(){} );
-
-        return response.getBody();
-    }
+//    public ResponseMessage<ForgotPasswordRequest> forgotPassword(ForgotPasswordRequest data){
+//        HttpEntity entity = new HttpEntity(data);
+//        ResponseEntity<ResponseMessage<ForgotPasswordRequest>> response = restTemplate.exchange(url + "/register/forgot"
+//            ,HttpMethod.POST, null, new ParameterizedTypeReference<ResponseMessage<ForgotPasswordRequest>>(){} );
+//
+//        return response.getBody();
+//    }
     
 }

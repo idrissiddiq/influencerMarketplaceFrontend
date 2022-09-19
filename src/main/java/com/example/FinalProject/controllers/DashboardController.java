@@ -15,6 +15,7 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import java.io.File;
 
@@ -32,6 +33,9 @@ public class DashboardController {
         if (roles.contains("ROLE_BRAND")){
             return "Brand/home";
         }
+        if (roles.contains("ROLE_INFLUENCER")){
+            return "Influencer/home";
+        }
         return "Anonym/home";
     }
 
@@ -44,6 +48,9 @@ public class DashboardController {
         if (roles.contains("ROLE_BRAND")){
             return "Brand/listAllCampaign";
         }
+        if (roles.contains("ROLE_INFLUENCER")){
+            return "Influencer/listAllCampaign";
+        }
         return "Anonym/listAllCampaign";
     }
 
@@ -55,6 +62,33 @@ public class DashboardController {
         }
         if (roles.contains("ROLE_BRAND")){
             return "Brand/myCampaign";
+        }
+        return "Anonym/listAllCampaign";
+    }
+
+    @GetMapping("/contract/{id}")
+    public String indexMyDetailContract() {
+        Set<String> roles = GetAuthContext.getAuthorityDetail(GetAuthContext.getAuthorization());
+        if (roles.contains("ROLE_ADMIN")) {
+            return "dashboard_admin";
+        }
+        if (roles.contains("ROLE_BRAND")){
+            return "Brand/myContract";
+        }
+        return "Anonym/listAllCampaign";
+    }
+
+    @GetMapping("/contract")
+    public String indexMyContract() {
+        Set<String> roles = GetAuthContext.getAuthorityDetail(GetAuthContext.getAuthorization());
+        if (roles.contains("ROLE_ADMIN")) {
+            return "dashboard_admin";
+        }
+        if (roles.contains("ROLE_BRAND")){
+            return "error";
+        }
+        if (roles.contains("ROLE_INFLUENCER")){
+            return "Influencer/myContract";
         }
         return "Anonym/listAllCampaign";
     }

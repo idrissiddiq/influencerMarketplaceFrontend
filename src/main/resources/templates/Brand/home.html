@@ -50,12 +50,11 @@
                     </ul>
                 </li>
             </ul>
-            <form class="d-flex">
-                <button class="btn btn-outline-dark" type="submit">
-                    <i class="bi-cart-fill me-1"></i>
-                    Cart
-                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                </button>
+            <form
+                    th:action="@{/logout}"
+                    th:method="POST" id="logoutButton" class="d-flex">
+                <!--onsubmit="return confirm('Do you really want to signout?');"-->
+                <button type="button" th:onclick="logoutReq()" class="btn btn-outline-dark">Logout</button>
             </form>
         </div>
     </div>
@@ -140,6 +139,30 @@
                 ]
             });
 
+            console.log('location.pathname',  window.location.pathname); // Returns path only
+
+            function logoutReq() {
+            Swal.fire({
+            title: 'Are you sure you want to Logout?',
+            icon: 'warning',
+            showDenyButton: true,
+            confirmButtonColor: '#3085d6',
+            denyButtonColor: '#d33',
+            confirmButtonText: 'Yes, log me out!',
+            denyButtonText: 'No, I want to stay!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById("logoutButton").submit();
+
+                } else if (result.isDenied) {
+                    Swal.fire(
+                    'Canceled!',
+                    'Welcome Back.',
+                    'success'
+            )
+          }
+        })
+      }
 
     </script>
 </th:block>

@@ -3,12 +3,14 @@ com\example\FinalProject\services\SubjectTranscriptService$7.class
 com\example\FinalProject\models\InfluencerStatus.class
 com\example\FinalProject\controllers\UserController.class
 com\example\FinalProject\controllers\ErrorController.class
+com\example\FinalProject\models\request\ForgotPasswordRequest$ForgotPasswordRequestBuilder.class
 com\example\FinalProject\models\response\KelasRequest.class
+com\example\FinalProject\models\request\ForgotPasswordRequest.class
+com\example\FinalProject\models\request\RegisterInfluencerRequest.class
 com\example\FinalProject\services\SubjectService$4.class
 com\example\FinalProject\services\SubSubjectService$5.class
 com\example\FinalProject\models\response\STSRequest$STSRequestBuilder.class
 com\example\FinalProject\services\JobService.class
-com\example\FinalProject\models\response\ForgotPasswordRequest$ForgotPasswordRequestBuilder.class
 com\example\FinalProject\services\EmployeeService$9.class
 com\example\FinalProject\services\SilabusService$1.class
 com\example\FinalProject\models\response\EmployeeRequest$EmployeeRequestBuilder.class
@@ -18,6 +20,7 @@ com\example\FinalProject\services\CampaignService$2.class
 com\example\FinalProject\models\response\SubSTSTrainer.class
 com\example\FinalProject\controllers\SubjectController.class
 com\example\FinalProject\services\SubjectTranscriptService$2.class
+com\example\FinalProject\services\ContractService$1.class
 com\example\FinalProject\models\response\ResponseData$ResponseDataBuilder.class
 com\example\FinalProject\models\SubSubjectTranscript$SubSubjectTranscriptBuilder.class
 com\example\FinalProject\services\EmployeeService$4.class
@@ -31,6 +34,7 @@ com\example\FinalProject\services\SilabusService$2.class
 com\example\FinalProject\services\KelasService$5.class
 com\example\FinalProject\models\Transcript$TranscriptBuilder.class
 com\example\FinalProject\services\SubSubjectTranscriptService$4.class
+com\example\FinalProject\models\request\UpdateCampaignRequest$UpdateCampaignRequestBuilder.class
 com\example\FinalProject\models\Kelas.class
 com\example\FinalProject\models\response\ProfileDTO$ProfileDTOBuilder.class
 com\example\FinalProject\models\User$UserBuilder.class
@@ -39,10 +43,13 @@ com\example\FinalProject\services\EmployeeService$18.class
 com\example\FinalProject\services\SubjectTranscriptService$6.class
 com\example\FinalProject\models\Contract$ContractBuilder.class
 com\example\FinalProject\models\response\EmployeeResponse.class
+com\example\FinalProject\models\request\RegisterInfluencerRequest$RegisterInfluencerRequestBuilder.class
 com\example\FinalProject\services\JobService$1.class
 com\example\FinalProject\models\Job$JobBuilder.class
 com\example\FinalProject\services\UserService$2.class
+com\example\FinalProject\models\request\CreateCampaignRequest.class
 com\example\FinalProject\models\SubjectTranscript.class
+com\example\FinalProject\controllers\RegisterController.class
 com\example\FinalProject\services\EmployeeService$11.class
 com\example\FinalProject\services\EmployeeService$3.class
 com\example\FinalProject\models\response\SubSubjectRequest.class
@@ -53,6 +60,7 @@ com\example\FinalProject\models\response\SubSubjectDTO.class
 com\example\FinalProject\services\KelasService$4.class
 com\example\FinalProject\services\SubSubjectTranscriptService$3.class
 com\example\FinalProject\models\response\ResponseString.class
+com\example\FinalProject\models\request\RegisterBrandRequest$RegisterBrandRequestBuilder.class
 com\example\FinalProject\models\Silabus$SilabusBuilder.class
 com\example\FinalProject\controllers\InfluencerController.class
 com\example\FinalProject\models\CampaignStatus.class
@@ -63,6 +71,7 @@ com\example\FinalProject\services\EmployeeService$19.class
 com\example\FinalProject\controllers\LoginController.class
 com\example\FinalProject\services\GradeService$3.class
 com\example\FinalProject\models\Grade$GradeBuilder.class
+com\example\FinalProject\services\RegisterService.class
 com\example\FinalProject\models\response\LoginRequest$LoginRequestBuilder.class
 com\example\FinalProject\models\Instagram.class
 com\example\FinalProject\config\RestTemplateRequestHeaderInterceptor.class
@@ -77,6 +86,7 @@ com\example\FinalProject\services\SubSubjectService$3.class
 com\example\FinalProject\config\TemplateConfig.class
 com\example\FinalProject\models\response\TranscriptData.class
 com\example\FinalProject\services\JobService$3.class
+com\example\FinalProject\services\RegisterService$4.class
 com\example\FinalProject\services\SubjectTranscriptService$8.class
 com\example\FinalProject\services\SubjectService$5.class
 com\example\FinalProject\models\Kelas$KelasBuilder.class
@@ -90,6 +100,7 @@ com\example\FinalProject\models\response\SubjectDTO.class
 com\example\FinalProject\services\SubjectTranscriptService.class
 com\example\FinalProject\models\response\TranscriptData$TranscriptDataBuilder.class
 com\example\FinalProject\models\Silabus.class
+com\example\FinalProject\models\request\RegisterBrandRequest.class
 com\example\FinalProject\models\Campaign$CampaignBuilder.class
 com\example\FinalProject\models\InfluencerStatus$InfluencerStatusBuilder.class
 com\example\FinalProject\models\response\SubjectTranscriptTrainer.class
@@ -100,13 +111,16 @@ com\example\FinalProject\models\response\SubSubjectRequest$SubSubjectRequestBuil
 com\example\FinalProject\utils\GetAuthContext.class
 com\example\FinalProject\services\EmployeeService$1.class
 com\example\FinalProject\services\GradeService$2.class
+com\example\FinalProject\services\RegisterService$1.class
 com\example\FinalProject\services\SubSubjectService$1.class
 com\example\FinalProject\controllers\GradeController.class
 com\example\FinalProject\models\response\TrainerResponse.class
 com\example\FinalProject\services\SubSubjectTranscriptService$7.class
 com\example\FinalProject\services\GradeService.class
 com\example\FinalProject\models\Influencer$InfluencerBuilder.class
+com\example\FinalProject\models\request\CreateCampaignRequest$CreateCampaignRequestBuilder.class
 com\example\FinalProject\models\response\ChangePasswordDTO.class
+com\example\FinalProject\services\RegisterService$2.class
 com\example\FinalProject\config\RestTemplateConfig.class
 com\example\FinalProject\models\response\LoginRequest.class
 com\example\FinalProject\controllers\SilabusController.class
@@ -124,6 +138,7 @@ com\example\FinalProject\models\Brand$BrandBuilder.class
 com\example\FinalProject\services\EmployeeService$15.class
 com\example\FinalProject\models\response\AssignTrainerRequest.class
 com\example\FinalProject\services\JobService$4.class
+com\example\FinalProject\services\RegisterService$3.class
 com\example\FinalProject\services\SilabusService$4.class
 com\example\FinalProject\FinalProjectApplication.class
 com\example\FinalProject\models\response\EmployeeResponse$EmployeeResponseBuilder.class
@@ -132,6 +147,8 @@ com\example\FinalProject\services\SubSubjectService$2.class
 com\example\FinalProject\services\SubjectService$1.class
 com\example\FinalProject\models\response\ResponseMessage.class
 com\example\FinalProject\services\GradeService$4.class
+com\example\FinalProject\services\CampaignService$5.class
+com\example\FinalProject\models\request\UpdateCampaignRequest.class
 com\example\FinalProject\controllers\SubSubjectTranscriptController.class
 com\example\FinalProject\models\response\ProfileDTO.class
 com\example\FinalProject\models\SubSubject.class
@@ -146,7 +163,6 @@ com\example\FinalProject\models\response\SSTSRapot$SSTSRapotBuilder.class
 com\example\FinalProject\models\SubSubject$SubSubjectBuilder.class
 com\example\FinalProject\models\ContractStatus$ContractStatusBuilder.class
 com\example\FinalProject\models\Contract.class
-com\example\FinalProject\models\response\ForgotPasswordRequest.class
 com\example\FinalProject\controllers\TranscriptController.class
 com\example\FinalProject\services\EmployeeService$10.class
 com\example\FinalProject\controllers\ProfileController.class
@@ -155,7 +171,7 @@ com\example\FinalProject\services\GradeService$5.class
 com\example\FinalProject\models\response\ResponseData.class
 com\example\FinalProject\services\SubSubjectTranscriptService.class
 com\example\FinalProject\services\SilabusService$3.class
-com\example\FinalProject\models\request\createCampaignRequest$createCampaignRequestBuilder.class
+com\example\FinalProject\services\ContractService$2.class
 com\example\FinalProject\services\SubjectService$7.class
 com\example\FinalProject\models\response\SubjectRequest$SubjectRequestBuilder.class
 com\example\FinalProject\models\Transcript.class
@@ -163,6 +179,7 @@ com\example\FinalProject\models\ContractStatus.class
 com\example\FinalProject\models\response\AdminDashboardDTO.class
 com\example\FinalProject\services\KelasService.class
 com\example\FinalProject\services\SubjectService$8.class
+com\example\FinalProject\services\CampaignService$4.class
 com\example\FinalProject\models\Grade.class
 com\example\FinalProject\models\response\STSRapot$STSRapotBuilder.class
 com\example\FinalProject\models\response\EmployeeRequest.class
@@ -175,9 +192,9 @@ com\example\FinalProject\services\KelasService$3.class
 com\example\FinalProject\models\response\AssignTrainerRequest$AssignTrainerRequestBuilder.class
 com\example\FinalProject\services\TranscriptService$3.class
 com\example\FinalProject\services\EmployeeService$5.class
+com\example\FinalProject\services\ContractService.class
 com\example\FinalProject\services\EmployeeService$13.class
 com\example\FinalProject\services\SubSubjectTranscriptService$2.class
-com\example\FinalProject\models\request\createCampaignRequest.class
 com\example\FinalProject\services\SubjectService.class
 com\example\FinalProject\models\Job.class
 com\example\FinalProject\models\Influencer.class
@@ -204,7 +221,6 @@ com\example\FinalProject\services\SubSubjectTranscriptService$1.class
 com\example\FinalProject\models\response\SubSTSTrainer$SubSTSTrainerBuilder.class
 com\example\FinalProject\services\CampaignService$3.class
 com\example\FinalProject\services\TranscriptService.class
-com\example\FinalProject\services\EmployeeService$20.class
 com\example\FinalProject\models\response\LoginResponse.class
 com\example\FinalProject\services\KelasService$1.class
 com\example\FinalProject\controllers\DashboardController.class
@@ -212,6 +228,7 @@ com\example\FinalProject\models\Subject$SubjectBuilder.class
 com\example\FinalProject\services\EmployeeService$7.class
 com\example\FinalProject\services\InfluencerService$1.class
 com\example\FinalProject\services\SubjectTranscriptService$4.class
+com\example\FinalProject\controllers\ContractController.class
 com\example\FinalProject\services\UserService$5.class
 com\example\FinalProject\services\EmployeeService$14.class
 com\example\FinalProject\models\response\ResponseListData$ResponseListDataBuilder.class

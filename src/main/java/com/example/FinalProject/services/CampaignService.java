@@ -1,10 +1,8 @@
 package com.example.FinalProject.services;
 
 import com.example.FinalProject.models.Campaign;
-import com.example.FinalProject.models.Grade;
-import com.example.FinalProject.models.Influencer;
-import com.example.FinalProject.models.request.createCampaignRequest;
-import com.example.FinalProject.models.response.AdminDashboardDTO;
+import com.example.FinalProject.models.request.CreateCampaignRequest;
+import com.example.FinalProject.models.request.UpdateCampaignRequest;
 import com.example.FinalProject.models.response.ResponseData;
 import com.example.FinalProject.models.response.ResponseListData;
 import com.example.FinalProject.models.response.ResponseMessage;
@@ -41,11 +39,30 @@ public class CampaignService {
         return response.getBody();
     }
 
-    public ResponseMessage<createCampaignRequest> create(createCampaignRequest data){
-        HttpEntity<createCampaignRequest> entity = new HttpEntity(data);
-        ResponseEntity<ResponseMessage<createCampaignRequest>> response = restTemplate
+    public ResponseData<Campaign> findById(Long id){
+        ResponseEntity<ResponseData<Campaign>> response = restTemplate.exchange(url + "/search/" + id.toString(), HttpMethod.GET,
+                null, new ParameterizedTypeReference<ResponseData<Campaign>>(){} );
+        return response.getBody();
+    }
+
+    public ResponseMessage<CreateCampaignRequest> create(CreateCampaignRequest data){
+        HttpEntity<CreateCampaignRequest> entity = new HttpEntity(data);
+        ResponseEntity<ResponseMessage<CreateCampaignRequest>> response = restTemplate
                 .exchange(url + "/create", HttpMethod.POST,
-                        entity, new ParameterizedTypeReference<ResponseMessage<createCampaignRequest>>(){} );
+                        entity, new ParameterizedTypeReference<ResponseMessage<CreateCampaignRequest>>(){} );
+
+        return response.getBody();
+    }
+
+    public ResponseMessage<UpdateCampaignRequest> update(Long id, UpdateCampaignRequest request) {
+
+        //request.setId(id);
+        Campaign campaign = new Campaign();
+        campaign.setId(id);
+        HttpEntity entity = new HttpEntity(request);
+        ResponseEntity<ResponseMessage<UpdateCampaignRequest>> response = restTemplate
+                .exchange(url + "/me/" + id, HttpMethod.PUT, new HttpEntity(request), new
+                        ParameterizedTypeReference<ResponseMessage<UpdateCampaignRequest>>() {});
 
         return response.getBody();
     }

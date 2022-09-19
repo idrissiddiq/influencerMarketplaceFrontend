@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class createCampaignRequest {
-    private String title;
-    private String description;
+public class ForgotPasswordRequest {
+    private String email;
 }

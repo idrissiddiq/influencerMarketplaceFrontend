@@ -1,4 +1,5 @@
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\config\TemplateConfig.java
+C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\controllers\ContractController.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\controllers\ErrorController.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\controllers\KelasController.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\models\response\SubSubjectDTO.java
@@ -7,6 +8,7 @@ C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\Fina
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\services\EmployeeService.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\controllers\InfluencerController.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\controllers\SubjectTranscriptController.java
+C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\services\RegisterService.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\models\response\LoginResponse.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\models\User.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\utils\GetAuthContext.java
@@ -16,6 +18,7 @@ C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\Fina
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\controllers\SubSubjectTranscriptController.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\controllers\TranscriptController.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\models\Silabus.java
+C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\models\request\RegisterBrandRequest.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\controllers\JobController.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\models\response\TranscriptData.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\models\response\SSTSRapot.java
@@ -23,7 +26,7 @@ C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\Fina
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\models\response\SubSubjectRequest.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\services\SubSubjectService.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\models\ContractStatus.java
-C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\models\request\createCampaignRequest.java
+C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\models\request\CreateCampaignRequest.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\controllers\SubSubjectController.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\models\response\LoginRequest.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\services\JobService.java
@@ -38,7 +41,10 @@ C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\Fina
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\controllers\SilabusController.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\controllers\HomeController.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\config\WebSecurityConfig.java
+C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\controllers\RegisterController.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\controllers\DashboardController.java
+C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\models\request\ForgotPasswordRequest.java
+C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\models\request\UpdateCampaignRequest.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\models\Transcript.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\models\response\ChangePasswordDTO.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\models\response\ResponseData.java
@@ -72,6 +78,8 @@ C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\Fina
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\models\Instagram.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\controllers\EmployeeController.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\models\response\TrainerResponse.java
+C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\services\ContractService.java
+C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\models\request\RegisterInfluencerRequest.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\services\SubjectTranscriptService.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\models\response\STSRequest.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\models\response\SubjectDTO.java
@@ -81,6 +89,5 @@ C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\Fina
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\services\CampaignService.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\services\SubjectService.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\controllers\CampaignController.java
-C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\models\response\ForgotPasswordRequest.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\models\response\KelasRequest.java
 C:\Gawe\Visi\Influe\influencerMarketplaceFrontend\src\main\java\com\example\FinalProject\models\SubSubject.java
