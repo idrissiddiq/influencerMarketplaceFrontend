@@ -1,11 +1,7 @@
 package com.example.FinalProject.controllers;
 
-import com.example.FinalProject.models.request.RegisterInfluencerRequest;
-import com.example.FinalProject.models.response.LoginRequest;
-import com.example.FinalProject.models.response.ResponseMessage;
-import com.example.FinalProject.services.EmployeeService;
+import com.example.FinalProject.models.request.LoginRequest;
 import com.example.FinalProject.services.LoginService;
-import com.example.FinalProject.services.RegisterService;
 import com.example.FinalProject.utils.GetAuthContext;
 import javax.validation.Valid;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -14,18 +10,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class LoginController {
   
     private LoginService loginService;
-    private EmployeeService employeeService;
 
-    public LoginController(LoginService loginService, EmployeeService employeeService) {
+    public LoginController(LoginService loginService) {
         this.loginService = loginService;
-        this.employeeService = employeeService;
     }
 
     @GetMapping("/login")

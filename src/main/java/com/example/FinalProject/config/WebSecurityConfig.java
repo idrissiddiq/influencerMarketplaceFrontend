@@ -62,6 +62,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().ignoringAntMatchers("/register/influencer")
                 .and()
                 .csrf().ignoringAntMatchers("/register/brand")
+                .and()
+                .csrf().ignoringAntMatchers("/upload")
 //                .and()
 //                .formLogin()
 //                .loginPage("/login")

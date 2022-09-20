@@ -93,6 +93,21 @@ public class DashboardController {
         return "Anonym/listAllCampaign";
     }
 
+    @GetMapping("/profile")
+    public String indexMyProfile() {
+        Set<String> roles = GetAuthContext.getAuthorityDetail(GetAuthContext.getAuthorization());
+        if (roles.contains("ROLE_ADMIN")) {
+            return "dashboard_admin";
+        }
+        if (roles.contains("ROLE_BRAND")){
+            return "error";
+        }
+        if (roles.contains("ROLE_INFLUENCER")){
+            return "Influencer/profile";
+        }
+        return "Anonym/listAllCampaign";
+    }
+
     @GetMapping("/pdf")
     public String cobaPdf() {
         return "PdfGenerator";

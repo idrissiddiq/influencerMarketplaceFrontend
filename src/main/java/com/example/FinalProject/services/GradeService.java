@@ -6,7 +6,6 @@
 package com.example.FinalProject.services;
 
 import com.example.FinalProject.models.Grade;
-import com.example.FinalProject.models.Transcript;
 import com.example.FinalProject.models.response.ResponseData;
 import com.example.FinalProject.models.response.ResponseListData;
 import com.example.FinalProject.models.response.ResponseMessage;

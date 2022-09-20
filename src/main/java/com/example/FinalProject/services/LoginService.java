@@ -5,7 +5,7 @@
  */
 package com.example.FinalProject.services;
 
-import com.example.FinalProject.models.response.LoginRequest;
+import com.example.FinalProject.models.request.LoginRequest;
 import com.example.FinalProject.models.response.LoginResponse;
 import com.example.FinalProject.utils.GetAuthContext;
 import java.nio.charset.Charset;
