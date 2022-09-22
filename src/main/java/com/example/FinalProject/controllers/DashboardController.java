@@ -5,14 +5,17 @@ import java.util.Set;
 
 import com.example.FinalProject.models.Influencer;
 import com.example.FinalProject.models.response.ResponseListData;
+import com.example.FinalProject.services.InfluencerService;
 import com.example.FinalProject.utils.GetAuthContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +27,13 @@ import java.io.File;
 @Controller
 //@RequestMapping
 public class DashboardController {
+    private InfluencerService influencerService;
+
+    @Autowired
+    public DashboardController(InfluencerService influencerService) {
+        this.influencerService = influencerService;
+    }
+
     @GetMapping
     public String index() {
         Set<String> roles = GetAuthContext.getAuthorityDetail(GetAuthContext.getAuthorization());
@@ -94,7 +104,7 @@ public class DashboardController {
     }
 
     @GetMapping("/profile")
-    public String indexMyProfile() {
+    public String indexMyProfile(Model model) {
         Set<String> roles = GetAuthContext.getAuthorityDetail(GetAuthContext.getAuthorization());
         if (roles.contains("ROLE_ADMIN")) {
             return "dashboard_admin";
@@ -103,6 +113,8 @@ public class DashboardController {
             return "error";
         }
         if (roles.contains("ROLE_INFLUENCER")){
+            model.addAttribute("photo", influencerService.getMyProfilePhotoPath());
+            model.addAttribute("profiles", influencerService.getMyProfileData());
             return "Influencer/profile";
         }
         return "Anonym/listAllCampaign";

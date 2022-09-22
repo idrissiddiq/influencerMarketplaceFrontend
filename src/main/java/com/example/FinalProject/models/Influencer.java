@@ -10,6 +10,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 /**
  *
  * @author ASUS
@@ -28,4 +30,5 @@ public class Influencer {
     private String er;
     private Job job;
     private Instagram instagram;
+    private Set<InfluencerType> influenceTypes;
 }
