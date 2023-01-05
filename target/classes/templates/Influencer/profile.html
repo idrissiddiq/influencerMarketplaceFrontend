@@ -84,13 +84,16 @@
                 <button type="button" class="btn btn-secondary my-2 float-start px-4 fw-bold" data-bs-toggle="modal"
                         data-bs-target="#changeProfilePhoto">Change Profile Photo </button><br><br><br>
 <!--                <button id="upload-button" onclick="uploadFile()" class="float-start"> Upload </button><br><br>-->
-                <div class="float-start text-left">
+                <div class="float-start text-left" th:each="type : ${types.data}">
                     <span>Name : </span><span th:text="${profile.fullname}"></span><br>
                     <span>Email : </span><span th:text="${profile.email}"></span><br>
                     <span>Birth of Date : </span><span th:text="${profile.birthDate}"></span><br>
                     <span>City : </span><span th:text="${profile.city}"></span><br>
-                    <span>Type : </span><span th:text="${profile.influencerType.name}"></span><br>
+                    <span>Type : </span><span th:text="${type.name}"></span><br><br>
+                    <button type="button" class="btn btn-secondary my-2 float-start px-4 fw-bold" data-bs-toggle="modal"
+                            data-bs-target="#editMyProfile" onclick="showMyProfileData(); showMyInfluenceType();"> Edit Profile Data </button><br><br><br>
                 </div>
+
 <!--                                <a type="button" class="btn btn-success my-2 float-end px-4 fw-bold" onclick="uploadProfilePhoto()">Add Profile Photo</a>-->
                 <!--                <a type="button" class="btn btn-success my-2 float-end px-4 fw-bold" href="http://localhost:8082/campaign">Campaign</a>-->
             </div>
@@ -117,13 +120,13 @@
 <!--        </div>-->
     </div>
 </section>
-<!-- Modal Create -->
+<!-- Modal Change Profile Photo -->
 <div id="changeProfilePhoto" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
      aria-labelledby="regionCreatedLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="regionCreatedLabel">Make New Campaign</h5>
+                <h5 class="modal-title" id="regionCreatedLabel">Change My Profile Photo</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <p class="font-weight-bold">File Must be in .jpg, .npg, or .jpeg Format </p>
@@ -133,6 +136,52 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" onclick="uploadFile()">Create</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Edit Profile Data -->
+<div id="editMyProfile" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="regionCreatedLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ProfileEditedLabel">Edit My Profile Data</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+<!--            <p class="font-weight-bold">File Must be in .jpg, .npg, or .jpeg Format </p>-->
+            <div class="modal-body">
+                <div class="modal-body">
+                    <div class="col">
+                        <label class="form-label ">Your Name:</label>
+                        <input class="form-control" type="text" name="name" id="name" placeholder="Your Name"
+                               required="">
+                    </div>
+                    <div class="col">
+                        <label class="form-label ">Your Email:</label>
+                        <input class="form-control" type="email" name="email" id="email" placeholder="Your Email"
+                               required="">
+                    </div>
+                    <div class="col">
+                        <label class="form-label ">Your City:</label>
+                        <input class="form-control" type="text" name="city" id="city" placeholder="Your City"
+                               required="">
+                    </div>
+                    <div class="col">
+                        <label class="form-label ">Your Birth Date:</label>
+                        <input class="form-control" type="date" name="birthDate" id="birthDate" placeholder="Your Birth Date"
+                               required="">
+                    </div>
+                    <div class="col">
+                        <label class="form-label ">Your Influence Type:</label>
+                        <input class="form-control" type="text" name="influenceType" id="influenceType" placeholder="Your InfluenceType"
+                               required="">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="editMyProfile()">Update</button>
             </div>
         </div>
     </div>
@@ -150,7 +199,7 @@
     async function uploadFileProcess() {
         let formData = new FormData();
         formData.append("file", fileupload.files[0]);
-        let response = await fetch('/upload', {
+        let response = await fetch('/influencer/upload', {
             method: "POST",
             body: formData
         });
@@ -161,6 +210,42 @@
             alert("Upload File Failed.");
         }
     }
+
+    function editMyProfileProcess() {
+                let email = $('#email').val();
+                let fullname = $('#name').val();
+                let city = $('#city').val();
+                let birthDate = $('#birthDate').val();
+                let influenceType = $('#influenceType').val();
+                if (email != '') {
+                    $.ajax({
+                        method: "PUT",
+                        url: '/influencer/profile',
+                        dataType: "json",
+                        data: JSON.stringify({
+                            fullname: fullname,
+                            email: email,
+                            city: city,
+                            birthDate: birthDate,
+                            influenceType: influenceType
+                        }),
+                        contentType: "application/json",
+                        success: function (result) {
+                            console.log("SUCCESS : ", result);
+                            $('#editMyProfile').modal('hide');
+                            window.location = window.location;
+                         //   getCampaign.ajax.reload();
+                         //   location.reload();
+                        }
+                    //    fail: function(xhr, textStatus, errorThrown){
+                     //       location.reload();
+                     //   }
+                    });
+                } else {
+                    console.log("Error");
+                    $('#editMyProfile').modal('hide');
+                }
+            };
 
     function uploadFile() {
                 Swal.fire({
@@ -194,6 +279,89 @@
                     }
                 })
             };
+
+            function editMyProfile() {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You still can change it later",
+                    icon: 'info',
+                    showDenyButton: true,
+                    confirmButtonColor: '#3085d6',
+                    denyButtonColor: '#d33',
+                    confirmButtonText: 'Yes, Edit My Profile!',
+                    denyButtonText: 'Cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // document.getElementById(id).submit();
+                        $('#campaignCreated').modal('hide');
+                        $('body').removeClass('modal-open');
+                        $('.modal-backdrop').remove();
+                        Swal.fire(
+                            'Updated!',
+                            'Your profile has been updated.',
+                            'success'
+                        )
+                        editMyProfileProcess();
+
+                    } else if (result.isDenied) {
+                        Swal.fire(
+                            'Canceled!',
+                            'Your profile has not been updated.',
+                            'error'
+                        )
+                    }
+                })
+            };
+
+            function showMyProfileData() {
+                $.ajax({
+                    method: "GET",
+                    url: '/influencer/profile',
+                    dataType: "json",
+                    contentType: "application/json",
+                    success: function (result) {
+                        $('#name').val(`${result.data.fullname}`);
+                        $('#email').val(`${result.data.email}`);
+                        $('#birthDate').val(`${result.data.birthDate}`);
+                        $('#city').val(`${result.data.city}`);
+                    }
+                })
+            }
+
+            function showMyInfluenceType() {
+                $.ajax({
+                    method: "GET",
+                    url: '/influencer/type',
+                    dataType: "json",
+                    contentType: "application/json",
+                    success: function (result) {
+                        $('#influenceType').val(`${result.data[0].name}`);
+                    }
+                })
+            }
+
+            function logoutReq() {
+            Swal.fire({
+            title: 'Are you sure you want to Logout?',
+            icon: 'warning',
+            showDenyButton: true,
+            confirmButtonColor: '#3085d6',
+            denyButtonColor: '#d33',
+            confirmButtonText: 'Yes, log me out!',
+            denyButtonText: 'No, I want to stay!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById("logoutButton").submit();
+
+                } else if (result.isDenied) {
+                    Swal.fire(
+                    'Canceled!',
+                    'Welcome Back.',
+                    'success'
+            )
+          }
+        })
+      }
     </script>
 </th:block>
 </body>

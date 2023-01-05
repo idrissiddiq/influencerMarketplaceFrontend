@@ -284,12 +284,13 @@
                         $('#registBrand').modal('hide');
                         $('body').removeClass('modal-open');
                         $('.modal-backdrop').remove();
+                        registBrandProcess();
                         Swal.fire(
                             'Created!',
                             'Your account has been created, please check your Email.',
                             'success'
                         )
-                        registBrandProcess();
+
 
                     } else if (result.isDenied) {
                         Swal.fire(
