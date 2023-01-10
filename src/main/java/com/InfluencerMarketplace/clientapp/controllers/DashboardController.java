@@ -2,9 +2,7 @@ package com.InfluencerMarketplace.clientapp.controllers;
 
 import java.util.Set;
 
-import com.InfluencerMarketplace.clientapp.services.BrandService;
-import com.InfluencerMarketplace.clientapp.services.CampaignService;
-import com.InfluencerMarketplace.clientapp.services.InfluencerService;
+import com.InfluencerMarketplace.clientapp.services.*;
 import com.InfluencerMarketplace.clientapp.utils.GetAuthContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +20,17 @@ public class DashboardController {
     private InfluencerService influencerService;
     private CampaignService campaignService;
     private BrandService brandService;
+    private InfluencerTypeService influencerTypeService;
+    private CampaignStatusService campaignStatusService;
 
     @Autowired
-    public DashboardController(InfluencerService influencerService, CampaignService campaignService, BrandService brandService) {
+    public DashboardController(InfluencerService influencerService, CampaignService campaignService, BrandService brandService,
+                               InfluencerTypeService influencerTypeService, CampaignStatusService campaignStatusService) {
         this.influencerService = influencerService;
         this.campaignService = campaignService;
         this.brandService = brandService;
+        this.influencerTypeService = influencerTypeService;
+        this.campaignStatusService = campaignStatusService;
     }
 
     @GetMapping
@@ -69,12 +72,13 @@ public class DashboardController {
     }
 
     @GetMapping("/campaign/me")
-    public String indexMyCampaign() {
+    public String indexMyCampaign(Model model) {
         Set<String> roles = GetAuthContext.getAuthorityDetail(GetAuthContext.getAuthorization());
         if (roles.contains("ROLE_ADMIN")) {
             return "dashboard_admin";
         }
         if (roles.contains("ROLE_BRAND")){
+            model.addAttribute("status", campaignStatusService.findAll());
             return "Brand/myCampaign";
         }
         return "Anonym/listAllCampaign";
@@ -122,6 +126,7 @@ public class DashboardController {
             model.addAttribute("photo", influencerService.getMyProfilePhotoPath());
             model.addAttribute("profiles", influencerService.getMyProfileData());
             model.addAttribute("types", influencerService.getMyType());
+            model.addAttribute("listTypes", influencerTypeService.findAll());
             return "Influencer/myProfile";
         }
         return "Anonym/listAllCampaign";

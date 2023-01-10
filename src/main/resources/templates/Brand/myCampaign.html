@@ -741,8 +741,11 @@
             </div>
             <div class="col">
               <label class="form-label ">Campaign Status:</label>
-              <input class="form-control" type="number" name="campaignStatus" id="edit_campaignStatus" placeholder="Campaign Status"
-                     required="">
+              <!--<input class="form-control" type="number" name="campaignStatus" id="edit_campaignStatus" placeholder="Campaign Status"
+                     required="">-->
+              <select id="edit_campaignStatus" name="edit_campaignStatus">
+                <option th:each="status : ${status.data}" th:text="${status.name}" th:value="${status.id}"></option>
+              </select>
             </div>
           </div>
           <div class="modal-footer">

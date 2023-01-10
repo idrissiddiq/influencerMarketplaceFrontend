@@ -7,6 +7,7 @@ com\InfluencerMarketplace\clientapp\models\response\ResponseString$ResponseStrin
 com\InfluencerMarketplace\clientapp\controllers\DashboardController.class
 com\InfluencerMarketplace\clientapp\controllers\ErrorController.class
 com\InfluencerMarketplace\clientapp\services\JobService$2.class
+com\InfluencerMarketplace\clientapp\controllers\InfluencerTypeController.class
 com\InfluencerMarketplace\clientapp\models\InfluencerFilePath$InfluencerFilePathBuilder.class
 com\InfluencerMarketplace\clientapp\services\InfluencerService$8.class
 com\InfluencerMarketplace\clientapp\models\request\RegisterInfluencerRequest.class
@@ -15,6 +16,7 @@ com\InfluencerMarketplace\clientapp\services\JobService$5.class
 com\InfluencerMarketplace\clientapp\services\BrandService$4.class
 com\InfluencerMarketplace\clientapp\services\BrandService$1.class
 com\InfluencerMarketplace\clientapp\services\InfluencerService$2.class
+com\InfluencerMarketplace\clientapp\services\CampaignStatusService$1.class
 com\InfluencerMarketplace\clientapp\controllers\InfluencerController.class
 com\InfluencerMarketplace\clientapp\services\InfluencerService.class
 com\InfluencerMarketplace\clientapp\models\Brand$BrandBuilder.class
@@ -55,6 +57,7 @@ com\InfluencerMarketplace\clientapp\models\request\ForgotPasswordRequest.class
 com\InfluencerMarketplace\clientapp\services\RegisterService$1.class
 com\InfluencerMarketplace\clientapp\services\InfluencerService$4.class
 com\InfluencerMarketplace\clientapp\controllers\CampaignController.class
+com\InfluencerMarketplace\clientapp\services\InfluencerTypeService$1.class
 com\InfluencerMarketplace\clientapp\controllers\FileUploadController.class
 com\InfluencerMarketplace\clientapp\services\JobService$1.class
 com\InfluencerMarketplace\clientapp\models\request\CreateContractRequest.class
@@ -78,9 +81,11 @@ com\InfluencerMarketplace\clientapp\models\request\LoginRequest.class
 com\InfluencerMarketplace\clientapp\services\BrandService$3.class
 com\InfluencerMarketplace\clientapp\services\RegisterService.class
 com\InfluencerMarketplace\clientapp\models\Brand.class
+com\InfluencerMarketplace\clientapp\services\CampaignStatusService.class
 com\InfluencerMarketplace\clientapp\services\RegisterService$3.class
 com\InfluencerMarketplace\clientapp\models\InfluencerStatus.class
 com\InfluencerMarketplace\clientapp\models\response\FindAllInfluencerResponse.class
+com\InfluencerMarketplace\clientapp\services\InfluencerTypeService.class
 com\InfluencerMarketplace\clientapp\controllers\ContractController.class
 com\InfluencerMarketplace\clientapp\models\response\ResponseMessage.class
 com\InfluencerMarketplace\clientapp\models\request\EditBrandProfileRequest.class

@@ -351,114 +351,29 @@
             <div>
                 <hr />
             </div>
-            <div class="card" th:each="campaign : ${campaigns.data}">
-                <div class="card-header bg-white border-0">
-                    <table class="table text-center table-striped table-bordered" id="data-table">
-                        <thead class="table-dark">
-                        <tr>
-                            <th class="col-md-2">Id</th>
-                            <th class="col-md-6">Name</th>
-                            <th class="col-md-6">StartDate</th>
-                            <th class="col-md-6">EndDate</th>
-                            <th class="col-md-6">Amount</th>
-                            <th class="col-md-4">Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <!--Inject inner HTML with AJAX function getAll()-->
-                        </tbody>
-                    </table>
-                </div>
-                <div>
-                    <!--<p class="card-text mlboo-3" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 15px; color: black;">
-                      They have done great things! Tebrikler Kodluyoruz!
-                    </p>-->
-                    <div class="card-text mlboo-3" style="font-size: 1.2rem;margin-left: 10px; ">
-                        <!--<img
-                          src="https://pbs.twimg.com/media/Em2_xBbXUAEVDx1.jpg"
-                          class="card-img-top mb-1"
-                          alt="..."
-                        />-->
-                        <span th:text="${campaign.description}"></span>
-                    </div>
-                    <!--<div class="card-text mlboo-3" style="font-size: 1.2rem;margin-left: 10px; " th:if="${influencer.finalrate == 3}">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                    </div>
-                    <div class="card-text mlboo-3" style="font-size: 1.2rem;margin-left: 10px; " th:if="${influencer.finalrate == 2}">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-                    </div>
-                    <div class="card-text mlboo-3" style="font-size: 1.2rem;margin-left: 10px; " th:if="${influencer.finalrate == 1}">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-                    </div>
-                    <div class="card-text mlboo-3" style="font-size: 1.2rem;margin-left: 10px; " th:if="${influencer.finalrate == 0}">
-                        <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-                    </div>
-                    <div class="card-text mlboo-3" style="font-size: 1.2rem;margin-left: 10px; " th:if="${influencer.finalrate == null}">
-                        <span><i class="fas fa-grin-stars"></i>This Influencer Still Working For His First Campaign</span>
-                    </div>-->
-                    <!--<span class="ml-3 mt-5"><img src="https://static-exp1.licdn.com/sc/h/d310t2g24pvdy4pt1jkedo4yb" alt=""></span>-->
-                    <!--<span class="mt-5"><img src="https://static-exp1.licdn.com/sc/h/5thsbmikm6a8uov24ygwd914f" alt=""></span>
-                    <span class="mt-5" style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 13px; color: #474747;"><img src="https://static-exp1.licdn.com/sc/h/7fx9nkd7mx8avdpqm5hqcbi97" alt="">  958</span>-->
-                    <div class="card-footer bg-white mt-1">
-                         <span
-                         ><span class="ref btn btn-light btn-sm">
-                           <i class="fab fa-instagram" style="font-size: 1.2rem">
-                             <span class="ml-2 mediatext" th:text="${campaign.startIg} + ' - ' + ${campaign.endIg}" >Instagram</span>
-                           </i>
-                         </span></span
-                         >
-                        <span
-                        ><span class="ref btn btn-light btn-sm">
-                           <i class="fab fa-tiktok" style="font-size: 1.2rem">
-                             <span class="ml-2 mediatext" th:text="${campaign.startTiktok} + ' - ' + ${campaign.endTiktok}" >Instagram</span>
-                           </i>
-                         </span></span
-                        >
-                        <span
-                        ><span class="ref btn btn-light btn-sm">
-                           <i class="fab fa-youtube" style="font-size: 1.2rem">
-                             <span class="ml-2 mediatext" th:text="${campaign.startYt} + ' - ' + ${campaign.endYt}" >Instagram</span>
-                           </i>
-                         </span></span
-                        >
-                    </div>
-                    <span <div class="card-footer bg-white mt-1">
-                    <button type="button" class="ref btn btn-light btn-sm" data-bs-toggle="modal"
-                            data-bs-target="#createContract"><i class="fas fa-door-open" style="font-size: 1.2rem"><span class="ml-2 mediatext">Apply this campaign</span></i></button>
-                    </span>
-                    <div id="createContract" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                         aria-labelledby="regionCreatedLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="registTable">Fill All the Form Below</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="error-message">
-                                    </div>
-                                    <div class="col">
-                                        <label class="form-label ">How much the budget you offer :</label>
-                                        <input class="form-control" type="number" name="budget" id="budget" placeholder="Your Budget"
-                                               required="">
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <span
-                                    ><span class="ref btn btn-light btn-sm">
-                                        <i class="fab fa-youtube" style="font-size: 1.2rem">
-                                            <span class="ml-2 mediatext" th:text="${campaign.id}" >Instagram</span>
-                                            </i>
-                                        </span></span
-                                    >
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary" th:onclick="'submitCampaign(' + ${campaign.id} + ')'">Submit</button>
-                                </div>
-                            </div>
+            <div class="card">
+                <div class="row">
+                    <div class="col">
+                        <div class="table-responsive">
+                            <table class="table text-center table-striped table-bordered" id="data-table">
+                                <thead class="table-dark">
+                                <tr>
+                                    <th class="col-md-2">Id</th>
+                                    <th class="col-md-6">Name</th>
+                                    <th class="col-md-6">StartDate</th>
+                                    <th class="col-md-6">EndDate</th>
+                                    <th class="col-md-6">Amount</th>
+                                    <th class="col-md-4">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <!--Inject inner HTML with AJAX function getAll()-->
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-                </div>
+
             </div>
 
         </div>
@@ -467,7 +382,7 @@
 
     <th:block layout:fragment="script">
         <script th:inline="javascript">
-        var getAll = $('#data-table').DataTable({
+            var getAll = $('#data-table').DataTable({
                 ajax: {
                     url: '/contract/me',
                     dataSrc: 'data'
@@ -491,7 +406,6 @@
                         "data": null,
                         render: function (data, type, row, meta) {
                             return `
-
 <!--                            <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal"-->
 <!--                                data-bs-target="#regionEdit" onclick="editById(${data.id})">-->
 <!--                                Edit-->
@@ -505,7 +419,7 @@
                 ]
             });
 
-        function logoutReq() {
+            function logoutReq() {
             Swal.fire({
             title: 'Are you sure you want to Logout?',
             icon: 'warning',
