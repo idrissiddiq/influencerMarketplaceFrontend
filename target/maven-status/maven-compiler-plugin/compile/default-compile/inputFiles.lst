@@ -6,6 +6,7 @@ D:\Visi\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\cl
 D:\Visi\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\controllers\DashboardController.java
 D:\Visi\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\Job.java
 D:\Visi\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\request\EditBrandProfileRequest.java
+D:\Visi\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\request\ApproveContractRequest.java
 D:\Visi\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\controllers\LoginController.java
 D:\Visi\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\CampaignStatus.java
 D:\Visi\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\utils\GetAuthContext.java
@@ -52,7 +53,6 @@ D:\Visi\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\cl
 D:\Visi\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\request\ChangeProfilePhotoRequest.java
 D:\Visi\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\request\CreateCampaignRequest.java
 D:\Visi\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\config\RestTemplateRequestHeaderInterceptor.java
-D:\Visi\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\request\CreateContractRequest.java
 D:\Visi\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\request\ForgotPasswordRequest.java
 D:\Visi\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\services\InfluencerService.java
 D:\Visi\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\InfluencerType.java

@@ -1,7 +1,6 @@
 package com.InfluencerMarketplace.clientapp.services;
 
-import com.InfluencerMarketplace.clientapp.models.request.CreateCampaignRequest;
-import com.InfluencerMarketplace.clientapp.models.request.CreateContractRequest;
+import com.InfluencerMarketplace.clientapp.models.request.ApproveContractRequest;
 import com.InfluencerMarketplace.clientapp.models.response.ResponseListData;
 import com.InfluencerMarketplace.clientapp.models.Contract;
 import com.InfluencerMarketplace.clientapp.models.response.ResponseMessage;
@@ -38,12 +37,18 @@ public class ContractService {
         return response.getBody();
     }
 
-    public ResponseMessage<CreateContractRequest> createContract(CreateContractRequest data, Long id){
-        HttpEntity<CreateContractRequest> entity = new HttpEntity(data);
-        ResponseEntity<ResponseMessage<CreateContractRequest>> response = restTemplate
+    public ResponseMessage<String> createContract(Long id){
+        ResponseEntity<ResponseMessage<String>> response = restTemplate
                 .exchange(url + "/" + id.toString(), HttpMethod.POST,
-                        entity, new ParameterizedTypeReference<ResponseMessage<CreateContractRequest>>(){} );
+                        null, new ParameterizedTypeReference<ResponseMessage<String>>(){} );
+        return response.getBody();
+    }
 
+    public ResponseMessage<String> approveContract(ApproveContractRequest request, Long id){
+        HttpEntity entity = new HttpEntity(request);
+        ResponseEntity<ResponseMessage<String>> response = restTemplate
+                .exchange(url + "/" + id.toString(), HttpMethod.PUT,
+                        entity, new ParameterizedTypeReference<ResponseMessage<String>>(){} );
         return response.getBody();
     }
 }

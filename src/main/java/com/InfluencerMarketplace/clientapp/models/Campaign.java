@@ -13,6 +13,7 @@ public class Campaign {
     private Long id;
     private String title;
     private String description;
+    private String budget;
     private CampaignStatus campaignStatus;
     private Brand brand;
     private Influencer influencer;

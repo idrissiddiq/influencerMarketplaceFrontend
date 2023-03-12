@@ -1,22 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Influencer Marketplace</title>
-    <!-- Favicon-->
-<!--    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />-->
-    <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-<!--    <link href="css/styles.css" rel="stylesheet" />-->
-    <link rel="stylesheet" th:href="@{/css/home.css}">
-    <meta th:name="_csrf" th:content="${_csrf.token}" />
-    <meta th:name="_csrf_header" th:content="${_csrf.headerName}" />
+<html>
+  <head>
+    <title>Welcom to STRAW</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      /* Add some styles for the page */            
+	  header{ 
+		background: url('/images/bgHome7.png');
+		background-size: cover;
+		width: 100%;
+		}
+		
+      .feed {
+        display: flex;
+        flex-wrap: wrap;
+		float:left;
+		width: calc(33.33% - 20px);
+      }
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      .post {
+        padding: 15px;
+        background-color: #ffd639;
+        margin: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        border-radius: 10px;
+      }
+	 
+      .post img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+
+      .post .info {
+        padding: 20px;
+      }
+
+      .post h2 {
+        font-size: 24px;
+        margin: 20px 0;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .post p {
+        font-size: 18px;
+        color: #333;
+        margin: 0;
+        line-height: 1.5;
+      
+	  
+	  .stats {
+        display: flex;
+        justify-content: space-around;
+        margin: 40px 0;
+      }
+
+      /* Add responsive styles for mobile devices */
+      @media (max-width: 768px) {
+        .container {
+          width: 100%;
+          padding: 20px;
+        }
+
+        .feed {
+          flex-direction: column;
+        }
+
+        .post {
+          width: 100%;
+        }
+      }
+    </style>
+	<link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+      integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
+      crossorigin="anonymous"
+    />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
           crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
@@ -30,195 +95,55 @@
             integrity="sha256-voaY/mFuF2+Kg/L56O9wmuwvhHf3XcaxCI/Ld9UR+d4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.8/dist/sweetalert2.min.js"
             integrity="sha256-UEAn96ePJjqidezAU7lnOYeJEArgg4hsNGbwqmcyPrY=" crossorigin="anonymous"></script>
-</head>
-<body>
-<!-- Navigation-->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="http://localhost:8082/">Home</a>
+  </head>
+  <body style="background-color: #ff8aae;">
+	<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light " style = "background-color: #ff8aae;">
+    <div class="container px-4 px-lg-5 ">
+        <a class="navbar-brand " href="/">Home</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="http://localhost:8082/campaign">List Campaign</a></li>
-                <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">All Products</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                        <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                    </ul>
-                </li>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="nav navbar-nav ms-auto mb-2 mb-lg-0 ">
+                <li class="nav-item"><a class="nav-link active " aria-current="page" href="/campaign">List Campaign</a></li>
+                <li class="nav-item"><a class="nav-link active " aria-current="page" href="/login">Login</a></li>
             </ul>
-            <form class="d-flex">
-                <button class="btn btn-outline-dark" type="submit">
-                    <i class="bi-cart-fill me-1"></i>
-                    Cart
-                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                </button>
-            </form>
         </div>
     </div>
 </nav>
-<!-- Header-->
+
 <header class="bg-dark py-5">
     <div class="container px-4 px-lg-5 my-5">
-        <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Shop in style</h1>
-            <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+        <div class="text-center text-dark" style="text-color: black;">
+            <h1 class="display-4 fw-bolder">STRAW</h1>
+            <p class="lead fw-normal text-dark-50 mb-0">Treasure Your Influence</p>
         </div>
     </div>
 </header>
-<!-- Section-->
-<section class="py-5">
-    <div class="container">
-        <div class="row text-center">
-            <div class="col">
-                <div class="message-success"></div>
-                <h1 class="h1 fw-bold mb-4">[[${pageTitle}]]</h1>
-<!--                <a type="button" class="btn btn-success my-2 float-end px-4 fw-bold" href="http://localhost:8082/">Influencer</a>-->
-<!--                <a type="button" class="btn btn-success my-2 float-end px-4 fw-bold" href="http://localhost:8082/campaign">Campaign</a>-->
-            </div>
-
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="table-responsive">
-                    <table class="table text-center table-striped table-bordered" id="data-table">
-                        <thead class="table-dark">
-                            <tr>
-                                <th class="col-md-2">Id</th>
-                                <th class="col-md-6">Name</th>
-                                <th class="col-md-4">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!--Inject inner HTML with AJAX function getAll()-->
-                        </tbody>
-                    </table>
-                    <table class="table text-center table-striped table-bordered" id="campaign-table">
-                        <thead class="table-dark">
-                        <tr>
-                            <th class="col-md-2">Id</th>
-                            <th class="col-md-6">Title</th>
-                            <th class="col-md-6">Description</th>
-                            <th class="col-md-4">Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <!--Inject inner HTML with AJAX function getAll()-->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Section-->
-<section class="py-5">
-    <div class="container">
-        <div class="row text-center">
-            <div class="col">
-                <div class="message-success"></div>
-                <h1 class="h1 fw-bold mb-4">[[${pageTitle}]]</h1>
-                <a type="button" class="btn btn-success my-2 float-end px-4 fw-bold" href="http://localhost:8082/">Influencer</a>
-                <a type="button" class="btn btn-success my-2 float-end px-4 fw-bold" href="http://localhost:8082/campaign">Campaign</a>
-            </div>
-
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="table-responsive">
-                    <table class="table text-center table-striped table-bordered" id="campaign-table">
-                        <thead class="table-dark">
-                        <tr>
-                            <th class="col-md-2">Id</th>
-                            <th class="col-md-6">Title</th>
-                            <th class="col-md-6">Description</th>
-                            <th class="col-md-4">Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <!--Inject inner HTML with AJAX function getAll()-->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Footer-->
-<footer class="py-5 bg-dark">
-    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
-</footer>
-<!-- Bootstrap core JS-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS-->
-<!-- <script src="js/scripts.js"></script> -->
+<br><br>
+<div class="container" >	
+      <div class="feed colorcode" style="border: none;" th:each="influencer : ${influencers.data}">
+        <div class="post">
+            <a href="#"><img th:src="@{${'/images/profile/' + influencer.username + '.jpg'}}" alt="Post 1" style="border-radius: 50%; width: 50px; height: 50px;float:left;"></a>
+		  <span style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: bold; font-size: 14px; margin-left: 8px;" th:text="${influencer.fullname}" class="align-top">David J. Malan</span><br>
+		  <span style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 14px; margin-left: 8px;" th:text="${influencer.city}" class="align-top">Jakarta</span><br>
+		  <span style="font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;font-size: 14px; margin-left: 8px;" th:text="${influencer.age}" class="align-top">25</span>
+          <div class="info">
+          </div>		  
+		</div>
+	</div>
+	
+	</div>
 <th:block layout:fragment="script">
     <script th:inline="javascript">
-            var getAll = $('#data-table').DataTable({
-                ajax: {
-                    url: '/influencer/getAll',
-                    dataSrc: 'data'
-                },
-                columns: [{
-                        data: 'id'
-                    },
-                    {
-                        data: 'fullname'
-                    },
-                    {
-                        "data": null,
-                        render: function (data, type, row, meta) {
-                            return `
+  //          var hue = Math.floor(Math.random() * 360);
+//var pastel = 'hsl(' + hue + ', 100%, 80%)';
+//$('.feed').css('background-color', pastel);
+//$('.nav').css('background-color', pastel);
 
-<!--                            <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal"-->
-<!--                                data-bs-target="#regionEdit" onclick="editById(${data.id})">-->
-<!--                                Edit-->
-<!--                            </button>-->
-<!--                            <button type="button" class="btn btn-sm btn-danger" onclick="deleteById(${data.id})">-->
-<!--                                DELETE-->
-<!--                            </button>-->
-                            `;
-                        }
-                    },
-                ]
-            });
-
-            var getCampaign = $('#campaign-table').DataTable({
-                ajax: {
-                    url: '/campaign/getOnlyOpen',
-                    dataSrc: 'data'
-                },
-                columns: [{
-                        data: 'id'
-                    },
-                    {
-                        data: 'title'
-                    },
-                    {
-                        data: 'description'
-                    },
-                    {
-                        "data": null,
-                        render: function (data, type, row, meta) {
-                            return `
-
-<!--                            <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal"-->
-<!--                                data-bs-target="#regionEdit" onclick="editById(${data.id})">-->
-<!--                                Edit-->
-<!--                            </button>-->
-<!--                            <button type="button" class="btn btn-sm btn-danger" onclick="deleteById(${data.id})">-->
-<!--                                DELETE-->
-<!--                            </button>-->
-                            `;
-                        }
-                    },
-                ]
-            });
+//$(".colorcode");
     </script>
 </th:block>
+
 </body>
-</html>
+	
+    

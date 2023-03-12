@@ -50,7 +50,7 @@ public class DashboardController {
         model.addAttribute("influencers", influencerService.findAllInfluencer());
         model.addAttribute("ages", influencerService.findAge());
 //        model.addAttribute("photo", influencerService.getProfilePhotoById(id));
-        return "Anonym/index";
+        return "Anonym/home";
     }
 
     @GetMapping("/campaign")
@@ -68,7 +68,7 @@ public class DashboardController {
             return "Influencer/allCampaign";
         }
         model.addAttribute("campaigns", campaignService.findAllOpenCampaign());
-        return "Anonym/allCampaign";
+        return "Anonym/campaign";
     }
 
     @GetMapping("/campaign/me")

@@ -7,9 +7,11 @@ import javax.validation.Valid;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class LoginController {
@@ -21,26 +23,26 @@ public class LoginController {
     }
 
     @GetMapping("/login")
-    public String login(LoginRequest loginRequest) {
+    public String login(LoginRequest loginRequest, Model model) {
         Authentication auth = GetAuthContext.getAuthorization();
          System.out.println("AUTH : " + auth.getPrincipal());
          System.out.println("AUTHORITIES : " + auth.getAuthorities());
         if(auth == null || auth instanceof AnonymousAuthenticationToken){
-            return "loginNew";
+            return "login";
     }
         return "redirect:/";
     }
 
-    @GetMapping("/login/brand")
-    public String loginBrand(LoginRequest loginRequest) {
-        Authentication auth = GetAuthContext.getAuthorization();
-        System.out.println("AUTH : " + auth.getPrincipal());
-        System.out.println("AUTHORITIES : " + auth.getAuthorities());
-        if(auth == null || auth instanceof AnonymousAuthenticationToken){
-            return "loginBrand";
-        }
-        return "redirect:/";
-    }
+//    @GetMapping("/login/brand")
+//    public String loginBrand(LoginRequest loginRequest) {
+//        Authentication auth = GetAuthContext.getAuthorization();
+//        System.out.println("AUTH : " + auth.getPrincipal());
+//        System.out.println("AUTHORITIES : " + auth.getAuthorities());
+//        if(auth == null || auth instanceof AnonymousAuthenticationToken){
+//            return "loginBrandNew";
+//        }
+//        return "redirect:/";
+//    }
 
     @PostMapping("/login")
     public String login(@Valid LoginRequest request, BindingResult result) {

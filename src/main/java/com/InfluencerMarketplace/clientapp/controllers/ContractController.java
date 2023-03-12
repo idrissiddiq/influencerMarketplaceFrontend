@@ -1,8 +1,7 @@
 package com.InfluencerMarketplace.clientapp.controllers;
 
 import com.InfluencerMarketplace.clientapp.models.Contract;
-import com.InfluencerMarketplace.clientapp.models.request.CreateCampaignRequest;
-import com.InfluencerMarketplace.clientapp.models.request.CreateContractRequest;
+import com.InfluencerMarketplace.clientapp.models.request.ApproveContractRequest;
 import com.InfluencerMarketplace.clientapp.models.response.ResponseListData;
 import com.InfluencerMarketplace.clientapp.models.response.ResponseMessage;
 import com.InfluencerMarketplace.clientapp.services.ContractService;
@@ -34,7 +33,13 @@ public class ContractController {
 
     @PostMapping("/create/{id}")
     public @ResponseBody
-    ResponseMessage<CreateContractRequest> createContract(@PathVariable Long id, @RequestBody CreateContractRequest request) {
-        return  contractService.createContract(request, id);
+    ResponseMessage<String> createContract(@PathVariable Long id) {
+        return contractService.createContract(id);
+    }
+
+    @PutMapping("/{id}")
+    public @ResponseBody
+    ResponseMessage<String> approveContract(@RequestBody ApproveContractRequest request, @PathVariable Long id) {
+        return contractService.approveContract(request, id);
     }
 }

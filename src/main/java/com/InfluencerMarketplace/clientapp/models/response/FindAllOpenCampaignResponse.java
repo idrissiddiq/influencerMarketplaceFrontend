@@ -15,10 +15,5 @@ public class FindAllOpenCampaignResponse {
     private String description;
     private String company;
     private String name;
-    private Long startIg;
-    private Long endIg;
-    private Long startTiktok;
-    private Long endTiktok;
-    private Long startYt;
-    private Long endYt;
+    private Long budget;
 }
