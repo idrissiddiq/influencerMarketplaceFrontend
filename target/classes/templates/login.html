@@ -159,8 +159,9 @@
             </div>
             <div class="col">
               <label class="form-label ">Your Influence Type:</label>
-              <input class="form-control" type="text" name="influenceType" id="influenceType" placeholder="Your Influence Type"
-                     required="">
+                <select id="influenceType" name="influenceType">
+                    <option th:each="listTypes : ${listTypes.data}" th:text="${listTypes.name}" th:value="${listTypes.name}"></option>
+                </select>
             </div>
             <div class="col">
               <label class="form-label ">Your Username:</label>
