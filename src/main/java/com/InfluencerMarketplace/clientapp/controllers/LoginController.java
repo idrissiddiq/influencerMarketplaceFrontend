@@ -1,5 +1,6 @@
 package com.InfluencerMarketplace.clientapp.controllers;
 
+import com.InfluencerMarketplace.clientapp.services.InfluencerTypeService;
 import com.InfluencerMarketplace.clientapp.services.LoginService;
 import com.InfluencerMarketplace.clientapp.models.request.LoginRequest;
 import com.InfluencerMarketplace.clientapp.utils.GetAuthContext;
@@ -17,9 +18,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class LoginController {
   
     private LoginService loginService;
+    private InfluencerTypeService influencerTypeService;
 
-    public LoginController(LoginService loginService) {
+    public LoginController(LoginService loginService, InfluencerTypeService influencerTypeService) {
         this.loginService = loginService;
+        this.influencerTypeService = influencerTypeService;
     }
 
     @GetMapping("/login")
@@ -28,21 +31,11 @@ public class LoginController {
          System.out.println("AUTH : " + auth.getPrincipal());
          System.out.println("AUTHORITIES : " + auth.getAuthorities());
         if(auth == null || auth instanceof AnonymousAuthenticationToken){
+            model.addAttribute("listTypes", influencerTypeService.findAll());
             return "login";
-    }
+        }
         return "redirect:/";
     }
-
-//    @GetMapping("/login/brand")
-//    public String loginBrand(LoginRequest loginRequest) {
-//        Authentication auth = GetAuthContext.getAuthorization();
-//        System.out.println("AUTH : " + auth.getPrincipal());
-//        System.out.println("AUTHORITIES : " + auth.getAuthorities());
-//        if(auth == null || auth instanceof AnonymousAuthenticationToken){
-//            return "loginBrandNew";
-//        }
-//        return "redirect:/";
-//    }
 
     @PostMapping("/login")
     public String login(@Valid LoginRequest request, BindingResult result) {
@@ -73,31 +66,5 @@ public class LoginController {
         GetAuthContext.setAuthorization(null);
         return "redirect:/login?logout=true";
     }
-    
-    @GetMapping("/forgot_password")
-    public String forgot_password() {
-        return "forgot_password";
-    }
-    
-//    @PostMapping("/forgot_password")
-//    public @ResponseBody
-//    ResponseMessage<ForgotPasswordRequest> forgot(@RequestBody ForgotPasswordRequest request) {
-//        System.out.println("Lupa woyy");
-//        return employeeService.forgotPassword(request);
-//    }
-    
-//    @PostMapping("/forgot_password")
-//    public String forgot(ForgotPasswordRequest forgotPasswordRequest,
-//            BindingResult result, RedirectAttributes redirectAttributes) {
-//        
-//        if (result.hasErrors()) {
-//            return "forgot_password";
-//        }
-//        
-//        ResponseMessage<ForgotPasswordRequest> response = employeeService.forgotPassword(forgotPasswordRequest);
-//        redirectAttributes.addFlashAttribute("message", response.getMessage());
-//        
-//        return "redirect:/login";
-//    }
 
 }

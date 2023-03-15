@@ -61,7 +61,7 @@ public class DashboardController {
         }
         if (roles.contains("ROLE_BRAND")){
             model.addAttribute("campaigns", campaignService.findAllOpenCampaign());
-            return "Brand/allCampaign";
+            return "Brand/campaignNew";
         }
         if (roles.contains("ROLE_INFLUENCER")){
             model.addAttribute("campaigns", campaignService.findAllOpenCampaign());
@@ -79,7 +79,7 @@ public class DashboardController {
         }
         if (roles.contains("ROLE_BRAND")){
             model.addAttribute("status", campaignStatusService.findAll());
-            return "Brand/myCampaign";
+            return "Brand/myCampaignNew";
         }
         return "Anonym/listAllCampaign";
     }

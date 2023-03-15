@@ -35,6 +35,7 @@ public class RestTemplateRequestHeaderInterceptor implements ClientHttpRequestIn
                && !request.getURI().getPath().equals("/api/influencer/findAllInfluencer")
                && !request.getURI().getPath().equals("/api/campaign/1")
                && !request.getURI().getPath().equals("/api/campaign/open")
+               && !request.getURI().getPath().equals("/api/influencerType")
                && !request.getURI().getPath().equals("/api/influencer/profile/photo/**")) {
             request.getHeaders().add("Authorization", "Basic " + GetAuthContext
                     .getAuthorization()
