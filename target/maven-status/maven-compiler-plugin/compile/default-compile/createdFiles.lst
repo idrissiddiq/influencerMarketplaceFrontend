@@ -7,7 +7,6 @@ com\InfluencerMarketplace\clientapp\models\response\ResponseString$ResponseStrin
 com\InfluencerMarketplace\clientapp\controllers\DashboardController.class
 com\InfluencerMarketplace\clientapp\controllers\ErrorController.class
 com\InfluencerMarketplace\clientapp\services\JobService$2.class
-com\InfluencerMarketplace\clientapp\controllers\InfluencerTypeController.class
 com\InfluencerMarketplace\clientapp\models\InfluencerFilePath$InfluencerFilePathBuilder.class
 com\InfluencerMarketplace\clientapp\services\InfluencerService$8.class
 com\InfluencerMarketplace\clientapp\models\request\RegisterInfluencerRequest.class

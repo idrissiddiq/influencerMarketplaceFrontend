@@ -22,7 +22,6 @@ D:\Visi\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\cl
 D:\Visi\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\config\RestTemplateConfig.java
 D:\Visi\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\Influencer.java
 D:\Visi\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\services\InfluencerTypeService.java
-D:\Visi\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\controllers\InfluencerTypeController.java
 D:\Visi\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\request\UpdateCampaignRequest.java
 D:\Visi\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\response\LoginResponse.java
 D:\Visi\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\Instagram.java

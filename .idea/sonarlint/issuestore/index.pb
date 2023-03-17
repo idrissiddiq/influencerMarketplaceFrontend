@@ -37,3 +37,15 @@ bsrc/main/java/com/InfluencerMarketplace/clientapp/models/response/FindAllOpenCa
 \src/main/java/com/InfluencerMarketplace/clientapp/models/request/ApproveContractRequest.java,2\1\21b2680862f064d008476ddb7f027e71a6570368
 v
 Fsrc/main/java/com/InfluencerMarketplace/clientapp/models/Campaign.java,5\3\530ff3d31cce2b36149f532a478a745643b5d5c7
+‡
+Wsrc/main/java/com/InfluencerMarketplace/clientapp/controllers/FileUploadController.java,4\c\4c24ac9156c70b3aa4e03f03a2e417ea6c35a9b5
+…
+Usrc/main/java/com/InfluencerMarketplace/clientapp/services/InfluencerTypeService.java,c\a\cac23027c2593d424599bc97de1f7bb8e6d98f94
+…
+Usrc/main/java/com/InfluencerMarketplace/clientapp/controllers/RegisterController.java,b\8\b8d7efa905eb225efe1f7d0ad7786b4a6187a037
+
+Osrc/main/java/com/InfluencerMarketplace/clientapp/config/WebSecurityConfig.java,c\6\c69f7fd74b3f0ff3ced8bf59a315e0691ea21f73
+|
+Lsrc/main/java/com/InfluencerMarketplace/clientapp/config/TemplateConfig.java,c\f\cf8b5954c5bc77c5d664bce7c63a64c42d7c13ec
+‚
+Rsrc/main/java/com/InfluencerMarketplace/clientapp/controllers/LoginController.java,f\0\f055684e352c8486fc48402fa17965c9c81b7518
