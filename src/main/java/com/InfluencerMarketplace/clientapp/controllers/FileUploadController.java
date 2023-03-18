@@ -33,7 +33,6 @@ public class FileUploadController {
 
     @PostMapping("/influencer/upload")
     public ResponseEntity<?> handleFileUpload( @RequestParam("file") MultipartFile file ) {
-        try{
             String fileName = file.getOriginalFilename();
             String checkFormat = fileName.substring(fileName.length() - 4);
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();;
@@ -54,16 +53,13 @@ public class FileUploadController {
                     influencerService.changeProfilePhoto(request);
 //            file.transferTo( new File("src\\main\\resources\\static\\images\\profile\\" + fileName));
                 } catch (Exception e) {
+                    System.out.println(e.getMessage());
                     return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
                 }
                 return ResponseEntity.ok("File uploaded successfully.");
             } else{
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
             }
-        } catch (Exception e){
-            System.out.println(e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
 
     }
 
