@@ -33,33 +33,38 @@ public class FileUploadController {
 
     @PostMapping("/influencer/upload")
     public ResponseEntity<?> handleFileUpload( @RequestParam("file") MultipartFile file ) {
-
-        String fileName = file.getOriginalFilename();
-        String checkFormat = fileName.substring(fileName.length() - 4);
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();;
-        fileName = authentication.getName() + ".jpg";
-        System.out.println(checkFormat);
-        if (checkFormat.equals(".jpg") || checkFormat.equals(".png") || checkFormat.equals("jpeg")) {
-            Path uploadPath = Paths.get("src\\main\\resources\\static\\images\\profile");
-            Path uploadPath2 = Paths.get("target\\classes\\static\\images\\profile");
-            String pathFinder = "images\\profile";
-            System.out.println(uploadPath.toString());
-            try (InputStream inputStream = file.getInputStream(); InputStream inputStream2 = file.getInputStream()) {
-                Path filePath = uploadPath.resolve(fileName);
-                Path filePath2 = uploadPath2.resolve(fileName);
-                Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-                Files.copy(inputStream2, filePath2, StandardCopyOption.REPLACE_EXISTING);
-                ChangeProfilePhotoRequest request = new ChangeProfilePhotoRequest();
-                request.setPath(pathFinder + "\\" + fileName);
-                influencerService.changeProfilePhoto(request);
+        try{
+            String fileName = file.getOriginalFilename();
+            String checkFormat = fileName.substring(fileName.length() - 4);
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();;
+            fileName = authentication.getName() + ".jpg";
+            System.out.println(checkFormat);
+            if (checkFormat.equals(".jpg") || checkFormat.equals(".png") || checkFormat.equals("jpeg")) {
+                Path uploadPath = Paths.get("src\\main\\resources\\static\\images\\profile");
+                Path uploadPath2 = Paths.get("target\\classes\\static\\images\\profile");
+                String pathFinder = "images\\profile";
+                System.out.println(uploadPath.toString());
+                try (InputStream inputStream = file.getInputStream(); InputStream inputStream2 = file.getInputStream()) {
+                    Path filePath = uploadPath.resolve(fileName);
+                    Path filePath2 = uploadPath2.resolve(fileName);
+                    Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+                    Files.copy(inputStream2, filePath2, StandardCopyOption.REPLACE_EXISTING);
+                    ChangeProfilePhotoRequest request = new ChangeProfilePhotoRequest();
+                    request.setPath(pathFinder + "\\" + fileName);
+                    influencerService.changeProfilePhoto(request);
 //            file.transferTo( new File("src\\main\\resources\\static\\images\\profile\\" + fileName));
-            } catch (Exception e) {
+                } catch (Exception e) {
+                    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+                }
+                return ResponseEntity.ok("File uploaded successfully.");
+            } else{
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
             }
-            return ResponseEntity.ok("File uploaded successfully.");
-        } else{
+        } catch (Exception e){
+            System.out.println(e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
+
     }
 
     @PostMapping("/brand/upload")
