@@ -1,0 +1,8 @@
+
+x
+java:S1488e"bImmediately return this expression instead of assigning it to the temporary variable "authHeader".(Ÿ—­®
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(›§Ë
+^
+java:S1612]"HReplace this lambda with method reference 'SimpleGrantedAuthority::new'.(ôÆÖ¦
+X
+java:S4719d"=Replace Charset.forName() call with StandardCharsets.US_ASCII(½ğÕ¹ûÿÿÿÿ

@@ -695,7 +695,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="uploadFile()">Create</button>
+                <button type="button" class="btn btn-primary" onclick="uploadFile($('#fileupload').val())">Create</button>
             </div>
         </div>
     </div>
@@ -751,21 +751,42 @@
 </div>
 <th:block layout:fragment="script">
     <script th:inline="javascript">
-        async function uploadFileProcess() {
-        let formData = new FormData();
-        formData.append("file", fileupload.files[0]);
-        let response = await fetch('/influencer/upload', {
-            method: "POST",
-            body: formData
-        });
+    //    async function uploadFileProcess() {
+    //    let formData = new FormData();
+    //    formData.append("file", fileupload.files[0]);
+    //    let response = await fetch('/influencer/upload', {
+    //        method: "POST",
+    //        body: formData
+    //    });
 
-        if (response.status == 200) {
-            window.location = window.location;
-        } else{
-            console.log(response);
-            alert("Upload File Failed.");
-        }
-    }
+    //    if (response.status == 200) {
+    //        window.location = window.location;
+    //    } else{
+    //        console.log(response);
+    //        alert("Upload File Failed.");
+    //    }
+    //}
+
+    function uploadFileProcess(fileupload) {
+                let formData = new FormData();
+                formData.append("file", fileupload.files[0]);
+                if (files != '') {
+                    $.ajax({
+                        method: "POST",
+                        url: '/influencer/upload',
+                        dataType: "file",
+                        data: formData,
+                        success: function (result) {
+                            console.log("SUCCESS : ", result);
+                            $('#editMyProfile').modal('hide');
+                            window.location = window.location;
+                        }
+                    });
+                } else {
+                    console.log("Error");
+                    alert("Upload File Failed.");
+                }
+            };
 
     function editMyProfileProcess() {
                 let email = $('#email').val();
