@@ -84,6 +84,7 @@ com\InfluencerMarketplace\clientapp\services\CampaignStatusService.class
 com\InfluencerMarketplace\clientapp\services\RegisterService$3.class
 com\InfluencerMarketplace\clientapp\models\InfluencerStatus.class
 com\InfluencerMarketplace\clientapp\models\request\ApproveContractRequest$ApproveContractRequestBuilder.class
+com\InfluencerMarketplace\clientapp\controllers\ImageController.class
 com\InfluencerMarketplace\clientapp\models\response\FindAllInfluencerResponse.class
 com\InfluencerMarketplace\clientapp\services\InfluencerTypeService.class
 com\InfluencerMarketplace\clientapp\controllers\ContractController.class
@@ -95,6 +96,7 @@ com\InfluencerMarketplace\clientapp\models\Contract.class
 com\InfluencerMarketplace\clientapp\FinalProjectApplication.class
 com\InfluencerMarketplace\clientapp\models\response\ResponseString.class
 com\InfluencerMarketplace\clientapp\models\response\FindAllInfluencerResponse$FindAllInfluencerResponseBuilder.class
+com\InfluencerMarketplace\clientapp\exception\FileUploadExceptionAdvice.class
 com\InfluencerMarketplace\clientapp\models\InfluencerType.class
 com\InfluencerMarketplace\clientapp\services\InfluencerService$9.class
 com\InfluencerMarketplace\clientapp\services\InfluencerService$6.class
@@ -107,6 +109,7 @@ com\InfluencerMarketplace\clientapp\models\response\ResponseListData.class
 com\InfluencerMarketplace\clientapp\models\request\CreateCampaignRequest$CreateCampaignRequestBuilder.class
 com\InfluencerMarketplace\clientapp\models\request\UpdateCampaignRequest.class
 com\InfluencerMarketplace\clientapp\services\ContractService$2.class
+com\InfluencerMarketplace\clientapp\models\ImageInfo.class
 com\InfluencerMarketplace\clientapp\models\InfluencerFilePath.class
 com\InfluencerMarketplace\clientapp\models\request\ChangeProfilePhotoRequest$ChangeProfilePhotoRequestBuilder.class
 com\InfluencerMarketplace\clientapp\controllers\RegisterController.class
@@ -117,5 +120,6 @@ com\InfluencerMarketplace\clientapp\models\response\LoginResponse.class
 com\InfluencerMarketplace\clientapp\services\InfluencerService$7.class
 com\InfluencerMarketplace\clientapp\config\TemplateConfig.class
 com\InfluencerMarketplace\clientapp\services\BrandService$2.class
+com\InfluencerMarketplace\clientapp\services\FilesStorageService.class
 com\InfluencerMarketplace\clientapp\services\CampaignService.class
 com\InfluencerMarketplace\clientapp\services\JobService$4.class

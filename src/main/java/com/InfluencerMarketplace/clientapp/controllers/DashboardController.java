@@ -8,6 +8,8 @@ import com.InfluencerMarketplace.clientapp.utils.GetAuthContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -39,17 +41,13 @@ public class DashboardController {
         if (roles.contains("ROLE_ADMIN")) {
             return "dashboard_admin";
         }
-        if (roles.contains("ROLE_BRAND")){
-            model.addAttribute("influencers", influencerService.findAllInfluencer());
-            return "Brand/homeNew";
-        }
         if (roles.contains("ROLE_INFLUENCER")){
-            model.addAttribute("influencers", influencerService.findAllInfluencer());
-            return "Influencer/index";
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            model.addAttribute("username", authentication.getName());
+            model.addAttribute("campaigns", campaignService.findAllOpenCampaign());
+            return "Influencer/homeNew";
         }
-        model.addAttribute("influencers", influencerService.findAllInfluencer());
-        model.addAttribute("ages", influencerService.findAge());
-//        model.addAttribute("photo", influencerService.getProfilePhotoById(id));
+        model.addAttribute("campaigns", campaignService.findAllOpenCampaign());
         return "Anonym/home";
     }
 
