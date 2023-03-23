@@ -67,3 +67,11 @@ Usrc/main/java/com/InfluencerMarketplace/clientapp/controllers/ContractControlle
 Qsrc/main/java/com/InfluencerMarketplace/clientapp/controllers/HomeController.java,d\0\d01a86045cbc3de29b0548591c7f479dea953b8c
 ‡
 Wsrc/main/java/com/InfluencerMarketplace/clientapp/controllers/FileUploadController.java,4\c\4c24ac9156c70b3aa4e03f03a2e417ea6c35a9b5
+†
+Vsrc/main/java/com/InfluencerMarketplace/clientapp/controllers/DashboardController.java,d\5\d51e1c7a7efd7786ca7b66fc51813799dbe8eaaa
+‚
+Rsrc/main/java/com/InfluencerMarketplace/clientapp/controllers/ErrorController.java,d\a\da715d883bfa2173a179879d63fc33dda970093a
+…
+Usrc/main/java/com/InfluencerMarketplace/clientapp/controllers/CampaignController.java,c\b\cbe5ca26105533d4695ab97782db29536f5796c0
+‚
+Rsrc/main/java/com/InfluencerMarketplace/clientapp/controllers/ImageController.java,6\1\613eb07750f19294b7bb2a8fefb0281d77dd899e
