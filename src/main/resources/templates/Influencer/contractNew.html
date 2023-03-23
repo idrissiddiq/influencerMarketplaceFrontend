@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Contract</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      /* Add some styles for the page */
+	  header{
+		background: url('/images/bgContract3.png');
+		background-size: cover;
+		width: 100%;
+		}
+
+      .feed {
+        display: flex;
+        flex-wrap: wrap;
+		float:left;
+		width: calc(33.33% - 20px);
+      }
+
+      .post {
+        padding: 15px;
+        background-color: #ffd639;
+        margin: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        border-radius: 10px;
+      }
+
+      .post img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+
+      .post .info {
+        padding: 20px;
+      }
+
+      .post h2 {
+        font-size: 24px;
+        margin: 20px 0;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .post p {
+        font-size: 18px;
+        color: #333;
+        margin: 0;
+        line-height: 1.5;
+
+
+	  .stats {
+        display: flex;
+        justify-content: space-around;
+        margin: 40px 0;
+      }
+
+      /* Add responsive styles for mobile devices */
+      @media (max-width: 768px) {
+        .container {
+          width: 100%;
+          padding: 20px;
+        }
+
+        .feed {
+          flex-direction: column;
+        }
+
+        .post {
+          width: 100%;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.3/css/dataTables.bootstrap5.min.css" >
+    <script defer src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.3/js/dataTables.bootstrap5.min.js"></script>
+    <script defer src="script.js"></script>
+    <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+            integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
+            crossorigin="anonymous"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
+            crossorigin="anonymous">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.8/dist/sweetalert2.all.min.js"
+            integrity="sha256-voaY/mFuF2+Kg/L56O9wmuwvhHf3XcaxCI/Ld9UR+d4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.8/dist/sweetalert2.min.js"
+            integrity="sha256-UEAn96ePJjqidezAU7lnOYeJEArgg4hsNGbwqmcyPrY=" crossorigin="anonymous"></script>
+    <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+            integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
+            crossorigin="anonymous"
+    />
+</head>
+<body style="background-color: #dcc295;">
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light " style = "background-color: #ffba78;">
+    <div class="container px-4 px-lg-5 ">
+        <a class="navbar-brand fas fa-home " style="color: #405879;" href="http://localhost:8082/">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="nav navbar-nav ms-auto mb-2 mb-lg-0 ">
+                <li class="nav-item active mr-2" style="padding-right: 25px;">
+                    <a class="nav-link active text-center" href="#">
+                        <i class="fas fa-palette " style="color: #405879;">
+                            <div class="menutext">List Campaign
+                            </div>
+                        </i>
+                    </a>
+                </li>
+                <li class="nav-item active mr-2" style="padding-right: 25px;">
+                    <a class="nav-link active text-center" href="#">
+                        <i class="fas fa-file-contract" style="color: #405879;">
+                            <div class="menutext">My Contract
+                            </div>
+                        </i>
+                    </a>
+                </li>
+                <li class="nav-item active mr-2" style="padding-right: 25px;">
+                    <a class="nav-link active text-center" href="#">
+                        <i class="fas fa-user" style="color: #405879;">
+                            <div class="menutext">Profile
+                            </div>
+                        </i>
+                    </a>
+                </li>
+                <form th:action="@{/logout}" th:method="POST" id="logoutButton" class="d-flex">
+                    <button type="button" th:onclick="logoutReq()" class="btn btn-secondary " style="color: #ffc142;">
+                        <i class="fas fa-sign-out"></i>Logout</button>
+                </form>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-dark" style="text-color: #ff8aae;">
+            <h1 class="display-4 fw-bolder" style="color: #ffc142;">My Contract</h1>
+            <p class="lead fw-normal text-dark-50 mb-0" style="color: #ffc142;">Make Sure Everything Goes Well</p>
+        </div>
+    </div>
+</header>
+<br><br>
+<div class="container">
+    <table id="data-table"  style="width:100%"
+           class="table text-center table-striped table-bordered" >
+        <thead class="" style="background-color: #9f8de7;">
+        <tr>
+            <th>Id</th>
+            <th>Nama</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Amount</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody style="background-color: #bad9ee;">
+        </tbody>
+    </table>
+</div>
+</div>
+
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+        var getAll = $('#data-table').DataTable({
+                ajax: {
+                    url: '/contract/me',
+                    dataSrc: 'data'
+                },
+                columns: [{
+                        data: 'id'
+                    },
+                    {
+                        data: 'influencer.fullname'
+                    },
+                    {
+                        data: 'startDate'
+                    },
+                    {
+                        data: 'endDate'
+                    },
+                    {
+                        data: 'budget'
+                    },
+                    {
+                        "data": null,
+                        render: function (data, type, row, meta) {
+                            return `
+                            <a class="btn btn-warning btn-sm "style="font-size: 10px; padding: 7px 20px" >Edit</a> <br> <br>
+                <a class="btn btn-warning btn-sm "style="font-size: 10px; padding: 7px 20px" >Delete</a>
+                            `;
+                        }
+                    },
+                ]
+            });
+
+            function logoutReq() {
+            Swal.fire({
+            title: 'Are you sure you want to Logout?',
+            icon: 'warning',
+            showDenyButton: true,
+            confirmButtonColor: '#3085d6',
+            denyButtonColor: '#d33',
+            confirmButtonText: 'Yes, log me out!',
+            denyButtonText: 'No, I want to stay!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById("logoutButton").submit();
+
+                } else if (result.isDenied) {
+                    Swal.fire(
+                    'Canceled!',
+                    'Welcome Back.',
+                    'success'
+            )
+          }
+        })
+      }
+    </script>
+</th:block>
+
+</body>
+

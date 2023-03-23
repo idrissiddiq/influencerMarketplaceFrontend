@@ -84,7 +84,6 @@ com\InfluencerMarketplace\clientapp\services\CampaignStatusService.class
 com\InfluencerMarketplace\clientapp\services\RegisterService$3.class
 com\InfluencerMarketplace\clientapp\models\InfluencerStatus.class
 com\InfluencerMarketplace\clientapp\models\request\ApproveContractRequest$ApproveContractRequestBuilder.class
-com\InfluencerMarketplace\clientapp\controllers\ImageController.class
 com\InfluencerMarketplace\clientapp\models\response\FindAllInfluencerResponse.class
 com\InfluencerMarketplace\clientapp\services\InfluencerTypeService.class
 com\InfluencerMarketplace\clientapp\controllers\ContractController.class

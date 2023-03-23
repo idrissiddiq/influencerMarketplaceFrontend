@@ -14,11 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class ErrorController {
-    @GetMapping("/bentardulu")
-    public String index() {
-        return "redirect:/dashboard";
-    }
-
     @GetMapping("/error")
     public String error() {
         return "error";

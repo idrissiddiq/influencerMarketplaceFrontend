@@ -57,29 +57,10 @@ public class DashboardController {
         if (roles.contains("ROLE_ADMIN")) {
             return "dashboard_admin";
         }
-        if (roles.contains("ROLE_BRAND")){
-            model.addAttribute("campaigns", campaignService.findAllOpenCampaign());
-            return "Brand/campaignNew";
-        }
         if (roles.contains("ROLE_INFLUENCER")){
-            model.addAttribute("campaigns", campaignService.findAllOpenCampaign());
             return "Influencer/campaignNew";
         }
-        model.addAttribute("campaigns", campaignService.findAllOpenCampaign());
         return "Anonym/campaign";
-    }
-
-    @GetMapping("/campaign/me")
-    public String indexMyCampaign(Model model) {
-        Set<String> roles = GetAuthContext.getAuthorityDetail(GetAuthContext.getAuthorization());
-        if (roles.contains("ROLE_ADMIN")) {
-            return "dashboard_admin";
-        }
-        if (roles.contains("ROLE_BRAND")){
-            model.addAttribute("status", campaignStatusService.findAll());
-            return "Brand/myCampaignNew";
-        }
-        return "Anonym/listAllCampaign";
     }
 
     @GetMapping("/contract/{id}")
@@ -100,13 +81,10 @@ public class DashboardController {
         if (roles.contains("ROLE_ADMIN")) {
             return "dashboard_admin";
         }
-        if (roles.contains("ROLE_BRAND")){
-            return "error";
-        }
         if (roles.contains("ROLE_INFLUENCER")){
-            return "Influencer/myContract";
+            return "Influencer/contractNew";
         }
-        return "Anonym/listAllCampaign";
+        return "error";
     }
 
     @GetMapping("/profile")

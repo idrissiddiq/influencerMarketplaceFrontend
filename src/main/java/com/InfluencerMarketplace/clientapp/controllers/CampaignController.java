@@ -3,6 +3,7 @@ package com.InfluencerMarketplace.clientapp.controllers;
 import com.InfluencerMarketplace.clientapp.models.Campaign;
 import com.InfluencerMarketplace.clientapp.models.request.CreateCampaignRequest;
 import com.InfluencerMarketplace.clientapp.models.request.UpdateCampaignRequest;
+import com.InfluencerMarketplace.clientapp.models.response.FindAllOpenCampaignResponse;
 import com.InfluencerMarketplace.clientapp.models.response.ResponseData;
 import com.InfluencerMarketplace.clientapp.models.response.ResponseListData;
 import com.InfluencerMarketplace.clientapp.models.response.ResponseMessage;
@@ -25,11 +26,8 @@ public class CampaignController {
 
     @GetMapping("/getOnlyOpen")
     public @ResponseBody
-    ResponseListData<Campaign> findAll(){
-        Authentication auth = GetAuthContext.getAuthorization();
-        System.out.println("AUTH : " + auth.getPrincipal());
-        System.out.println("AUTHORITIES : " + auth.getAuthorities());
-        return campaignService.findAllOnlyOpen();
+    ResponseListData<FindAllOpenCampaignResponse> findAll(){
+        return campaignService.findAllOpenCampaign();
     }
 
     @GetMapping("/getOnlyMe")
