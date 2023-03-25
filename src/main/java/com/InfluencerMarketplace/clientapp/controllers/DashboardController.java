@@ -64,7 +64,7 @@ public class DashboardController {
     }
 
     @GetMapping("/contract/{id}")
-    public String indexMyDetailContract() {
+    public String indexMyDetailContract(Model model) {
         Set<String> roles = GetAuthContext.getAuthorityDetail(GetAuthContext.getAuthorization());
         if (roles.contains("ROLE_ADMIN")) {
             return "dashboard_admin";
@@ -72,11 +72,13 @@ public class DashboardController {
         if (roles.contains("ROLE_BRAND")){
             return "Brand/myContract";
         }
-        return "Anonym/listAllCampaign";
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        model.addAttribute("role", authentication.getPrincipal().toString());
+        return "error";
     }
 
     @GetMapping("/contract")
-    public String indexMyContract() {
+    public String indexMyContract(Model model) {
         Set<String> roles = GetAuthContext.getAuthorityDetail(GetAuthContext.getAuthorization());
         if (roles.contains("ROLE_ADMIN")) {
             return "dashboard_admin";
@@ -84,6 +86,8 @@ public class DashboardController {
         if (roles.contains("ROLE_INFLUENCER")){
             return "Influencer/contractNew";
         }
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        model.addAttribute("role", authentication.getPrincipal().toString());
         return "error";
     }
 
@@ -93,11 +97,6 @@ public class DashboardController {
         if (roles.contains("ROLE_ADMIN")) {
             return "dashboard_admin";
         }
-        if (roles.contains("ROLE_BRAND")){
-            model.addAttribute("photo", brandService.getMyProfilePhotoPath());
-            model.addAttribute("profiles", brandService.getMyProfileData());
-            return "Brand/myProfile";
-        }
         if (roles.contains("ROLE_INFLUENCER")){
             model.addAttribute("photo", influencerService.getMyProfilePhotoPath());
             model.addAttribute("profiles", influencerService.getMyProfileData());
@@ -105,13 +104,15 @@ public class DashboardController {
             model.addAttribute("listTypes", influencerTypeService.findAll());
             return "Influencer/myProfile";
         }
-        return "Anonym/listAllCampaign";
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        model.addAttribute("role", authentication.getPrincipal().toString());
+        return "error";
     }
 
-    @GetMapping("/pdf")
-    public String cobaPdf() {
-        return "PdfGenerator";
-    }
+//    @GetMapping("/pdf")
+//    public String cobaPdf() {
+//        return "PdfGenerator";
+//    }
 
 //    @RequestMapping(value = "/image/{image_id}", produces = MediaType.IMAGE_PNG_VALUE)
 //    public ResponseEntity<byte[]> getImage(@PathVariable("image_id") Long imageId) throws IOException {
