@@ -1,0 +1,14 @@
+
+J
+java:S3740;"/Provide the parametrized type for this generic.(Œ­‹İúÿÿÿÿ
+E
+java:S3740G"/Provide the parametrized type for this generic.(ˆâøª
+E
+java:S3740G"/Provide the parametrized type for this generic.(ˆâøª
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(›§Ë
+`
+java:S18584"E"id" is already a string, there's no need to call "toString()" on it.(é´ÿ¸üÿÿÿÿ
+[
+java:S1858J"E"id" is already a string, there's no need to call "toString()" on it.(‹”¹Ü
+`
+java:S1858R"E"id" is already a string, there's no need to call "toString()" on it.(Ûé£Àúÿÿÿÿ
