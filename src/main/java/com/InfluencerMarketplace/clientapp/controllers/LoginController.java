@@ -1,5 +1,6 @@
 package com.InfluencerMarketplace.clientapp.controllers;
 
+import com.InfluencerMarketplace.clientapp.services.InfluencerLocationService;
 import com.InfluencerMarketplace.clientapp.services.InfluencerTypeService;
 import com.InfluencerMarketplace.clientapp.services.LoginService;
 import com.InfluencerMarketplace.clientapp.models.request.LoginRequest;
@@ -12,17 +13,18 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class LoginController {
   
     private LoginService loginService;
     private InfluencerTypeService influencerTypeService;
+    private InfluencerLocationService influencerLocation;
 
-    public LoginController(LoginService loginService, InfluencerTypeService influencerTypeService) {
+    public LoginController(LoginService loginService, InfluencerTypeService influencerTypeService, InfluencerLocationService influencerLocation) {
         this.loginService = loginService;
         this.influencerTypeService = influencerTypeService;
+        this.influencerLocation = influencerLocation;
     }
 
     @GetMapping("/login")
@@ -32,6 +34,7 @@ public class LoginController {
          System.out.println("AUTHORITIES : " + auth.getAuthorities());
         if(auth == null || auth instanceof AnonymousAuthenticationToken){
             model.addAttribute("listTypes", influencerTypeService.findAll());
+            model.addAttribute("listProv", influencerLocation.provinsi());
             return "login";
         }
         return "redirect:/";

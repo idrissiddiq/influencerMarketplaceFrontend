@@ -114,8 +114,9 @@
             </div>
             <div class="col">
               <label class="form-label ">Your City:</label>
-              <input class="form-control" type="text" name="city" id="city" placeholder="Your City"
-                     required="">
+                <select id="influencerLocation" name="influencerLocation">
+                    <option th:each="listProv : ${listProv.data}" th:text="${listProv.name}" th:value="${listProv.name}"></option>
+                </select>
             </div>
             <div class="col">
               <label class="form-label ">Your Birth Date:</label>

@@ -1,6 +1,8 @@
 com\InfluencerMarketplace\clientapp\config\RestTemplateRequestHeaderInterceptor.class
 com\InfluencerMarketplace\clientapp\models\Campaign.class
+com\InfluencerMarketplace\clientapp\models\Location$LocationBuilder.class
 com\InfluencerMarketplace\clientapp\models\response\ResponseData.class
+com\InfluencerMarketplace\clientapp\services\InfluencerLocationService$1.class
 com\InfluencerMarketplace\clientapp\services\RegisterService$4.class
 com\InfluencerMarketplace\clientapp\models\Job$JobBuilder.class
 com\InfluencerMarketplace\clientapp\models\response\ResponseString$ResponseStringBuilder.class
@@ -21,6 +23,7 @@ com\InfluencerMarketplace\clientapp\services\InfluencerService.class
 com\InfluencerMarketplace\clientapp\models\Brand$BrandBuilder.class
 com\InfluencerMarketplace\clientapp\models\Campaign$CampaignBuilder.class
 com\InfluencerMarketplace\clientapp\models\CampaignStatus$CampaignStatusBuilder.class
+com\InfluencerMarketplace\clientapp\models\Location.class
 com\InfluencerMarketplace\clientapp\models\response\ResponseMessage$ResponseMessageBuilder.class
 com\InfluencerMarketplace\clientapp\services\CampaignService$1.class
 com\InfluencerMarketplace\clientapp\models\request\RegisterInfluencerRequest$RegisterInfluencerRequestBuilder.class
@@ -60,6 +63,7 @@ com\InfluencerMarketplace\clientapp\controllers\CampaignController.class
 com\InfluencerMarketplace\clientapp\services\InfluencerTypeService$1.class
 com\InfluencerMarketplace\clientapp\controllers\FileUploadController.class
 com\InfluencerMarketplace\clientapp\services\JobService$1.class
+com\InfluencerMarketplace\clientapp\services\InfluencerLocationService.class
 com\InfluencerMarketplace\clientapp\models\Influencer$InfluencerBuilder.class
 com\InfluencerMarketplace\clientapp\services\ContractService.class
 com\InfluencerMarketplace\clientapp\models\User$UserBuilder.class
