@@ -118,6 +118,24 @@
                     <option th:each="listProv : ${listProv.data}" th:text="${listProv.name}" th:value="${listProv.name}"></option>
                 </select>
             </div>
+              <div class="col">
+                  <label class="form-label ">Your Kabupaten:</label>
+                  <select id="locationKab" name="locationKab">
+                      <option th:each="listKab : ${listKab.data}" th:text="${listKab.name}" th:value="${listKab.name}"></option>
+                  </select>
+              </div>
+              <div class="col">
+                  <label class="form-label ">Your Kecamatan:</label>
+                  <select id="locationKecamatan" name="locationKecamatan">
+                      <option th:each="listKec : ${listKec.data}" th:text="${listKec.name}" th:value="${listKec.name}"></option>
+                  </select>
+              </div>
+              <div class="col">
+                  <label class="form-label ">Your Kelurahan:</label>
+                  <select id="locationKelurahan" name="locationKelurahan">
+                      <option th:each="listKel : ${listKel.data}" th:text="${listKel.name}" th:value="${listKel.name}"></option>
+                  </select>
+              </div>
             <div class="col">
               <label class="form-label ">Your Birth Date:</label>
               <input class="form-control" type="date" name="birthDate" id="birthDate" placeholder="Your Birth Date"

@@ -27,4 +27,19 @@ public class InfluencerLocationService {
                 null, new ParameterizedTypeReference<ResponseListData<Location>>(){} );
         return response.getBody();
     }
+    public ResponseListData<Location> kabupaten(){
+        ResponseEntity<ResponseListData<Location>> response = restTemplate.exchange(url+"/34", HttpMethod.GET,
+                null, new ParameterizedTypeReference<ResponseListData<Location>>(){} );
+        return response.getBody();
+    }
+    public ResponseListData<Location> kecamatan(){
+        ResponseEntity<ResponseListData<Location>> response = restTemplate.exchange(url+"/kecamatan/3402", HttpMethod.GET,
+                null, new ParameterizedTypeReference<ResponseListData<Location>>(){} );
+        return response.getBody();
+    }
+    public ResponseListData<Location> kelurahan(){
+        ResponseEntity<ResponseListData<Location>> response = restTemplate.exchange(url+"/kelurahan/3402060", HttpMethod.GET,
+                null, new ParameterizedTypeReference<ResponseListData<Location>>(){} );
+        return response.getBody();
+    }
 }

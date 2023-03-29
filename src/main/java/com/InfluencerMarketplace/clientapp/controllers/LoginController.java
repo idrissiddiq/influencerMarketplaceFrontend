@@ -1,8 +1,7 @@
 package com.InfluencerMarketplace.clientapp.controllers;
 
-import com.InfluencerMarketplace.clientapp.services.InfluencerLocationService;
-import com.InfluencerMarketplace.clientapp.services.InfluencerTypeService;
-import com.InfluencerMarketplace.clientapp.services.LoginService;
+import com.InfluencerMarketplace.clientapp.models.Location;
+import com.InfluencerMarketplace.clientapp.services.*;
 import com.InfluencerMarketplace.clientapp.models.request.LoginRequest;
 import com.InfluencerMarketplace.clientapp.utils.GetAuthContext;
 import javax.validation.Valid;
@@ -35,6 +34,9 @@ public class LoginController {
         if(auth == null || auth instanceof AnonymousAuthenticationToken){
             model.addAttribute("listTypes", influencerTypeService.findAll());
             model.addAttribute("listProv", influencerLocation.provinsi());
+            model.addAttribute("listKab", influencerLocation.kabupaten());
+            model.addAttribute("listKec", influencerLocation.kecamatan());
+            model.addAttribute("listKel", influencerLocation.kelurahan());
             return "login";
         }
         return "redirect:/";
