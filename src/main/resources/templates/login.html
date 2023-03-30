@@ -141,6 +141,35 @@
               <input class="form-control" type="date" name="birthDate" id="birthDate" placeholder="Your Birth Date"
                      required="">
             </div>
+              <br>
+              <div class="col">
+                  <label class="form-label ">Your Sosmed:</label>
+                  <div class="col">
+                      <input type="checkbox" id="myCheckbox">
+                      <label for="myCheckbox">Youtube</label>
+                      <div id="labelForm" style="display: none;">
+                          <label for="name">Link:</label>
+                          <input type="text" id="name" placeholder="">
+                      </div>
+                  </div>
+                  <div class="col">
+                      <input type="checkbox" id="myCheckbox2">
+                      <label for="myCheckbox">Tiktok</label>
+                      <div id="labelForm2" style="display: none;">
+                          <label for="name">Link:</label>
+                          <input type="text" id="name" placeholder="">
+                      </div>
+                  </div>
+                  <div class="col">
+                      <input type="checkbox" id="myCheckbox3">
+                      <label for="myCheckbox">Instagram</label>
+                      <div id="labelForm3" style="display: none;">
+                          <label for="name">Link:</label>
+                          <input type="text" id="name" placeholder="https://instagram.com/khofifah_ulul?igshid=ZDdkNTZiNTM=">
+                      </div>
+                  </div>
+              </div>
+              <br>
             <div class="col">
               <label class="form-label ">Your Influence Type:</label>
                 <select id="influenceType" name="influenceType">
@@ -282,6 +311,34 @@
                     }
                 })
             };
+            const checkbox = document.getElementById('myCheckbox');
+			const checkbox2 = document.getElementById('myCheckbox2');
+			const checkbox3 = document.getElementById('myCheckbox3');
+			const labelForm = document.getElementById('labelForm');
+			const labelForm2 = document.getElementById('labelForm2');
+			const labelForm3 = document.getElementById('labelForm3');
+
+			checkbox.addEventListener('click', function() {
+			  if (checkbox.checked) {
+				labelForm.style.display = 'block';
+			  } else {
+				labelForm.style.display = 'none';
+			  }
+			});
+			checkbox2.addEventListener('click', function() {
+			  if (checkbox2.checked) {
+				labelForm2.style.display = 'block';
+			  } else {
+				labelForm2.style.display = 'none';
+			  }
+			});
+			checkbox3.addEventListener('click', function() {
+			  if (checkbox3.checked) {
+				labelForm3.style.display = 'block';
+			  } else {
+				labelForm3.style.display = 'none';
+			  }
+			});
     </script>
     </th:block>
 </body>
