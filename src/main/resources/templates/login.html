@@ -148,24 +148,24 @@
                       <input type="checkbox" id="myCheckbox">
                       <label for="myCheckbox">Youtube</label>
                       <div id="labelForm" style="display: none;">
-                          <label for="name">Link:</label>
-                          <input type="text" id="name" placeholder="">
+                          <label for="nameYT">Link:</label>
+                          <input type="text" id="nameYT" placeholder="https://youtube.com/@nama-akun">
                       </div>
                   </div>
                   <div class="col">
                       <input type="checkbox" id="myCheckbox2">
                       <label for="myCheckbox">Tiktok</label>
                       <div id="labelForm2" style="display: none;">
-                          <label for="name">Link:</label>
-                          <input type="text" id="name" placeholder="">
+                          <label for="nameTT">Link:</label>
+                          <input type="text" id="nameTT" placeholder="https://www.tiktok.com/@nama-akun?lang=id-ID&is_from_webapp=1&sender_device=mobile&sender_web_id=7158718291405129217">
                       </div>
                   </div>
                   <div class="col">
                       <input type="checkbox" id="myCheckbox3">
                       <label for="myCheckbox">Instagram</label>
                       <div id="labelForm3" style="display: none;">
-                          <label for="name">Link:</label>
-                          <input type="text" id="name" placeholder="https://instagram.com/khofifah_ulul?igshid=ZDdkNTZiNTM=">
+                          <label for="nameIG">Link:</label>
+                          <input type="text" id="nameIG" placeholder="https://instagram.com/nama-akun?igshid=ZDdkNTZiNTM=">
                       </div>
                   </div>
               </div>
@@ -178,7 +178,7 @@
             </div>
             <div class="col">
               <label class="form-label ">Your Username:</label>
-              <input class="form-control" type="text" name="usernameRegist" id="usernameRegist" placeholder="Your Username"
+              <input class="form-control" type="text" name="usernameRegist" id="usernameRegist" placeholder="Your Username < 16 Digit"
                      required="">
             </div>
           </div>
@@ -222,7 +222,7 @@
                 let birthDate = $('#birthDate').val();
                 let influenceType = $('#influenceType').val();
                 let username = $('#usernameRegist').val();
-                if (email != '') {
+                if (email != '' && fullname != '' && username != '') {
                     $.ajax({
                         method: "POST",
                         url: '/register/influencer',
@@ -242,9 +242,11 @@
                             window.location = window.location;
                         }
                     });
+                    window.location = window.location;
                 } else {
                     console.log("Error");
                     $('#registInfluencer').modal('hide');
+                    alert("Field with * is mandatory");
                 }
             };
 
@@ -339,6 +341,7 @@
 				labelForm3.style.display = 'none';
 			  }
 			});
+
     </script>
     </th:block>
 </body>
