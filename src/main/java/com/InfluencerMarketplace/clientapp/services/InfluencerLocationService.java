@@ -27,8 +27,8 @@ public class InfluencerLocationService {
                 null, new ParameterizedTypeReference<ResponseListData<Location>>(){} );
         return response.getBody();
     }
-    public ResponseListData<Location> kabupaten(){
-        ResponseEntity<ResponseListData<Location>> response = restTemplate.exchange(url+"/34", HttpMethod.GET,
+    public ResponseListData<Location> kabupaten(String id){
+        ResponseEntity<ResponseListData<Location>> response = restTemplate.exchange(url+ "/city?id=" +id, HttpMethod.GET,
                 null, new ParameterizedTypeReference<ResponseListData<Location>>(){} );
         return response.getBody();
     }

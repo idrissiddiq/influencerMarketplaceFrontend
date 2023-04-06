@@ -27,7 +27,7 @@ public class RestTemplateRequestHeaderInterceptor implements ClientHttpRequestIn
        if (!request.getURI().getPath().equals("/api/login/influencer")
                && !request.getURI().getPath().equals("/api/login/brand")
                && !request.getURI().getPath().equals("/api/location")
-               && !request.getURI().getPath().equals("/api/location/34")
+               && !request.getURI().getPath().equals("/api/location/city")
                && !request.getURI().getPath().equals("/api/location/kecamatan/3402")
                && !request.getURI().getPath().equals("/api/location/kelurahan/3402060")
                && !request.getURI().getPath().equals("/api/register/influencer/forgot")

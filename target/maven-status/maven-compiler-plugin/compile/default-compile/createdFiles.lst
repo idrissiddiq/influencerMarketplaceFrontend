@@ -107,6 +107,7 @@ com\InfluencerMarketplace\clientapp\models\request\LoginRequest.class
 com\InfluencerMarketplace\clientapp\services\RegisterService.class
 com\InfluencerMarketplace\clientapp\services\CampaignStatusService.class
 com\InfluencerMarketplace\clientapp\models\InfluencerStatus.class
+com\InfluencerMarketplace\clientapp\controllers\InfluencerLocationController.class
 com\InfluencerMarketplace\clientapp\services\InfluencerTypeService.class
 com\InfluencerMarketplace\clientapp\config\RestTemplateConfig.class
 com\InfluencerMarketplace\clientapp\services\ContractService$3.class

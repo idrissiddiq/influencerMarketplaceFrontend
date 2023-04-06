@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class LoginController {
@@ -34,7 +35,7 @@ public class LoginController {
         if(auth == null || auth instanceof AnonymousAuthenticationToken){
             model.addAttribute("listTypes", influencerTypeService.findAll());
             model.addAttribute("listProv", influencerLocation.provinsi());
-            model.addAttribute("listKab", influencerLocation.kabupaten());
+//            model.addAttribute("listKab", influencerLocation.kabupaten("11"));
             model.addAttribute("listKec", influencerLocation.kecamatan());
             model.addAttribute("listKel", influencerLocation.kelurahan());
             return "login";

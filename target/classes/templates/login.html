@@ -41,7 +41,7 @@
       style=" min-height: 100vh ">
       	<div class="border shadow p-3 rounded"
       	      style="width: 450px;">
-            <div><a href="" ><i class="fas fa-solid fa-arrow-left" style="color: #080808;"></i><a></div>
+            <div><a href="/" ><i class="fas fa-solid fa-arrow-left" style="color: #080808;"></i><a></div>
 			  <h4 class="text-center p-3">Welcome Influencer</h4>
                 <p class="text-center p-3">Come Join Us To Collaborate With Many Campaign</p>
             <div id="influencer">
@@ -117,30 +117,22 @@
               <label class="form-label required-label">Your Email:</label>
               <input class="form-control" type="email" name="emailRegist" id="emailRegist" placeholder="Your Email"
                      required="">
-            </div>
+            </div><br>
             <div class="col">
-              <label class="form-label ">Your City:</label>
-                <select id="influencerLocation" name="influencerLocation">
-                    <option th:each="listProv : ${listProv.data}" th:text="${listProv.name}" th:value="${listProv.name}"></option>
+              <label class="form-label ">Province:</label>
+                <select id="influencerLocation" name="influencerLocation" onchange="sendSelectedProv()">
+                    <option th:each="listProv : ${listProv.data}" th:text="${listProv.name}" th:value="${listProv.id}"></option>
                 </select>
             </div>
               <div class="col">
-                  <label class="form-label ">Your Kabupaten:</label>
+                  <label class="form-label ">Kabupaten:</label>
                   <select id="locationKab" name="locationKab">
-                      <option th:each="listKab : ${listKab.data}" th:text="${listKab.name}" th:value="${listKab.name}"></option>
                   </select>
               </div>
               <div class="col">
-                  <label class="form-label ">Your Kecamatan:</label>
-                  <select id="locationKecamatan" name="locationKecamatan">
-                      <option th:each="listKec : ${listKec.data}" th:text="${listKec.name}" th:value="${listKec.name}"></option>
-                  </select>
-              </div>
-              <div class="col">
-                  <label class="form-label ">Your Kelurahan:</label>
-                  <select id="locationKelurahan" name="locationKelurahan">
-                      <option th:each="listKel : ${listKel.data}" th:text="${listKel.name}" th:value="${listKel.name}"></option>
-                  </select>
+                  <label class="form-label required-label">Detail Address:</label>
+                  <input class="form-control" type="text" name="detailAddress" id="detailAddress" placeholder="Your Detail Address"
+                         required="">
               </div>
             <div class="col">
               <label class="form-label ">Your Birth Date:</label>
@@ -163,15 +155,23 @@
                       <label for="myCheckbox">Tiktok</label>
                       <div id="labelForm2" style="display: none;">
                           <label for="nameTT">Link:</label>
-                          <input type="text" id="nameTT" placeholder="https://www.tiktok.com/@nama-akun?lang=id-ID&is_from_webapp=1&sender_device=mobile&sender_web_id=7158718291405129217">
+                          <input type="text" id="nameTT" placeholder="https://www.tiktok.com/@nama-akun">
                       </div>
                   </div>
                   <div class="col">
-                      <input type="checkbox" id="myCheckbox3" checked>
+                      <input type="checkbox" id="myCheckbox3">
                       <label for="myCheckbox">Instagram</label>
                       <div id="labelForm3" style="display: none;">
                           <label for="nameIG">Link:</label>
-                          <input type="text" id="nameIG" placeholder="https://instagram.com/nama-akun?igshid=ZDdkNTZiNTM=">
+                          <input type="text" id="nameIG" placeholder="https://instagram.com/nama-akun">
+                      </div>
+                  </div>
+                  <div class="col">
+                      <input type="checkbox" id="myCheckbox4">
+                      <label for="myCheckbox">Facebook</label>
+                      <div id="labelForm4" style="display: none;">
+                          <label for="nameFB">Link:</label>
+                          <input type="text" id="nameFB" placeholder="https://facebook.com/nama-akun">
                       </div>
                   </div>
               </div>
@@ -184,9 +184,8 @@
             </div>
             <div class="col">
               <label class="form-label required-label">Your Username:</label>
-              <input class="form-control" type="text" name="usernameRegist" id="usernameRegist" placeholder="Your Username < 16 Digit"
+              <input class="form-control" type="text" name="usernameRegist" id="usernameRegist" placeholder="Your Username"
                      required="" maxlength="16">
-                <span class="error-message">Please enter your username, do not exceed 16 digits</span>
             </div>
           </div>
           <div class="modal-footer">
@@ -199,6 +198,40 @@
 <script type="text/javascript" th:src="@{/js/login.js}"></script>
     <th:block layout:fragment="script">
       <script th:inline="javascript">
+      var dropdown = document.getElementById("locationKab");
+      window.onload = function() {
+        fetch('/location/11')
+  .then(response => response.json())
+  .then(data => {
+    var options = data.data;
+    for (var i = 0; i < options.length; i++) {
+      var option = document.createElement("option");
+      option.value = options[i].name;
+      option.text = options[i].name;
+      dropdown.add(option);
+    }
+  })
+  .catch(error => console.error(error));
+        };
+
+
+      function sendSelectedProv() {
+      dropdown.innerHTML = "";
+  var selectedOption = document.getElementById("influencerLocation").value;
+  fetch('/location/' + selectedOption)
+  .then(response => response.json())
+  .then(data => {
+    var options = data.data;
+    for (var i = 0; i < options.length; i++) {
+      var option = document.createElement("option");
+      option.value = options[i].name;
+      option.text = options[i].name;
+      dropdown.add(option);
+    }
+  })
+  .catch(error => console.error(error));
+};
+
         function forgotPasswordInfluencerProcess() {
                 let email = $('#email').val();
                 if (email != '') {
@@ -229,7 +262,8 @@
                 let birthDate = $('#birthDate').val();
                 let influenceType = $('#influenceType').val();
                 let username = $('#usernameRegist').val();
-                if (email != '' && fullname != '' && username != '') {
+                let detailAddress = $('#detailAddress').val();
+                if (email != '' && fullname != '' && username != '' && detailAddress !='') {
                     $.ajax({
                         method: "POST",
                         url: '/register/influencer',
@@ -323,9 +357,11 @@
             const checkbox = document.getElementById('myCheckbox');
 			const checkbox2 = document.getElementById('myCheckbox2');
 			const checkbox3 = document.getElementById('myCheckbox3');
+			const checkbox4 = document.getElementById('myCheckbox4');
 			const labelForm = document.getElementById('labelForm');
 			const labelForm2 = document.getElementById('labelForm2');
 			const labelForm3 = document.getElementById('labelForm3');
+			const labelForm4 = document.getElementById('labelForm4');
 
 			checkbox.addEventListener('click', function() {
 			  if (checkbox.checked) {
@@ -348,7 +384,13 @@
 				labelForm3.style.display = 'none';
 			  }
 			});
-
+			checkbox4.addEventListener('click', function() {
+			  if (checkbox4.checked) {
+				labelForm4.style.display = 'block';
+			  } else {
+				labelForm4.style.display = 'none';
+			  }
+			});
     </script>
     </th:block>
 </body>
