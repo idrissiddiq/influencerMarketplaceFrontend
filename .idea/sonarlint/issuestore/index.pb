@@ -77,3 +77,9 @@ Wsrc/main/java/com/InfluencerMarketplace/clientapp/controllers/InfluencerControl
 Lsrc/main/java/com/InfluencerMarketplace/clientapp/config/TemplateConfig.java,c\f\cf8b5954c5bc77c5d664bce7c63a64c42d7c13ec
 €
 Psrc/main/java/com/InfluencerMarketplace/clientapp/config/RestTemplateConfig.java,9\6\969dac1348f8c14b78624448d42edc6b282dfff9
+‚
+Rsrc/main/java/com/InfluencerMarketplace/clientapp/controllers/LoginController.java,f\0\f055684e352c8486fc48402fa17965c9c81b7518
+’
+bsrc/main/java/com/InfluencerMarketplace/clientapp/config/RestTemplateRequestHeaderInterceptor.java,2\e\2edc810b6ec9781575c9ec2b1903e491d23c5f65
+
+Osrc/main/java/com/InfluencerMarketplace/clientapp/config/WebSecurityConfig.java,c\6\c69f7fd74b3f0ff3ced8bf59a315e0691ea21f73
