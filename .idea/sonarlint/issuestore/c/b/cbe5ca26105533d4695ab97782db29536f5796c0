@@ -1,0 +1,8 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(’—™¡ýÿÿÿÿ
+N	java:S106/"9Replace this use of System.out or System.err by a logger.(¿åº÷
+S	java:S1065"9Replace this use of System.out or System.err by a logger.(ÖÕ­Âýÿÿÿÿ
+p
+java:S1128"URemove this unused import 'com.InfluencerMarketplace.clientapp.utils.GetAuthContext'.(âé‹Àûÿÿÿÿ
+c
+java:S1128"MRemove this unused import 'org.springframework.security.core.Authentication'.(ñýÓ“

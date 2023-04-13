@@ -228,11 +228,9 @@
                         data: 'budget'
                     },
                     {
-                        "data": null,
+                        "data": "filled",
                         render: function (data, type, row, meta) {
-                            return `
-                            <span th:text="@{${data.filled + '/' + data.quota}}">  </span>
-                            `;
+                            return data + "/" + row.quota;
                         }
                     },
 

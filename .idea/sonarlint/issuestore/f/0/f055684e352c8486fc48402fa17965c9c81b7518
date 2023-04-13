@@ -1,0 +1,15 @@
+
+a
+java:S1192+"KDefine a constant instead of duplicating this literal "redirect:/" 3 times.(äÔ¶½
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(’—™¡ıÿÿÿÿ
+N
+java:S2589#"8Remove this expression which always evaluates to "false"(Œ“¸
+N	java:S106!"9Replace this use of System.out or System.err by a logger.(§ÂÁ‡
+S	java:S106""9Replace this use of System.out or System.err by a logger.(ÃîÇôùÿÿÿÿ
+]	java:S125&"<This block of commented-out lines of code should be removed.(˜«Öøÿÿÿÿ8‹ÔİÔô0
+S	java:S1060"9Replace this use of System.out or System.err by a logger.(¶®éÓøÿÿÿÿ
+Z	java:S106<"9Replace this use of System.out or System.err by a logger.(¶®éÓøÿÿÿÿ8»Üôôó0
+m
+java:S1128"PRemove this unused import 'com.InfluencerMarketplace.clientapp.models.Location'.(¯ƒ™÷8Ô¹õ0
+s
+java:S1128"QRemove this unused import 'org.springframework.web.bind.annotation.RequestParam'.(Â¬À·ùÿÿÿÿ8„Ô¹õ0

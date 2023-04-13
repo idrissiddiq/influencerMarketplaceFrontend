@@ -1,0 +1,21 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(’—™¡ıÿÿÿÿ
+\
+java:S2259F"FA "NullPointerException" could be thrown; "fileName" is nullable here.(Ò Æ
+\
+java:S2259%"FA "NullPointerException" could be thrown; "fileName" is nullable here.(Ò Æ
+A
+java:S1452#"&Remove usage of generic wildcard type.(öëĞÆûÿÿÿÿ
+7
+java:S1116&"Remove this empty statement.(¸Âºëıÿÿÿÿ
+N	java:S106("9Replace this use of System.out or System.err by a logger.(’çëü
+N	java:S106-"9Replace this use of System.out or System.err by a logger.(³ƒÈÚ
+Q	java:S1256"<This block of commented-out lines of code should be removed.(½é¸
+S	java:S1068"9Replace this use of System.out or System.err by a logger.(©şêÜúÿÿÿÿ
+A
+java:S1452C"&Remove usage of generic wildcard type.(Ê«ñüÿÿÿÿ
+7
+java:S1116G"Remove this empty statement.(¸Âºëıÿÿÿÿ
+N	java:S106I"9Replace this use of System.out or System.err by a logger.(’çëü
+N	java:S106N"9Replace this use of System.out or System.err by a logger.(³ƒÈÚ
+Q	java:S125W"<This block of commented-out lines of code should be removed.(½é¸

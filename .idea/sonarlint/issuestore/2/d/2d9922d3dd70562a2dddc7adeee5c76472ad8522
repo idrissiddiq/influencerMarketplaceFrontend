@@ -1,0 +1,11 @@
+
+b	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(ÍÂæ‹8ØÇâğ0
+g	java:S112""FDefine and throw a dedicated exception instead of using a generic one.(ÏËõ’üÿÿÿÿ8ÙÇâğ0
+g	java:S112%"FDefine and throw a dedicated exception instead of using a generic one.(Ê“Åıÿÿÿÿ8ÙÇâğ0
+b	java:S1121"FDefine and throw a dedicated exception instead of using a generic one.(ĞæÇ‘8ÚÇâğ0
+g	java:S1124"FDefine and throw a dedicated exception instead of using a generic one.(ò˜“şÿÿÿÿ8ÛÇâğ0
+g	java:S112="FDefine and throw a dedicated exception instead of using a generic one.(ò˜“şÿÿÿÿ8ÜÇâğ0
+g	java:S112I"FDefine and throw a dedicated exception instead of using a generic one.(ûÀıúÿÿÿÿ8’™ô’ğ0
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(›§Ë
+b
+java:S1193!"@Replace the usage of the "instanceof" operator by a catch block.(Á°Ñ—ÿÿÿÿÿ8ŸÈâğ0

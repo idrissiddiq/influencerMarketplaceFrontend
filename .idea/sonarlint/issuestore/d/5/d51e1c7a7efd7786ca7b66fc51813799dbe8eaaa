@@ -1,0 +1,16 @@
+
+a
+java:S1192M"FDefine a constant instead of duplicating this literal "error" 3 times.(Âşÿÿÿÿ
+e
+java:S1192,"PDefine a constant instead of duplicating this literal "ROLE_INFLUENCER" 4 times.(ë‹û
+f
+java:S1192*"PDefine a constant instead of duplicating this literal "dashboard_admin" 5 times.(ÎÇ°À
+`
+java:S1192)"KDefine a constant instead of duplicating this literal "ROLE_ADMIN" 5 times.(—ƒÚx
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(’—™¡ıÿÿÿÿ
+Q	java:S125q"<This block of commented-out lines of code should be removed.(åûÒí
+Q	java:S125v"<This block of commented-out lines of code should be removed.(Ø›§Á
+K
+java:S1068"0Remove this unused "brandService" private field.(äÜêùÿÿÿÿ
+T
+java:S1068"9Remove this unused "campaignStatusService" private field.(ô½Ã¿ùÿÿÿÿ
