@@ -107,40 +107,47 @@
             integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
             crossorigin="anonymous"
     />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+            crossorigin="anonymous"></script>
+
 </head>
 <body style="background-color: #fad02c;">
 <!-- Navigation-->
-<nav class="navbar navbar-expand-lg navbar-light " style = "background-color: #fad02c;">
+<nav class="navbar navbar-expand-lg sticky-top navbar-light " style = "background-color: #fad02c;">
     <div class="container px-4 px-lg-5 ">
-        <a class="navbar-brand fas fa-home " style="color: #405879;" href="/">Home</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
-            <ul class="nav navbar-nav ms-auto mb-2 mb-lg-0 ">
-                <li class="nav-item active mr-2" style="padding-right: 25px;">
+            <ul class="nav navbar-nav mb-2 mb-lg-0 ">
+                <li class="nav-item ms-auto active float-left" >
+                    <a href="/" class=" nav-link active d-flex align-items-center gap-3 py-2 px-3 lh-sm" >
+                        <img src="/images/logo-bg.png" width="5%" class="d-md-block"  >
+                        <div class="text-start">
+                            <strong class="d-block">One</strong>
+                            <small>Management</small>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item active mr-auto mr-2 float-right" style="padding-right: 10px;">
                     <a class="nav-link active text-center" href="/campaign">
-                        <i class="fas fa-palette " style="color: #405879;">
-                            <div class="menutext">List Campaign
-                            </div>
-                        </i>
+                        <i class="fas fa-palette " style="color: #ffb042" ></i>
+                        <div> <strong class="d-block ">List Campaign</strong></div>
                     </a>
                 </li>
-                <li class="nav-item active mr-2" style="padding-right: 25px;">
+                <li class="nav-item active mr-auto mr-2 float-right" style="padding-right: 10px;">
                     <a class="nav-link active text-center" href="/contract">
-                        <i class="fas fa-file-contract" style="color: #405879;">
-                            <div class="menutext">My Contract
-                            </div>
-                        </i>
+                        <i class="fas fa-file-contract" style="color: #ffb042;"></i>
+                            <div><strong class="d-block ">My Contract</strong></div>
                     </a>
                 </li>
-                <li class="nav-item active mr-2" style="padding-right: 25px;">
+                <li class="nav-item active mr-auto mr-2 float-right" style="padding-right: 10px;">
                     <a class="nav-link active text-center" href="/profile">
-                        <i class="fas fa-user" style="color: #405879;">
-                            <div class="menutext">Profile
-                            </div>
-                        </i>
+                        <i class="fas fa-user" style="color: #ffb042;"></i>
+                            <div><strong class="d-block ">My Profile</strong></div>
                     </a>
                 </li>
-                <form th:action="@{/logout}" th:method="POST" id="logoutButton" class="d-flex">
+                <form th:action="@{/logout}" th:method="POST" id="logoutButton" class="nav-item d-flex mr-auto active mr-2 float-right">
                     <button type="button" th:onclick="logoutReq()" class="btn btn-secondary">
                         <i class="fas fa-sign-out"></i>Logout</button>
                 </form>
@@ -169,6 +176,7 @@
                 <th>Descripton</th>
                 <th>Salary</th>
                 <th>Quota</th>
+                <th>Action</th>
             </tr>
             </thead>
             <tbody style="background-color: #bad9ee;">
@@ -192,17 +200,14 @@
                 <div class="col">
                     <div class="block">
                         <h3><i class="fa fa-check"></i> Do's</h3>
-                        <p>
-                            Mengandalkan influencer untuk campaign cukup efektif dalam meningkatkan brand awareness. Selain itu, kamu juga bisa mendatangkan audiens baru agar tertarik dengan produk atau jasa kamu berkat adanya sang influencer tersebut. Orang-orang yang berkecimpung pada bidang digital marketing biasa menyebut campaign ini endorse, atau bahasa Inggrisnya endorsement. Akan tetapi, kamu perlu mengeluarkan sejumlah biaya untuk membuat campaign ini. Kamu bisa memilih influencer yang sesuai dengan budget kamu. Mulai dari nano, mikro, makro, hingga mega influencer. Hasil yang luar biasa akan didapat dengan KOL management yang baik. Kamu bisa mengarahkan influencer secara terukur menggunakan ilmu KOL management.
-                        </p>
+                        <input type="text"  id="dos" value="">
+
                     </div>
                 </div>
                 <div class="col">
                     <div class="block">
                         <h3><i class="fa fa-check"></i> Dont</h3>
-                        <p>
-                            Mengandalkan influencer untuk campaign cukup efektif dalam meningkatkan brand awareness. Selain itu, kamu juga bisa mendatangkan audiens baru agar tertarik dengan produk atau jasa kamu berkat adanya sang influencer tersebut. Orang-orang yang berkecimpung pada bidang digital marketing biasa menyebut campaign ini endorse, atau bahasa Inggrisnya endorsement. Akan tetapi, kamu perlu mengeluarkan sejumlah biaya untuk membuat campaign ini. Kamu bisa memilih influencer yang sesuai dengan budget kamu. Mulai dari nano, mikro, makro, hingga mega influencer. Hasil yang luar biasa akan didapat dengan KOL management yang baik. Kamu bisa mengarahkan influencer secara terukur menggunakan ilmu KOL management.
-                        </p>
+                        <input type="text"  id="dont" value="">
                     </div>
                 </div>
             </div>
@@ -228,16 +233,29 @@
                         data: 'budget'
                     },
                     {
-                        "data": null,
+                        "data": "filled",
                         render: function (data, type, row, meta) {
-                            return `
-                            <span th:text="@{${data.filled + '/' + data.quota}}">  </span>
-                            `;
+                            return data + "/" + row.quota;
                         }
                     },
-
+                    {
+                        "render": function ( data, type, row ) {
+                          return '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailCampaign" data-dos="' + row.dos + '" data-dont="' + row.dont + '">Detail</button>';
+                        }
+                      }
                 ]
+
             });
+
+            $('#detailCampaign').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget);
+                var dos = button.data('dos');
+                var dont = button.data('dont');
+                var modal = $(this);
+                modal.find('#dos').val(dos);
+                modal.find('#dont').val(dont);
+              });
+
 
             function logoutReq() {
             Swal.fire({
