@@ -167,6 +167,8 @@
                 <th>Id</th>
                 <th>Title</th>
                 <th>Descripton</th>
+                <th>Salary</th>
+                <th>Quota</th>
             </tr>
             </thead>
             <tbody style="background-color: #bad9ee;">
@@ -174,11 +176,43 @@
         </table>
     </div>
 </div>
+<!-- Modal Detail -->
+<div id="detailCampaign" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="campaignEditLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="campaignEditLabel">Detail Campaign</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="edit_id">
+                <div class="error-message">
+                </div>
+                <div class="col">
+                    <div class="block">
+                        <h3><i class="fa fa-check"></i> Do's</h3>
+                        <p>
+                            Mengandalkan influencer untuk campaign cukup efektif dalam meningkatkan brand awareness. Selain itu, kamu juga bisa mendatangkan audiens baru agar tertarik dengan produk atau jasa kamu berkat adanya sang influencer tersebut. Orang-orang yang berkecimpung pada bidang digital marketing biasa menyebut campaign ini endorse, atau bahasa Inggrisnya endorsement. Akan tetapi, kamu perlu mengeluarkan sejumlah biaya untuk membuat campaign ini. Kamu bisa memilih influencer yang sesuai dengan budget kamu. Mulai dari nano, mikro, makro, hingga mega influencer. Hasil yang luar biasa akan didapat dengan KOL management yang baik. Kamu bisa mengarahkan influencer secara terukur menggunakan ilmu KOL management.
+                        </p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="block">
+                        <h3><i class="fa fa-check"></i> Dont</h3>
+                        <p>
+                            Mengandalkan influencer untuk campaign cukup efektif dalam meningkatkan brand awareness. Selain itu, kamu juga bisa mendatangkan audiens baru agar tertarik dengan produk atau jasa kamu berkat adanya sang influencer tersebut. Orang-orang yang berkecimpung pada bidang digital marketing biasa menyebut campaign ini endorse, atau bahasa Inggrisnya endorsement. Akan tetapi, kamu perlu mengeluarkan sejumlah biaya untuk membuat campaign ini. Kamu bisa memilih influencer yang sesuai dengan budget kamu. Mulai dari nano, mikro, makro, hingga mega influencer. Hasil yang luar biasa akan didapat dengan KOL management yang baik. Kamu bisa mengarahkan influencer secara terukur menggunakan ilmu KOL management.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 <th:block layout:fragment="script">
     <script th:inline="javascript">
     var getCampaign = $('#campaign-table').DataTable({
                 ajax: {
-                    url: '/campaign/getOnlyOpen',
+                    url: '/campaign/getOnlyTable',
                     dataSrc: 'data'
                 },
                 columns: [{
@@ -190,6 +224,18 @@
                     {
                         data: 'description'
                     },
+                    {
+                        data: 'budget'
+                    },
+                    {
+                        "data": null,
+                        render: function (data, type, row, meta) {
+                            return `
+                            <span th:text="@{${data.filled + '/' + data.quota}}">  </span>
+                            `;
+                        }
+                    },
+
                 ]
             });
 

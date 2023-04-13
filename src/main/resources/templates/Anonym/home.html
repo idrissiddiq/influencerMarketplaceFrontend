@@ -104,20 +104,26 @@
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light " style = "background-color: #fde386;">
     <div class="container px-4 px-lg-5 ">
-        <a class="navbar-brand fas fa-home" href="/">Home</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
-            <ul class="nav navbar-nav ms-auto mb-2 mb-lg-0 ">
-                <li class="nav-item active mr-2" style="padding-right: 25px;">
-                    <a class="nav-link  text-center" href="/campaign">
-                        <i class="fas fa-palette " style="color: #405879;" >
-                            <div class="menutext">List Campaign
-                            </div>
-                        </i>
+            <ul class="nav navbar-nav mb-2 mb-lg-0 ">
+                <li class="nav-item ms-auto active mr-2 float-left" >
+                    <a href="/" class=" nav-link active d-flex align-items-center gap-3 py-2 px-3 lh-sm" >
+                        <img src="/images/logo-bg.png" width="5%" class="d-md-block"  >
+                        <div class="text-start">
+                            <strong class="d-block">One</strong>
+                            <small>Management</small>
+                        </div>
                     </a>
                 </li>
-                <form class="d-flex">
-                    <a type="button" class="btn " style="background-color: #e7ac8b; color: #405879;" href="/login">
+                <li class="nav-item mr-auto active mr-2 float-right" >
+                    <a class="nav-link active text-center" href="/campaign">
+                        <i class="fas fa-palette " style="color: #ffb042" ></i>
+                        <div> <strong class="d-block ">List Campaign</strong></div>
+                    </a>
+                </li>
+                <form class="d-flex mr-auto float-right">
+                    <a type="button" class="btn " style="background-color: #fc6332; color: #black;" href="/login">
                         <i class="fas fa-sign-out"></i>Login or Register Now</a>
                 </form>
             </ul>

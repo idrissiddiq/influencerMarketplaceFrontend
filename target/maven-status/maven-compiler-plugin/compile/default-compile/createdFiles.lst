@@ -89,6 +89,7 @@ com\InfluencerMarketplace\clientapp\models\request\EditInfluencerProfileRequest$
 com\InfluencerMarketplace\clientapp\services\BrandService.class
 com\InfluencerMarketplace\clientapp\models\CampaignStatus.class
 com\InfluencerMarketplace\clientapp\config\WebSecurityConfig.class
+com\InfluencerMarketplace\clientapp\models\response\FindAllTableCampaignResponse$FindAllTableCampaignResponseBuilder.class
 com\InfluencerMarketplace\clientapp\controllers\HomeController.class
 com\InfluencerMarketplace\clientapp\controllers\JobController.class
 com\InfluencerMarketplace\clientapp\services\ContractService$4.class
@@ -111,6 +112,7 @@ com\InfluencerMarketplace\clientapp\controllers\InfluencerLocationController.cla
 com\InfluencerMarketplace\clientapp\services\InfluencerTypeService.class
 com\InfluencerMarketplace\clientapp\config\RestTemplateConfig.class
 com\InfluencerMarketplace\clientapp\services\ContractService$3.class
+com\InfluencerMarketplace\clientapp\models\response\FindAllTableCampaignResponse.class
 com\InfluencerMarketplace\clientapp\models\response\FindAllInfluencerResponse$FindAllInfluencerResponseBuilder.class
 com\InfluencerMarketplace\clientapp\exception\FileUploadExceptionAdvice.class
 com\InfluencerMarketplace\clientapp\models\InfluencerType.class
@@ -120,6 +122,7 @@ com\InfluencerMarketplace\clientapp\models\request\ApproveContractRequest.class
 com\InfluencerMarketplace\clientapp\models\request\CreateCampaignRequest.class
 com\InfluencerMarketplace\clientapp\models\Influencer.class
 com\InfluencerMarketplace\clientapp\models\response\ResponseListData.class
+com\InfluencerMarketplace\clientapp\services\CampaignService$7.class
 com\InfluencerMarketplace\clientapp\models\request\UpdateCampaignRequest.class
 com\InfluencerMarketplace\clientapp\services\ContractService$2.class
 com\InfluencerMarketplace\clientapp\models\ImageInfo.class

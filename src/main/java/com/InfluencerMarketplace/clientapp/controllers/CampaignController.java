@@ -3,14 +3,9 @@ package com.InfluencerMarketplace.clientapp.controllers;
 import com.InfluencerMarketplace.clientapp.models.Campaign;
 import com.InfluencerMarketplace.clientapp.models.request.CreateCampaignRequest;
 import com.InfluencerMarketplace.clientapp.models.request.UpdateCampaignRequest;
-import com.InfluencerMarketplace.clientapp.models.response.FindAllOpenCampaignResponse;
-import com.InfluencerMarketplace.clientapp.models.response.ResponseData;
-import com.InfluencerMarketplace.clientapp.models.response.ResponseListData;
-import com.InfluencerMarketplace.clientapp.models.response.ResponseMessage;
+import com.InfluencerMarketplace.clientapp.models.response.*;
 import com.InfluencerMarketplace.clientapp.services.CampaignService;
-import com.InfluencerMarketplace.clientapp.utils.GetAuthContext;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/campaign")
 public class CampaignController {
     private CampaignService campaignService;
+
 
     @Autowired
     public CampaignController(CampaignService campaignService) {
@@ -28,6 +24,12 @@ public class CampaignController {
     public @ResponseBody
     ResponseListData<FindAllOpenCampaignResponse> findAll(){
         return campaignService.findAllOpenCampaign();
+    }
+
+    @GetMapping("/getOnlyTable")
+    public @ResponseBody
+    ResponseListData<FindAllTableCampaignResponse> findAlltable(){
+        return campaignService.findAllTableCampaign();
     }
 
     @GetMapping("/getOnlyMe")

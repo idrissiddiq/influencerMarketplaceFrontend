@@ -1,9 +1,6 @@
 package com.InfluencerMarketplace.clientapp.services;
 
-import com.InfluencerMarketplace.clientapp.models.response.FindAllOpenCampaignResponse;
-import com.InfluencerMarketplace.clientapp.models.response.ResponseData;
-import com.InfluencerMarketplace.clientapp.models.response.ResponseListData;
-import com.InfluencerMarketplace.clientapp.models.response.ResponseMessage;
+import com.InfluencerMarketplace.clientapp.models.response.*;
 import com.InfluencerMarketplace.clientapp.models.Campaign;
 import com.InfluencerMarketplace.clientapp.models.request.CreateCampaignRequest;
 import com.InfluencerMarketplace.clientapp.models.request.UpdateCampaignRequest;
@@ -43,6 +40,12 @@ public class CampaignService {
     public ResponseListData<Campaign> findMyCampaign(){
         ResponseEntity<ResponseListData<Campaign>> response = restTemplate.exchange(url + "/me", HttpMethod.GET,
                 null, new ParameterizedTypeReference<ResponseListData<Campaign>>(){} );
+        return response.getBody();
+    }
+
+    public ResponseListData<FindAllTableCampaignResponse> findAllTableCampaign(){
+        ResponseEntity<ResponseListData<FindAllTableCampaignResponse>> response = restTemplate.exchange(url + "/table", HttpMethod.GET,
+                null, new ParameterizedTypeReference<ResponseListData<FindAllTableCampaignResponse>>(){} );
         return response.getBody();
     }
 
