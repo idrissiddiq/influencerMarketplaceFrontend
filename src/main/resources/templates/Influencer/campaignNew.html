@@ -215,6 +215,7 @@
     </div>
 <th:block layout:fragment="script">
     <script th:inline="javascript">
+    $(document).ready(function() {
     var getCampaign = $('#campaign-table').DataTable({
                 ajax: {
                     url: '/campaign/getOnlyTable',
@@ -240,7 +241,7 @@
                     },
                     {
                         "render": function ( data, type, row ) {
-                          return '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#detailCampaign" data-dos="' + row.dos + '" data-dont="' + row.dont + '">Detail</button>';
+                          return '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailCampaign" data-dos="' + row.dos + '" data-dont="' + row.dont + '">Detail</button>';
                         }
                       }
                 ]
@@ -255,6 +256,7 @@
                 modal.find('#dos').val(dos);
                 modal.find('#dont').val(dont);
               });
+            });
 
 
             function logoutReq() {
