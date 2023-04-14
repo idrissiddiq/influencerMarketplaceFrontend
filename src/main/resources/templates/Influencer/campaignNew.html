@@ -171,7 +171,7 @@
                class="table text-center table-striped table-bordered" >
             <thead class="" style="background-color: #9f8de7;">
             <tr>
-                <th>Id</th>
+                <th>No.</th>
                 <th>Title</th>
                 <th>Descripton</th>
                 <th>Salary</th>
@@ -200,14 +200,14 @@
                 <div class="col">
                     <div class="block">
                         <h3><i class="fa fa-check"></i> Do's</h3>
-                        <input type="text"  id="dos" value="">
+                        <p id="dos" ></p>
 
                     </div>
                 </div>
                 <div class="col">
                     <div class="block">
                         <h3><i class="fa fa-check"></i> Dont</h3>
-                        <input type="text"  id="dont" value="">
+                        <p id="dont"></p>
                     </div>
                 </div>
             </div>
@@ -222,7 +222,10 @@
                     dataSrc: 'data'
                 },
                 columns: [{
-                        data: 'id'
+                        "data": "null",
+                        render: function (data, type, row, meta) {
+                            return meta.row + 1;
+                        }
                     },
                     {
                         data: 'title'
@@ -253,10 +256,11 @@
                 var dos = button.data('dos');
                 var dont = button.data('dont');
                 var modal = $(this);
-                modal.find('#dos').val(dos);
-                modal.find('#dont').val(dont);
+                modal.find('#dos').text(dos);
+                modal.find('#dont').text(dont);
               });
             });
+
 
 
             function logoutReq() {

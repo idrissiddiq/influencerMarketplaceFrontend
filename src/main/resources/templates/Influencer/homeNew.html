@@ -141,10 +141,12 @@
             </i>
           </a>
         </li>
-        <form th:action="@{/logout}" th:method="POST" id="logoutButton" class="nav-item d-flex active mr-auto mr-2 float-right">
+        <li class="nav-item active mr-auto mr-2 float-right" >
+        <form th:action="@{/logout}" th:method="POST" id="logoutButton" class="d-flex ">
           <button type="button" th:onclick="logoutReq()" class="btn btn-secondary" style=" color: #fde386;">
             <i class="fas fa-sign-out"></i>Logout</button>
         </form>
+        </li>
       </ul>
     </div>
   </div>
