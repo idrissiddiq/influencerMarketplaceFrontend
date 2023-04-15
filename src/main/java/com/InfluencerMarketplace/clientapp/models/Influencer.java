@@ -25,7 +25,9 @@ public class Influencer {
     private String fullname;
     private String email;
     private String birthDate;
+    private String detailAddress;
     private String city;
+    private String province;
     private String rate;
     private String er;
     private Job job;
@@ -33,5 +35,6 @@ public class Influencer {
     private String instagram;
     private String tiktok;
     private String youtube;
+    private String facebook;
     private Set<InfluencerType> influenceTypes;
 }

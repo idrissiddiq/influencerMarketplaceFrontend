@@ -111,7 +111,7 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse " id="navbarSupportedContent">
       <ul class="nav navbar-nav  mb-2 mb-lg-0 ">
-        <li class="nav-item ms-auto active float-left" >
+        <li class="nav-item active " >
           <a href="/" class=" nav-link active d-flex align-items-center gap-3 py-2 px-3 lh-sm" >
             <img src="/images/logo-bg.png" width="5%" class="d-md-block"  >
             <div class="text-start">
@@ -120,33 +120,31 @@
             </div>
           </a>
         </li>
-        <li class="nav-item active mr-auto mr-2 float-right" style="padding-right: 10px;">
+        <li class="nav-item active mr-auto mr-2 float-right" >
           <a class="nav-link active text-center" href="/campaign">
             <i class="fas fa-palette " style="color: #ffb042;" ></i>
             <div> <strong class="d-block ">List Campaign</strong></div>
             </i>
           </a>
         </li>
-        <li class="nav-item active mr-auto mr-2 float-right" style="padding-right: 10px;">
+        <li class="nav-item active mr-auto mr-2 float-right" >
           <a class="nav-link active text-center" href="/contract">
             <i class="fas fa-file-contract" style="color: #ffb042;"></i>
             <div><strong class="d-block ">My Contract</strong></div>
             </i>
           </a>
         </li>
-        <li class="nav-item active mr-auto mr-2 float-right" style="padding-right: 10px;">
+        <li class="nav-item active mr-auto mr-2 float-right" style=" margin-right: 10px;">
           <a class="nav-link active text-center" href="/profile">
             <i class="fas fa-user" style="color: #ffb042;"></i>
             <div><strong class="d-block ">My Profile</strong></div>
             </i>
           </a>
         </li>
-        <li class="nav-item active mr-auto mr-2 float-right" >
-        <form th:action="@{/logout}" th:method="POST" id="logoutButton" class="d-flex ">
+        <form th:action="@{/logout}" th:method="POST" id="logoutButton" class="d-flex nav-item active mr-auto mr-2 float-right">
           <button type="button" th:onclick="logoutReq()" class="btn btn-secondary" style=" color: #fde386;">
             <i class="fas fa-sign-out"></i>Logout</button>
         </form>
-        </li>
       </ul>
     </div>
   </div>
@@ -182,7 +180,28 @@
 
 <th:block layout:fragment="script">
   <script th:inline="javascript">
+  function logoutReq() {
+            Swal.fire({
+            title: 'Are you sure you want to Logout?',
+            icon: 'warning',
+            showDenyButton: true,
+            confirmButtonColor: '#3085d6',
+            denyButtonColor: '#d33',
+            confirmButtonText: 'Yes, log me out!',
+            denyButtonText: 'No, I want to stay!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById("logoutButton").submit();
 
+                } else if (result.isDenied) {
+                    Swal.fire(
+                    'Canceled!',
+                    'Welcome Back.',
+                    'success'
+            )
+          }
+        })
+      }
   </script>
 </th:block>
 </body>

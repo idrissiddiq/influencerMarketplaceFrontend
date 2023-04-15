@@ -102,7 +102,7 @@ public class DashboardController {
             model.addAttribute("profiles", influencerService.getMyProfileData());
             model.addAttribute("types", influencerService.getMyType());
             model.addAttribute("listTypes", influencerTypeService.findAll());
-            return "Influencer/myProfile";
+            return "Influencer/profileNew";
         }
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("role", authentication.getPrincipal().toString());

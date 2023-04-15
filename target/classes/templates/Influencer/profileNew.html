@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Social Media Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      /* Add some styles for the page */
+      
+	ul{
+		margin-left: -35px;
+		
+	}
+	li{
+		list-style: none; 
+		display: inline-block;
+		padding: 5px;
+	}
+      h1 {
+        
+        color: #333;
+        margin: 40px 0;
+      }
+
+      .profile-picture {
+        display: block;
+        margin: 0 auto;
+        border-radius: 50%;
+        width: 200px;
+        height: 200px;
+        border: 10px solid #333;
+        overflow: hidden;
+      }
+
+      .container {
+        width: 80%;
+        margin: 0 auto;
+        
+      }
+
+      .bio {
+        font-size: 18px;
+        color: #333;
+        margin: 20px 0;
+      }
+
+      .stats {
+        display: flex;
+        justify-content: space-around;
+        margin: 40px 0;
+      }
+
+      .stat {
+        font-size: 18px;
+        color: #333;
+        background-color: #E8E8E8;
+        padding: 20px;
+        border-radius: 10px;
+      }
+
+      .stat p:first-child {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+	  
+	  body {
+  font-family: sans-serif;
+}
+
+.profilepic {
+  position: relative;
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #111;
+}
+
+.profilepic:hover .profilepic__content {
+  opacity: 1;
+}
+
+.profilepic:hover .profilepic__image {
+  opacity: .5;
+}
+
+.profilepic__image {
+  object-fit: cover;
+  opacity: 1;
+  transition: opacity .2s ease-in-out;
+}
+
+.profilepic__content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
+}
+
+.profilepic__icon {
+  color: white;
+  padding-bottom: 8px;
+}
+
+.fas {
+  font-size: 20px;
+}
+
+.profilepic__text {
+  text-transform: uppercase;
+  font-size: 12px;
+  width: 50%;
+  text-align: center;
+}
+
+      /* Add responsive styles for mobile devices */
+      @media (max-width: 480px) {
+        .container {
+          width: 90%;
+        }
+
+        .profile-picture {
+          width: 150px;
+          height: 150px;
+        }
+
+        .bio {
+          font-size: 16px;
+        }
+
+        .stat {
+          font-size: 16px;
+        }
+
+        .stat p:first-child {
+          font-size: 18px;
+        }
+      }
+	  
+    </style>
+	<link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+      integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
+      crossorigin="anonymous"
+    />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
+            crossorigin="anonymous">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.8/dist/sweetalert2.all.min.js"
+            integrity="sha256-voaY/mFuF2+Kg/L56O9wmuwvhHf3XcaxCI/Ld9UR+d4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.8/dist/sweetalert2.min.js"
+            integrity="sha256-UEAn96ePJjqidezAU7lnOYeJEArgg4hsNGbwqmcyPrY=" crossorigin="anonymous"></script>
+		  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/solid.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/svg-with-js.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+            crossorigin="anonymous"></script>
+  </head>
+  
+  <body>
+  <!-- Navigation-->
+<nav class="navbar navbar-expand-lg sticky-top navbar-light " style = "background-color: #ffba78;">
+    <div class="container px-4 px-lg-5 ">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">		
+			<ul class="nav navbar-nav mb-2 mb-lg-0 ">
+                <li class="nav-item active " >
+                    <a href="/" class=" nav-link active d-flex align-items-center gap-3 py-2 px-3 lh-sm" >
+                        <img src="/images/logo-bg.png" width="5%" class="d-md-block"  >
+                        <div class="text-start">
+                            <strong class="d-block">One</strong>
+                            <small>Management</small>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item active mr-auto mr-2 float-right" >
+                    <a class="nav-link active text-center" href="/campaign">
+                        <i class="fas fa-palette " style="color: #ffb042" ></i>
+                        <div> <strong class="d-block ">List Campaign</strong></div>
+                    </a>
+                </li>
+                <li class="nav-item active mr-auto mr-2 float-right" >
+                    <a class="nav-link active text-center" href="/contract">
+                        <i class="fas fa-file-contract" style="color: #ffb042;"></i>
+                            <div><strong class="d-block ">My Contract</strong></div>
+                    </a>
+                </li>
+                <li class="nav-item active mr-auto mr-2 float-right" >
+                    <a class="nav-link active text-center" href="/profile">
+                        <i class="fas fa-user" style="color: #ffb042;"></i>
+                            <div><strong class="d-block ">My Profile</strong></div>
+                    </a>
+                </li>
+                <form th:action="@{/logout}" th:method="POST" id="logoutButton" class="nav-item d-flex mr-auto active mr-2 float-right">
+                    <button type="button" th:onclick="logoutReq()" class="btn btn-secondary">
+                        <i class="fas fa-sign-out"></i>Logout</button>
+                </form>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container d-flex justify-content-center align-items-center"
+      style=" min-height: 100vh ">	
+	<div class="border shadow p-3 rounded" th:each="profile : ${profiles.data}"
+		  style="width: 750px;">
+		  <h2 style="text-align:center;">My Account</h2><br>
+		<div align="center" >
+			<ul>
+				<li th:text="${profile.fullname}"></li><br>
+				<li th:text="${profile.birthDate}"></li><br>
+				<li th:text="${profile.detailAddress}"></li><br>
+				<li th:text="${profile.email}"></li><br>
+				<li th:text="${profile.city}"></li><br>
+				<li th:text="${profile.province}"></li><br><br>
+			</ul>
+	  </div>
+	 <div align="center">		 
+		<ul>
+			<li id="youtube" th:if="${profile.youtube != null}"><a th:href="${profile.youtube}"><img src="/images/youtube.png" width="35px" height="35px"><a></li>
+			<li id="tiktok" th:if="${profile.tiktok != null}"><a th:href="${profile.tiktok}" ><img src="/images/tiktok.png" width="25px" height="25px"><a></li>
+			<li id="instagram" th:if="${profile.instagram != null}"><a th:href="${profile.instagram}" ><img src="/images/instagram.png" width="25px" height="25px"><a></li>
+			<li id="facebook" th:if="${profile.facebook != null}"><a th:href="${profile.facebook}" ><img src="/images/facebook.png" width="25px" height="25px"><a></li>
+		</ul>
+	 </div>
+	 <br>
+	 <div align="center">
+		<button class="btn btnsmall" data-bs-toggle="modal" data-bs-target="#edit-profile" style="color:white; background-color: #ff6e6e;">Manage My Account<i class="fas fa-pencil"></i></button>
+		<button class="btn btnsmall" data-bs-toggle="modal" data-bs-target="#edit-akun" style="color:white; background-color: #ff6e6e;"><i class="fa fa-pencil"></i>Change Password</i></button>
+	</div>
+</div>
+<!-- Modal Edit prifile -->
+    <div id="edit-profile" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+         aria-labelledby="campaignEditLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="campaignEditLabel">Manage My Account</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" id="edit_id">
+            <div class="error-message">
+            </div>
+            <div class="col">
+              <label class="form-label ">Name:</label>
+              <input class="form-control" type="text" name="title" id="edit_title" placeholder="Your Name"
+                     required="">
+            </div>
+			<div class="col">
+              <label class="form-label ">Birth Date:</label>
+              <input class="form-control" type="text" name="birth" id="edit_birth" placeholder="Your Birth Date"
+                     required="">
+            </div>
+            <div class="col">
+              <label class="form-label ">Address:</label>
+              <input class="form-control" type="text" name="description" id="edit_description" placeholder="Your Address"
+                     required="">
+            </div>
+			<div class="col">
+              <label class="form-label ">Email:</label>
+              <input class="form-control" type="text" name="description" id="edit_description" placeholder="Your Email"
+                     required="">
+            </div><br>
+<!--			<div class="col">-->
+<!--              <label class="form-label ">City / kabupaten :</label>-->
+<!--                <select id="influencerLocation" name="influencerLocation" onchange="sendSelectedProv()">-->
+<!--                </select>-->
+<!--            </div><br>-->
+<!--			<div class="col">-->
+<!--              <label class="form-label ">Province:</label>-->
+<!--                <select id="influencerLocation" name="influencerLocation" onchange="sendSelectedProv()">-->
+<!--                </select>-->
+<!--            </div>-->
+<!--			<br>-->
+			<div class="col">
+				<label class="form-label ">Your Sosmed:</label>
+				<div class="col">
+					<input type="checkbox" id="myCheckbox">
+					<label for="myCheckbox">Youtube</label>
+					<div id="labelForm" style="display: none;">
+					  <label for="nameYT">Link:</label>
+					  <input type="text" id="nameYT" placeholder="https://youtube.com/@nama-akun">
+					</div>
+				</div>
+				<div class="col">
+					<input type="checkbox" id="myCheckbox2">
+					<label for="myCheckbox">Tiktok</label>
+					<div id="labelForm2" style="display: none;">
+					  <label for="nameTT">Link:</label>
+					  <input type="text" id="nameTT" placeholder="https://www.tiktok.com/@nama-akun?lang=id-ID&is_from_webapp=1&sender_device=mobile&sender_web_id=7158718291405129217">
+					</div>
+				</div>
+				<div class="col">
+					<input type="checkbox" id="myCheckbox3">
+					<label for="myCheckbox">Instagram</label>
+					<div id="labelForm3" style="display: none;">
+					  <label for="nameIG">Link:</label>
+					  <input type="text" id="nameIG" placeholder="https://instagram.com/nama-akun?igshid=ZDdkNTZiNTM=">
+					</div>
+				</div>
+				<div class="col">
+					<input type="checkbox" id="myCheckbox4">
+					<label for="myCheckbox">Facebook</label>
+					<div id="labelForm4" style="display: none;">
+					  <label for="nameFB">Link:</label>
+					  <input type="text" id="nameFB" placeholder="https://facebook.com/nama-akun?igshid=ZDdkNTZiNTM=">
+					</div>
+				</div>
+			</div>
+			
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn" style="color:white; background-color: #bad9ee;" data-bs-dismiss="modal">Close</button>
+            <!--                <button type="button" class="update-submit btn btn-primary">Update</button>-->
+            <button type="button" class="btn btn-warning" style="color:white;"  onclick="updateCampaign()">Update</button>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- Modal Edit password -->
+    <div id="edit-akun" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+         aria-labelledby="campaignEditLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="campaignEditLabel">Change Password</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" id="edit_id">
+            <div class="error-message">
+            </div>
+            <div class="col">
+              <label class="form-label ">Current password:</label>
+              <input class="form-control" type="text" name="title" id="edit_title" placeholder="Your Password"
+                     required="">
+            </div>
+            <div class="col">
+              <label class="form-label ">New Password:</label>
+              <input class="form-control" type="text" name="description" id="edit_description" placeholder="New Password"
+                     required="">
+            </div>
+			<div class="col">
+              <label class="form-label ">Confirm New Password:</label>
+              <input class="form-control" type="text" name="description" id="edit_description" placeholder="Confirm New Password"
+                     required="">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn" style="color:white; background-color: #bad9ee;" data-bs-dismiss="modal">Close</button>
+            <!--                <button type="button" class="update-submit btn btn-primary">Update</button>-->
+            <button type="button" class="btn btn-warning" style="color:white;"  onclick="updateCampaign()">Update</button>
+          </div>
+        </div>
+      </div>
+    </div>
+	<script>
+		const checkbox = document.getElementById('myCheckbox');
+		const checkbox2 = document.getElementById('myCheckbox2');
+		const checkbox3 = document.getElementById('myCheckbox3');
+		const checkbox4 = document.getElementById('myCheckbox4');
+		const labelForm = document.getElementById('labelForm');
+		const labelForm2 = document.getElementById('labelForm2');
+		const labelForm3 = document.getElementById('labelForm3');
+		const labelForm4 = document.getElementById('labelForm4');
+
+		checkbox.addEventListener('click', function() {
+		  if (checkbox.checked) {
+			labelForm.style.display = 'block';
+		  } else {
+			labelForm.style.display = 'none';
+		  }
+		});
+		checkbox2.addEventListener('click', function() {
+		  if (checkbox2.checked) {
+			labelForm2.style.display = 'block';
+		  } else {
+			labelForm2.style.display = 'none';
+		  }
+		});
+		checkbox3.addEventListener('click', function() {
+		  if (checkbox3.checked) {
+			labelForm3.style.display = 'block';
+		  } else {
+			labelForm3.style.display = 'none';
+		  }
+		});
+		checkbox4.addEventListener('click', function() {
+		  if (checkbox4.checked) {
+			labelForm4.style.display = 'block';
+		  } else {
+			labelForm4.style.display = 'none';
+		  }
+		});
+
+		function logoutReq() {
+            Swal.fire({
+            title: 'Are you sure you want to Logout?',
+            icon: 'warning',
+            showDenyButton: true,
+            confirmButtonColor: '#3085d6',
+            denyButtonColor: '#d33',
+            confirmButtonText: 'Yes, log me out!',
+            denyButtonText: 'No, I want to stay!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById("logoutButton").submit();
+
+                } else if (result.isDenied) {
+                    Swal.fire(
+                    'Canceled!',
+                    'Welcome Back.',
+                    'success'
+            )
+          }
+        })
+      }
+	</script>
+</body>
+</html>
