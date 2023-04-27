@@ -242,7 +242,7 @@
 	 </div>
 	 <br>
 	 <div align="center">
-		<button class="btn btnsmall" data-bs-toggle="modal" data-bs-target="#edit-profile" style="color:white; background-color: #ff6e6e;">Manage My Account<i class="fas fa-pencil"></i></button>
+		<button class="btn btnsmall" data-bs-toggle="modal" data-bs-target="#edit-profile" style="color:white; background-color: #ff6e6e;"  onclick="showMyProfileData();">Manage My Account<i class="fas fa-pencil"></i></button>
 		<button class="btn btnsmall" data-bs-toggle="modal" data-bs-target="#edit-akun" style="color:white; background-color: #ff6e6e;"><i class="fa fa-pencil"></i>Change Password</i></button>
 	</div>
 </div>
@@ -261,22 +261,22 @@
             </div>
             <div class="col">
               <label class="form-label ">Name:</label>
-              <input class="form-control" type="text" name="title" id="edit_title" placeholder="Your Name"
+              <input class="form-control" type="text" name="nama" id="edit_name" placeholder="Your Name"
                      required="">
             </div>
 			<div class="col">
               <label class="form-label ">Birth Date:</label>
-              <input class="form-control" type="text" name="birth" id="edit_birth" placeholder="Your Birth Date"
+              <input class="form-control" type="text" name="birthDate" id="edit_birth" placeholder="Your Birth Date"
                      required="">
             </div>
             <div class="col">
               <label class="form-label ">Address:</label>
-              <input class="form-control" type="text" name="description" id="edit_description" placeholder="Your Address"
+              <input class="form-control" type="text" name="address" id="edit_address" placeholder="Your Address"
                      required="">
             </div>
 			<div class="col">
               <label class="form-label ">Email:</label>
-              <input class="form-control" type="text" name="description" id="edit_description" placeholder="Your Email"
+              <input class="form-control" type="text" name="email" id="edit_email" placeholder="Your Email"
                      required="">
             </div><br>
 <!--			<div class="col">-->
@@ -330,7 +330,7 @@
           <div class="modal-footer">
             <button type="button" class="btn" style="color:white; background-color: #bad9ee;" data-bs-dismiss="modal">Close</button>
             <!--                <button type="button" class="update-submit btn btn-primary">Update</button>-->
-            <button type="button" class="btn btn-warning" style="color:white;"  onclick="updateCampaign()">Update</button>
+            <button type="button" class="btn btn-warning" style="color:white;"  onclick="editMyProfile()">Update</button>
           </div>
         </div>
       </div>
@@ -410,6 +410,100 @@
 			labelForm4.style.display = 'none';
 		  }
 		});
+
+		function editMyProfile() {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You still can change it later",
+                    icon: 'info',
+                    showDenyButton: true,
+                    confirmButtonColor: '#3085d6',
+                    denyButtonColor: '#d33',
+                    confirmButtonText: 'Yes, Edit My Profile!',
+                    denyButtonText: 'Cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // document.getElementById(id).submit();
+                        $('#campaignCreated').modal('hide');
+                        $('body').removeClass('modal-open');
+                        $('.modal-backdrop').remove();
+                        Swal.fire(
+                            'Updated!',
+                            'Your profile has been updated.',
+                            'success'
+                        )
+                        editMyProfileProcess();
+
+                    } else if (result.isDenied) {
+                        Swal.fire(
+                            'Canceled!',
+                            'Your profile has not been updated.',
+                            'error'
+                        )
+                    }
+                })
+            };
+
+            function editMyProfileProcess() {
+                let email = $('#edit_email').val();
+                let name = $('#edit_name').val();
+                let detailAddress = $('#edit_address').val();
+                let birthDate = $('#edit_birth').val();
+                 let youtube = $('#nameYT').val();
+                 let instagram = $('#nameIG').val();
+                 let facebook = $('#nameFB').val();
+                 let tiktok = $('#nameTT').val();
+                if (email != '') {
+                    $.ajax({
+                        method: "PUT",
+                        url: '/influencer/profile',
+                        dataType: "json",
+                        data: JSON.stringify({
+                            name: name,
+                            email: email,
+                            detailAddress: detailAddress,
+                            birthDate: birthDate,
+                            youtube: youtube,
+                            instagram: instagram,
+                            facebook: facebook,
+                            tiktok: tiktok,
+                        }),
+                        contentType: "application/json",
+                        success: function (result) {
+                            console.log("SUCCESS : ", result);
+                            $('#editMyProfile').modal('hide');
+                            window.location = window.location;
+                         //   getCampaign.ajax.reload();
+                         //   location.reload();
+                        }
+                    //    fail: function(xhr, textStatus, errorThrown){
+                     //       location.reload();
+                     //   }
+                    });
+                } else {
+                    console.log("Error");
+                    $('#editMyProfile').modal('hide');
+                }
+            };
+
+		function showMyProfileData() {
+                $.ajax({
+                    method: "GET",
+                    url: '/influencer/profile',
+                    dataType: "json",
+                    contentType: "application/json",
+                    success: function (result) {
+                        $('#edit_name').val(`${result.data.fullname}`);
+                        $('#edit_email').val(`${result.data.email}`);
+                        $('#edit_birth').val(`${result.data.birthDate}`);
+                        $('#edit_address').val(`${result.data.detailAddress}`);
+                        $('#nameYT').val(`${result.data.youtube}`);
+                        $('#nameFB').val(`${result.data.facebook}`);
+                        $('#nameTT').val(`${result.data.tiktok}`);
+                        $('#nameIG').val(`${result.data.instagram}`);
+                    }
+                })
+            }
 
 		function logoutReq() {
             Swal.fire({
