@@ -177,6 +177,7 @@
             <th>Start Date</th>
             <th>End Date</th>
             <th>Amount</th>
+            <th>Status</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -185,6 +186,7 @@
     </table>
 </div>
 </div>
+
 
 <th:block layout:fragment="script">
     <script th:inline="javascript">
@@ -209,16 +211,105 @@
                         data: 'budget'
                     },
                     {
+                        data: 'contractStatus.name'
+                    },
+                    {
                         "data": null,
                         render: function (data, type, row, meta) {
+                            if (row.contractStatus.id == 2){
+                                return `<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#submit" >Submit</button>
+                                <div id="submit" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                                 aria-labelledby="campaignEditLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="col">
+                                                <label class="form-label required-label">Link:</label>
+                                                <input class="form-control" type="text" name="link" id="link" placeholder="link"
+                                                       required="">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn" style="color:white; background-color: #bad9ee;" data-bs-dismiss="modal">Close</button>
+                                            <!--                <button type="button" class="update-submit btn btn-primary">Update</button>-->
+                                            <button type="button" class="btn btn-warning" style="color:white;"  onclick="submitStatus('+ row.id +')">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                                `;
+                            }else if (row.contractStatus.id == 4){
+                                return `
+                                <button type="button" class="btn btn-warning btn-sm "style="font-size: 10px; padding: 7px 20px" >Monthly Report</button> `;
+                            }else {
                             return `
-                            <a class="btn btn-warning btn-sm "style="font-size: 10px; padding: 7px 20px" >Edit</a> <br> <br>
-                <a class="btn btn-warning btn-sm "style="font-size: 10px; padding: 7px 20px" >Delete</a>
                             `;
+                            }
                         }
                     },
                 ]
             });
+
+            function submitStatus(id) {
+                Swal.fire({
+                    title: 'Submit Your link Content!',
+                    text: "Thank you!",
+                    icon: 'info',
+                    showDenyButton: true,
+                    confirmButtonColor: '#3085d6',
+                    denyButtonColor: '#d33',
+                    confirmButtonText: 'Yes, Send This link!',
+                    denyButtonText: 'Cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // document.getElementById(id).submit();
+                        $('#forgotPassword').modal('hide');
+                        $('body').removeClass('modal-open');
+                        $('.modal-backdrop').remove();
+                        Swal.fire(
+                            'Created!',
+                            'Your account has been created, please check your Email.',
+                            'success'
+                        )
+                        submitInfluencerProcess(id);
+                    } else if (result.isDenied) {
+                        Swal.fire(
+                            'Canceled!',
+                            'Your account has not been created.',
+                            'error'
+                        )
+                    }
+                })
+            };
+            function submitInfluencerProcess(id) {
+                let link = $('#link').val();
+                let contractId = id.toString();
+                console.log(link);
+                console.log(contractId);
+                if (link != '') {
+                    $.ajax({
+                        method: "POST",
+                        url: '/report/createReport',
+                        dataType: "json",
+                        data: JSON.stringify({
+                            link: link,
+                            contractId : id
+                        }),
+                        contentType: "application/json",
+                        success: function (result) {
+                            console.log("SUCCESS : ", result);
+                            $('#submitStatus').modal('hide');
+                           // window.location = window.location;
+                        }
+                    });
+                    window.location = window.location;
+                } else {
+                    console.log("Error");
+                    $('#submitStatus').modal('hide');
+                    alert("Field with * is mandatory");
+                }
+            };
 
             function logoutReq() {
             Swal.fire({

@@ -10,6 +10,7 @@ com\InfluencerMarketplace\clientapp\services\JobService$5.class
 com\InfluencerMarketplace\clientapp\services\BrandService$4.class
 com\InfluencerMarketplace\clientapp\services\InfluencerService$2.class
 com\InfluencerMarketplace\clientapp\services\CampaignStatusService$1.class
+com\InfluencerMarketplace\clientapp\services\ReportService.class
 com\InfluencerMarketplace\clientapp\models\Brand$BrandBuilder.class
 com\InfluencerMarketplace\clientapp\models\Campaign$CampaignBuilder.class
 com\InfluencerMarketplace\clientapp\models\CampaignStatus$CampaignStatusBuilder.class
@@ -65,7 +66,9 @@ com\InfluencerMarketplace\clientapp\config\TemplateConfig.class
 com\InfluencerMarketplace\clientapp\services\BrandService$2.class
 com\InfluencerMarketplace\clientapp\services\InfluencerLocationService$4.class
 com\InfluencerMarketplace\clientapp\services\FilesStorageService.class
+com\InfluencerMarketplace\clientapp\controllers\ReportController.class
 com\InfluencerMarketplace\clientapp\services\JobService$4.class
+com\InfluencerMarketplace\clientapp\models\request\ReportContractRequest$ReportContractRequestBuilder.class
 com\InfluencerMarketplace\clientapp\services\InfluencerLocationService$1.class
 com\InfluencerMarketplace\clientapp\services\RegisterService$4.class
 com\InfluencerMarketplace\clientapp\models\Job$JobBuilder.class
@@ -80,11 +83,13 @@ com\InfluencerMarketplace\clientapp\models\Location.class
 com\InfluencerMarketplace\clientapp\services\CampaignService$1.class
 com\InfluencerMarketplace\clientapp\models\Contract$ContractBuilder.class
 com\InfluencerMarketplace\clientapp\models\response\CalculateAgeResponse.class
+com\InfluencerMarketplace\clientapp\services\ReportService$1.class
 com\InfluencerMarketplace\clientapp\models\request\EditBrandProfileRequest$EditBrandProfileRequestBuilder.class
 com\InfluencerMarketplace\clientapp\models\Job.class
 com\InfluencerMarketplace\clientapp\models\request\ChangeProfilePhotoRequest.class
 com\InfluencerMarketplace\clientapp\models\User.class
 com\InfluencerMarketplace\clientapp\models\request\LoginRequest$LoginRequestBuilder.class
+com\InfluencerMarketplace\clientapp\models\request\ReportContractRequest.class
 com\InfluencerMarketplace\clientapp\models\request\EditInfluencerProfileRequest$EditInfluencerProfileRequestBuilder.class
 com\InfluencerMarketplace\clientapp\services\BrandService.class
 com\InfluencerMarketplace\clientapp\models\CampaignStatus.class
