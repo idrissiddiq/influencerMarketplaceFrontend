@@ -39,7 +39,7 @@ public class DashboardController {
     public String index(Model model) {
         Set<String> roles = GetAuthContext.getAuthorityDetail(GetAuthContext.getAuthorization());
         if (roles.contains("ROLE_ADMIN")) {
-            return "dashboard_admin";
+            return "Admin/HomeAdmin";
         }
         if (roles.contains("ROLE_INFLUENCER")){
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

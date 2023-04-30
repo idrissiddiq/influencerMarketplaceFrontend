@@ -38,6 +38,9 @@ public class LoginService {
     @Value("${server.baseUrl}/login/brand")
     private String urlBrand;
 
+    @Value("${server.baseUrl}/login/admin")
+    private String urlAdmin;
+
     @Autowired
     public LoginService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
@@ -59,6 +62,24 @@ public class LoginService {
             return false;
         }
         
+    }
+
+    public boolean loginAdmin(LoginRequest request) {
+        try {
+            ResponseEntity<LoginResponse> response = restTemplate
+                    .postForEntity(urlAdmin, request, LoginResponse.class);
+
+            if (response.getStatusCode() == HttpStatus.OK) {
+                setAuthorization(request, response.getBody());
+
+                return true;
+            }
+            return false;
+
+        } catch (RestClientException e) {
+            return false;
+        }
+
     }
 
     public boolean loginBrand(LoginRequest request) {

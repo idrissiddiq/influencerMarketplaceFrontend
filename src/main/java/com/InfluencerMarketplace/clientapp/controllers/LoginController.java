@@ -43,11 +43,34 @@ public class LoginController {
         return "redirect:/";
     }
 
+    @GetMapping("/login/admin")
+    public String loginAdmin(LoginRequest loginRequest, Model model) {
+        Authentication auth = GetAuthContext.getAuthorization();
+        System.out.println("AUTH : " + auth.getPrincipal());
+        System.out.println("AUTHORITIES : " + auth.getAuthorities());
+        if(auth == null || auth instanceof AnonymousAuthenticationToken){
+            return "loginAdmin";
+        }
+        return "redirect:/";
+    }
+
     @PostMapping("/login")
     public String login(@Valid LoginRequest request, BindingResult result) {
        System.out.println(request);
         if (result.hasErrors()) {
             return "loginNew";
+        }
+        if(!loginService.login(request)){
+            return "redirect:/login?error=true";
+        }
+        return "redirect:/";
+    }
+
+    @PostMapping("/login/admin")
+    public String loginAdmin(@Valid LoginRequest request, BindingResult result) {
+        System.out.println(request);
+        if (result.hasErrors()) {
+            return "loginAdmin";
         }
         if(!loginService.login(request)){
             return "redirect:/login?error=true";

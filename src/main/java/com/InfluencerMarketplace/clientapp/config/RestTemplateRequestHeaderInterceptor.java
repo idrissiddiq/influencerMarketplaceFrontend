@@ -26,6 +26,7 @@ public class RestTemplateRequestHeaderInterceptor implements ClientHttpRequestIn
             throws IOException {
        if (!request.getURI().getPath().equals("/api/login/influencer")
                && !request.getURI().getPath().equals("/api/login/brand")
+               && !request.getURI().getPath().equals("/api/login/admin")
                && !request.getURI().getPath().equals("/api/location")
                && !request.getURI().getPath().equals("/api/location/city")
                && !request.getURI().getPath().equals("/api/location/kecamatan/3402")
