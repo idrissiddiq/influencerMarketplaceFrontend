@@ -72,7 +72,7 @@ public class LoginController {
         if (result.hasErrors()) {
             return "loginAdmin";
         }
-        if(!loginService.login(request)){
+        if(!loginService.loginAdmin(request)){
             return "redirect:/login?error=true";
         }
         return "redirect:/";
@@ -94,6 +94,11 @@ public class LoginController {
     public String logout() {
         GetAuthContext.setAuthorization(null);
         return "redirect:/login?logout=true";
+    }
+    @PostMapping("/logout/admin")
+    public String logoutAdmin() {
+        GetAuthContext.setAuthorization(null);
+        return "redirect:/login/admin";
     }
 
 }
