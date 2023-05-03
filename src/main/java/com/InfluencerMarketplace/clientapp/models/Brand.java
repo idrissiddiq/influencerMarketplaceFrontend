@@ -11,7 +11,5 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Brand {
     private Long id;
-    private String fullname;
-    private String email;
-    private Job job;
+    private String companyName;
 }
