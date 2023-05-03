@@ -33,9 +33,7 @@ public class LoginController {
          System.out.println("AUTH : " + auth.getPrincipal());
          System.out.println("AUTHORITIES : " + auth.getAuthorities());
         if(auth == null || auth instanceof AnonymousAuthenticationToken){
-            model.addAttribute("listTypes", influencerTypeService.findAll());
             model.addAttribute("listProv", influencerLocation.provinsi());
-//            model.addAttribute("listKab", influencerLocation.kabupaten("11"));
             model.addAttribute("listKec", influencerLocation.kecamatan());
             model.addAttribute("listKel", influencerLocation.kelurahan());
             return "login";

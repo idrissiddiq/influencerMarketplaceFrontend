@@ -13,12 +13,9 @@ import java.time.LocalDate;
 @Builder
 public class RegisterInfluencerRequest {
     private Long id;
-
     private String fullname;
-
     private String email;
     private String city;
     private LocalDate birthDate;
-    private String influenceType;
     private String username;
 }

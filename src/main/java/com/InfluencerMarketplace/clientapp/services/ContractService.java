@@ -37,9 +37,9 @@ public class ContractService {
         return response.getBody();
     }
 
-    public ResponseMessage<String> createContract(Long id){
+    public ResponseMessage<String> createContract(String id){
         ResponseEntity<ResponseMessage<String>> response = restTemplate
-                .exchange(url + "/" + id.toString(), HttpMethod.POST,
+                .exchange(url + "/" + id, HttpMethod.POST,
                         null, new ParameterizedTypeReference<ResponseMessage<String>>(){} );
         return response.getBody();
     }
