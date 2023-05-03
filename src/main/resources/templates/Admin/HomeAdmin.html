@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>List Campaign</title>
+    <title>Home Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
       /* Add some styles for the page */
@@ -110,7 +110,6 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
             <ul class="nav navbar-nav  mb-2 mb-lg-0 ">
-
                 <form th:action="@{/logout/admin}" th:method="POST" id="logoutButton" class="d-flex nav-item active mr-auto mr-2 float-right">
                     <button type="button" th:onclick="logoutReq()" class="btn btn-secondary" style=" color: #fde386;">
                         <i class="fas fa-sign-out"></i>Logout</button>
@@ -123,7 +122,7 @@
 <th:block layout:fragment="script">
     <script th:inline="javascript">
   function logoutReq() {
-            Swal.fire({
+            Swal.fire({al
             title: 'Are you sure you want to Logout?',
             icon: 'warning',
             showDenyButton: true,

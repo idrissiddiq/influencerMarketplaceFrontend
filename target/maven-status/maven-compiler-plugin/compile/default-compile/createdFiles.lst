@@ -16,10 +16,13 @@ com\InfluencerMarketplace\clientapp\models\Campaign$CampaignBuilder.class
 com\InfluencerMarketplace\clientapp\models\CampaignStatus$CampaignStatusBuilder.class
 com\InfluencerMarketplace\clientapp\models\response\ResponseMessage$ResponseMessageBuilder.class
 com\InfluencerMarketplace\clientapp\models\request\RegisterInfluencerRequest$RegisterInfluencerRequestBuilder.class
+com\InfluencerMarketplace\clientapp\models\AllReport$AllReportBuilder.class
 com\InfluencerMarketplace\clientapp\services\LoginService.class
 com\InfluencerMarketplace\clientapp\services\CampaignService$4.class
 com\InfluencerMarketplace\clientapp\models\response\CalculateAgeResponse$CalculateAgeResponseBuilder.class
 com\InfluencerMarketplace\clientapp\models\request\ForgotPasswordRequest$ForgotPasswordRequestBuilder.class
+com\InfluencerMarketplace\clientapp\models\AllReport.class
+com\InfluencerMarketplace\clientapp\services\AllReportService$1.class
 com\InfluencerMarketplace\clientapp\models\request\RegisterBrandRequest.class
 com\InfluencerMarketplace\clientapp\services\CampaignService$3.class
 com\InfluencerMarketplace\clientapp\models\request\EditInfluencerProfileRequest.class
@@ -27,6 +30,7 @@ com\InfluencerMarketplace\clientapp\models\ContractStatus$ContractStatusBuilder.
 com\InfluencerMarketplace\clientapp\services\InfluencerService$3.class
 com\InfluencerMarketplace\clientapp\services\RegisterService$2.class
 com\InfluencerMarketplace\clientapp\models\InfluencerStatus$InfluencerStatusBuilder.class
+com\InfluencerMarketplace\clientapp\services\AllReportService.class
 com\InfluencerMarketplace\clientapp\models\ContractStatus.class
 com\InfluencerMarketplace\clientapp\services\JobService.class
 com\InfluencerMarketplace\clientapp\models\response\FileUploadResponse.class

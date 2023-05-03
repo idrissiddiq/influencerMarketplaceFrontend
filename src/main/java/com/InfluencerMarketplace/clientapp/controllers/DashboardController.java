@@ -24,15 +24,17 @@ public class DashboardController {
     private BrandService brandService;
     private InfluencerTypeService influencerTypeService;
     private CampaignStatusService campaignStatusService;
+    private AllReportService allReportService;
 
     @Autowired
     public DashboardController(InfluencerService influencerService, CampaignService campaignService, BrandService brandService,
-                               InfluencerTypeService influencerTypeService, CampaignStatusService campaignStatusService) {
+                               InfluencerTypeService influencerTypeService, CampaignStatusService campaignStatusService, AllReportService allReportService) {
         this.influencerService = influencerService;
         this.campaignService = campaignService;
         this.brandService = brandService;
         this.influencerTypeService = influencerTypeService;
         this.campaignStatusService = campaignStatusService;
+        this.allReportService = allReportService;
     }
 
     @GetMapping
@@ -61,6 +63,21 @@ public class DashboardController {
             return "Influencer/campaignNew";
         }
         return "Anonym/campaign";
+    }
+
+    @GetMapping("/report/{id}")
+    public String indexReport(Model model, @PathVariable String id) {
+        Set<String> roles = GetAuthContext.getAuthorityDetail(GetAuthContext.getAuthorization());
+        if (roles.contains("ROLE_ADMIN")) {
+            model.addAttribute("reports", allReportService.findAllReport(id));
+            return "Admin/report";
+        }
+        if (roles.contains("ROLE_INFLUENCER")){
+            return "dashbord_influencer";
+        }
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        model.addAttribute("role", authentication.getPrincipal().toString());
+        return "error";
     }
 
     @GetMapping("/contract/{id}")
