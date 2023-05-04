@@ -57,7 +57,7 @@
                         <th class="border border-slate-400 text-sm">No</th>
                         <th class="border border-slate-400 text-sm">Influencer</th>
                         <th class="border border-slate-400 text-sm">link</th>
-                        <th class="border border-slate-400 text-sm">commment</th>
+                        <th class="border border-slate-400 text-sm">comment</th>
                         <th class="border border-slate-400 text-sm">like</th>
                         <th class="border border-slate-400 text-sm">share</th>
                         <th class="border border-slate-400 text-sm">save</th>
@@ -69,17 +69,17 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td class="border border-slate-400 text-sm"><span>1</span></td>
-                        <td class="border border-slate-400 text-sm"><span>ENGLISH</span></td>
-                        <td class="border border-slate-400 text-sm"><span>10</span></td>
-                        <td class="border border-slate-400 text-sm"><span>12</span></td>
-                        <td class="border border-slate-400 text-sm"><span>15</span></td>
-                        <td class="border border-slate-400 text-sm"><span>37</span></td>
-                        <td class="border border-slate-400 text-sm"><span>28</span></td>
-                        <td class="border border-slate-400 text-sm"><span>65</span></td>
-                        <td class="border border-slate-400 text-sm"><span>68</span></td>
-                        <td class="border border-slate-400 text-sm"><span>72</span></td>
-                        <td class="border border-slate-400 text-sm"><span>71.2</span></td>
+                        <td class="border border-slate-400 text-sm" ><span>1</span></td>
+                        <td class="border border-slate-400 text-sm" th:text="${report.createBy}"><span></span></td>
+                        <td class="border border-slate-400 text-sm" th:text="${report.link}"><span></span></td>
+                        <td class="border border-slate-400 text-sm" th:text="${report.commment}"><span></span></td>
+                        <td class="border border-slate-400 text-sm" th:text="${report.like}"><span></span></td>
+                        <td class="border border-slate-400 text-sm" th:text="${report.share}"><span></span></td>
+                        <td class="border border-slate-400 text-sm" th:text="${report.save}"><span></span></td>
+                        <td class="border border-slate-400 text-sm" th:text="${report.imression}"><span></span></td>
+                        <td class="border border-slate-400 text-sm" th:text="${report.reach}"><span></span></td>
+                        <td class="border border-slate-400 text-sm" th:text="${report.view}"><span></span></td>
+                        <td class="border border-slate-400 text-sm" th:text="${report.createDate}"><span></span></td>
                     </tr>
                     </tbody>
                 </table>

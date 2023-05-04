@@ -172,7 +172,7 @@
            class="table text-center table-striped table-bordered" >
         <thead class="" style="background-color: #9f8de7;">
         <tr>
-            <th>Id</th>
+            <th>No.</th>
             <th>Nama</th>
             <th>Start Date</th>
             <th>End Date</th>
@@ -196,7 +196,10 @@
                     dataSrc: 'data'
                 },
                 columns: [{
-                        data: 'id'
+                        "data": "null",
+                        render: function (data, type, row, meta) {
+                            return meta.row + 1;
+                        }
                     },
                     {
                         data: 'influencer.fullname'
