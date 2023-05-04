@@ -243,12 +243,14 @@
                         }
                     },
                     {
-                        "render": function ( data, type, row ) {
-                          return '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailCampaign" data-dos="' + row.dos + '" data-dont="' + row.dont + '">Detail</button>';
+                        "data": null,
+                        render: function ( data, type, row, meta ) {
+                          return `<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailCampaign" data-dos="' + row.dos + '" data-dont="' + row.dont + '">Detail</button>
+                          <br><button type="button" class="btn btn-warning" style="color:white;"  onclick="submitCampaign(`+ row.id +`)">Apply</button>
+                          `;
                         }
                       }
                 ]
-
             });
 
             $('#detailCampaign').on('show.bs.modal', function (event) {
@@ -260,8 +262,6 @@
                 modal.find('#dont').text(dont);
               });
             });
-
-
 
             function logoutReq() {
             Swal.fire({
@@ -284,7 +284,62 @@
             )
           }
         })
-      }
+      };
+
+      function submitCampaign(id) {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'info',
+                    showDenyButton: true,
+                    confirmButtonColor: '#3085d6',
+                    denyButtonColor: '#d33',
+                    confirmButtonText: 'Yes, submit it!',
+                    denyButtonText: 'Cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // document.getElementById(id).submit();
+                        $('#createContract').modal('hide');
+                        $('body').removeClass('modal-open');
+                        $('.modal-backdrop').remove();
+                        Swal.fire(
+                            'Submitted!',
+                            'Your data has been submitted.',
+                            'success'
+                        )
+                        console.log(id);
+                        submitCampaignProcess(id);
+
+                    } else if (result.isDenied) {
+                        Swal.fire(
+                            'Canceled!',
+                            'Your data has not been submitted.',
+                            'error'
+                        )
+                    }
+                })
+            };
+
+        function submitCampaignProcess(id) {
+                    $.ajax({
+                        method: "POST",
+                        url: '/contract/create/' + id.toString(),
+                        dataType: "json",
+                        data: JSON.stringify({
+                        }),
+                        contentType: "application/json",
+                        success: function (result) {
+                            console.log("SUCCESS : ", result);
+                            $('#createContract').modal('hide');
+                            window.location = window.location;
+                         //   getCampaign.ajax.reload();
+                         //   location.reload();
+                        }
+                    //    fail: function(xhr, textStatus, errorThrown){
+                     //       location.reload();
+                     //   }
+                    });
+            };
     </script>
 </th:block>
 

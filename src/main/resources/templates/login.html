@@ -177,12 +177,6 @@
               </div>
               <br>
             <div class="col">
-              <label class="form-label ">Your Influence Type:</label>
-                <select id="influenceType" name="influenceType">
-                    <option th:each="listTypes : ${listTypes.data}" th:text="${listTypes.name}" th:value="${listTypes.name}"></option>
-                </select>
-            </div>
-            <div class="col">
               <label class="form-label required-label">Your Username:</label>
               <input class="form-control" type="text" name="usernameRegist" id="usernameRegist" placeholder="Your Username"
                      required="" maxlength="16">
@@ -260,7 +254,6 @@
                 let fullname = $('#name').val();
                 let city = $('#city').val();
                 let birthDate = $('#birthDate').val();
-                let influenceType = $('#influenceType').val();
                 let username = $('#usernameRegist').val();
                 let detailAddress = $('#detailAddress').val();
                 if (email != '' && fullname != '' && username != '' && detailAddress !='') {
@@ -273,8 +266,7 @@
                             email: email,
                             username: username,
                             city: city,
-                            birthDate: birthDate,
-                            influenceType: influenceType
+                            birthDate: birthDate
                         }),
                         contentType: "application/json",
                         success: function (result) {

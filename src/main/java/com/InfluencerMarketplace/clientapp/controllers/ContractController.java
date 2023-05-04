@@ -33,7 +33,7 @@ public class ContractController {
 
     @PostMapping("/create/{id}")
     public @ResponseBody
-    ResponseMessage<String> createContract(@PathVariable Long id) {
+    ResponseMessage<String> createContract(@PathVariable String id) {
         return contractService.createContract(id);
     }
 
