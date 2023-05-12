@@ -1,12 +1,14 @@
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\config\RestTemplateConfig.java
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\InfluencerType.java
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\config\TemplateConfig.java
+C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\response\NotifUpdateResponse.java
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\controllers\ContractController.java
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\controllers\InfluencerLocationController.java
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\response\ResponseString.java
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\utils\GetAuthContext.java
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\controllers\ErrorController.java
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\config\RestTemplateRequestHeaderInterceptor.java
+C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\response\NotifReadResponse.java
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\controllers\ImageController.java
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\Campaign.java
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\response\FindAllOpenCampaignResponse.java
@@ -17,10 +19,12 @@ C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\I
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\request\CreateCampaignRequest.java
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\services\FilesStorageService.java
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\services\ReportService.java
+C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\controllers\NotificationController.java
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\request\ForgotPasswordRequest.java
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\Brand.java
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\ImageInfo.java
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\request\LoginRequest.java
+C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\Notification.java
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\InfluencerFilePath.java
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\services\BrandService.java
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\CampaignStatus.java
@@ -49,6 +53,7 @@ C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\I
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\InfluencerStatus.java
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\controllers\FileUploadController.java
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\response\FindAllTableCampaignResponse.java
+C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\services\NotificationService.java
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\request\ApproveContractRequest.java
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\request\RegisterInfluencerRequest.java
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\response\ResponseMessage.java

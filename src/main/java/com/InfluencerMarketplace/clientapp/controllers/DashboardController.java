@@ -25,16 +25,19 @@ public class DashboardController {
     private InfluencerTypeService influencerTypeService;
     private CampaignStatusService campaignStatusService;
     private AllReportService allReportService;
+    private NotificationService notificationService;
 
     @Autowired
     public DashboardController(InfluencerService influencerService, CampaignService campaignService, BrandService brandService,
-                               InfluencerTypeService influencerTypeService, CampaignStatusService campaignStatusService, AllReportService allReportService) {
+                               InfluencerTypeService influencerTypeService, CampaignStatusService campaignStatusService,
+                               AllReportService allReportService, NotificationService notificationService) {
         this.influencerService = influencerService;
         this.campaignService = campaignService;
         this.brandService = brandService;
         this.influencerTypeService = influencerTypeService;
         this.campaignStatusService = campaignStatusService;
         this.allReportService = allReportService;
+        this.notificationService = notificationService;
     }
 
     @GetMapping
@@ -47,6 +50,9 @@ public class DashboardController {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             model.addAttribute("username", authentication.getName());
             model.addAttribute("campaigns", campaignService.findAllOpenCampaign());
+            model.addAttribute("notificationAll", notificationService.findAllNotification());
+            model.addAttribute("notifications", notificationService.findNotification());
+            model.addAttribute("notificationRead", notificationService.findNotifRead());
             return "Influencer/homeNew";
         }
         model.addAttribute("campaigns", campaignService.findAllOpenCampaign());
@@ -60,6 +66,8 @@ public class DashboardController {
             return "dashboard_admin";
         }
         if (roles.contains("ROLE_INFLUENCER")){
+            model.addAttribute("notificationAll", notificationService.findAllNotification());
+            model.addAttribute("notifications", notificationService.findNotification());
             return "Influencer/campaignNew";
         }
         return "Anonym/campaign";
@@ -101,6 +109,8 @@ public class DashboardController {
             return "dashboard_admin";
         }
         if (roles.contains("ROLE_INFLUENCER")){
+            model.addAttribute("notificationAll", notificationService.findAllNotification());
+            model.addAttribute("notifications", notificationService.findNotification());
             return "Influencer/contractNew";
         }
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -119,12 +129,15 @@ public class DashboardController {
             model.addAttribute("profiles", influencerService.getMyProfileData());
             model.addAttribute("types", influencerService.getMyType());
             model.addAttribute("listTypes", influencerTypeService.findAll());
+            model.addAttribute("notificationAll", notificationService.findAllNotification());
+            model.addAttribute("notifications", notificationService.findNotification());
             return "Influencer/profileNew";
         }
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("role", authentication.getPrincipal().toString());
         return "error";
     }
+
 
 //    @GetMapping("/pdf")
 //    public String cobaPdf() {

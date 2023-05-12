@@ -49,9 +49,9 @@
 
             <!-- Academic Record Starts-->
             <div id="academicRecord" class="grid grid-flow-row auto-rows-max hover:auto-rows-min  prose-table:my-1 p-7 gap-2"
-                 th:each="report : ${reports.data}>
+                 >
                 <!-- Subject Scores Starts -->
-                <table class="table-fixed border-collapse border border-slate-400 text-center uppercase font-semibold">
+                <table class="table-fixed border-collapse border border-slate-400 text-center uppercase font-semibold" id="tableReport">
                     <thead>
                     <tr>
                         <th class="border border-slate-400 text-sm">No</th>
@@ -68,15 +68,14 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td class="border border-slate-400 text-sm" ><span>1</span></td>
+                    <tr th:each="report : ${reports.data}">
                         <td class="border border-slate-400 text-sm" th:text="${report.createBy}"><span></span></td>
                         <td class="border border-slate-400 text-sm" th:text="${report.link}"><span></span></td>
                         <td class="border border-slate-400 text-sm" th:text="${report.commment}"><span></span></td>
                         <td class="border border-slate-400 text-sm" th:text="${report.like}"><span></span></td>
                         <td class="border border-slate-400 text-sm" th:text="${report.share}"><span></span></td>
                         <td class="border border-slate-400 text-sm" th:text="${report.save}"><span></span></td>
-                        <td class="border border-slate-400 text-sm" th:text="${report.imression}"><span></span></td>
+                        <td class="border border-slate-400 text-sm" th:text="${report.impression}"><span></span></td>
                         <td class="border border-slate-400 text-sm" th:text="${report.reach}"><span></span></td>
                         <td class="border border-slate-400 text-sm" th:text="${report.view}"><span></span></td>
                         <td class="border border-slate-400 text-sm" th:text="${report.createDate}"><span></span></td>
@@ -92,6 +91,15 @@
         </div>
     </div>
 </div>
+
+<script>
+  const table = document.getElementById("tableReport");
+  const rows = table.getElementsByTagName("tr");
+  for(let i = 1; i < rows.length; i++) {
+    const cell = rows[i].insertCell(0);
+    cell.innerHTML = i;
+  }
+</script>
 </body>
 
 </html>
