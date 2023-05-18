@@ -70,7 +70,7 @@ a{
       top: 48px;
       right: -15px;
       user-select: none;
-      background: #fff;
+      background: #ffff;
       border: 1px solid #c7d8e2;
       width: 350px;
       height: auto;
@@ -147,7 +147,7 @@ a{
 }
 
 .notification_dd li.success .notify_status p{
-  color: #47da89;
+  color: #ffff;
 }
 
 .notification_dd li.failed .notify_status p{

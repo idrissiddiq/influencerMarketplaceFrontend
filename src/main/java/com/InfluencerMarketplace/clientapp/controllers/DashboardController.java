@@ -68,6 +68,7 @@ public class DashboardController {
         if (roles.contains("ROLE_INFLUENCER")){
             model.addAttribute("notificationAll", notificationService.findAllNotification());
             model.addAttribute("notifications", notificationService.findNotification());
+            model.addAttribute("notificationRead", notificationService.findNotifRead());
             return "Influencer/campaignNew";
         }
         return "Anonym/campaign";
@@ -111,6 +112,7 @@ public class DashboardController {
         if (roles.contains("ROLE_INFLUENCER")){
             model.addAttribute("notificationAll", notificationService.findAllNotification());
             model.addAttribute("notifications", notificationService.findNotification());
+            model.addAttribute("notificationRead", notificationService.findNotifRead());
             return "Influencer/contractNew";
         }
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -131,6 +133,7 @@ public class DashboardController {
             model.addAttribute("listTypes", influencerTypeService.findAll());
             model.addAttribute("notificationAll", notificationService.findAllNotification());
             model.addAttribute("notifications", notificationService.findNotification());
+            model.addAttribute("notificationRead", notificationService.findNotifRead());
             return "Influencer/profileNew";
         }
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

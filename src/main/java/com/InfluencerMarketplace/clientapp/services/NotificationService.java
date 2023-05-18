@@ -45,7 +45,7 @@ public class NotificationService {
         return response.getBody();
     }
     public NotifUpdateResponse findNotifUpdate(){
-        ResponseEntity<NotifUpdateResponse> response = restTemplate.exchange(url + "/update", HttpMethod.GET,
+        ResponseEntity<NotifUpdateResponse> response = restTemplate.exchange(url + "/update", HttpMethod.POST,
                 null, new ParameterizedTypeReference<NotifUpdateResponse>(){} );
         return response.getBody();
     }
