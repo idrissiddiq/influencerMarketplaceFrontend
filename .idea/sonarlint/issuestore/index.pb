@@ -15,8 +15,6 @@ Fsrc/main/java/com/InfluencerMarketplace/clientapp/models/Contract.java,7\7\770
 \src/main/java/com/InfluencerMarketplace/clientapp/models/request/ApproveContractRequest.java,2\1\21b2680862f064d008476ddb7f027e71a6570368
 x
 Hsrc/main/java/com/InfluencerMarketplace/clientapp/models/Influencer.java,4\2\4201ace440df14b6ac4568072e9346c6c1083361
-
-Osrc/main/java/com/InfluencerMarketplace/clientapp/services/RegisterService.java,e\5\e57868bb94360cfa05ad0b30baa0c6ff118f6c14
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 á
@@ -27,8 +25,6 @@ Rsrc/main/java/com/InfluencerMarketplace/clientapp/controllers/ErrorController.j
 Ssrc/main/java/com/InfluencerMarketplace/clientapp/services/FilesStorageService.java,2\d\2d9922d3dd70562a2dddc7adeee5c76472ad8522
 v
 Fsrc/main/java/com/InfluencerMarketplace/clientapp/models/Location.java,1\9\196e82ec331b726a37a42ab4b910f6a72c86287a
-Ü
-Vsrc/main/java/com/InfluencerMarketplace/clientapp/controllers/DashboardController.java,d\5\d51e1c7a7efd7786ca7b66fc51813799dbe8eaaa
 Ö
 Usrc/main/java/com/InfluencerMarketplace/clientapp/services/InfluencerTypeService.java,c\a\cac23027c2593d424599bc97de1f7bb8e6d98f94
 Å
