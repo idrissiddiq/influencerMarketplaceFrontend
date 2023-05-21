@@ -1,5 +1,6 @@
 package com.InfluencerMarketplace.clientapp.controllers;
 
+import com.InfluencerMarketplace.clientapp.models.request.ChangeRegisterRequest;
 import com.InfluencerMarketplace.clientapp.models.request.ForgotPasswordRequest;
 import com.InfluencerMarketplace.clientapp.models.request.RegisterBrandRequest;
 import com.InfluencerMarketplace.clientapp.models.request.RegisterInfluencerRequest;
@@ -43,5 +44,12 @@ public class RegisterController {
     public @ResponseBody
     ResponseMessage<RegisterBrandRequest> registerBrand(@RequestBody RegisterBrandRequest request) {
         return registerService.registerBrand(request);
+    }
+
+    @PutMapping("/influencer/change")
+    public @ResponseBody
+    String changeRegister(@RequestBody ChangeRegisterRequest request) {
+        System.out.println("UPDATE");
+        return registerService.changeRegister(request);
     }
 }

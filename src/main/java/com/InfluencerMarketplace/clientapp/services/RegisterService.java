@@ -1,5 +1,6 @@
 package com.InfluencerMarketplace.clientapp.services;
 
+import com.InfluencerMarketplace.clientapp.models.request.ChangeRegisterRequest;
 import com.InfluencerMarketplace.clientapp.models.request.ForgotPasswordRequest;
 import com.InfluencerMarketplace.clientapp.models.response.ResponseMessage;
 import com.InfluencerMarketplace.clientapp.models.request.RegisterBrandRequest;
@@ -66,6 +67,15 @@ public class RegisterService {
         return restTemplate
                 .exchange(urlBrand, HttpMethod.POST, entity, new ParameterizedTypeReference<ResponseMessage<RegisterBrandRequest>>() {
                 }).getBody();
+    }
+    public String changeRegister(ChangeRegisterRequest request) {
+
+        HttpEntity entity = new HttpEntity(request);
+        ResponseEntity<String> response = restTemplate
+                .exchange(url + "/change", HttpMethod.PUT, new HttpEntity(request), new
+                        ParameterizedTypeReference<String>() {});
+
+        return response.getBody();
     }
 
 }

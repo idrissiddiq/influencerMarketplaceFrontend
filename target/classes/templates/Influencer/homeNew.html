@@ -165,10 +165,10 @@
         <li class="nav-item">
           <div class="navbar_right">
             <div class="notifications" >
-              <div class="icon_wrap" style="margin-top: 5px;"  th:each="notifRead : ${notificationRead} "><i class="far fa-bell"></i><span  class="badge" style="background-color: #e60000; color: white;
+              <div class="icon_wrap" id="notifUpdate" style="margin-top: 5px;"  th:each="notifRead : ${notificationRead} "><i class="far fa-bell"></i><div  th:if="${notifRead.message == 'UNREAD'}"><span  class="badge" style="background-color: #e60000; color: white;
                             font-size: 10px; padding: 1px 3px; border-radius: 50%; position: absolute;
-                            top: 2px; right: -5px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);" th:text="${notifRead.data}"></span></div>
-              <div class="notification_dd"  id="notifUpdate">
+                            top: 2px; right: -5px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);" th:text="${notifRead.data}"></span></div></div>
+              <div class="notification_dd"  >
                 <ul class="notification_ul" th:each="notification : ${notifications.data}"  >
 <!--                  <li class="starbucks success"  th:if="${notification.status == R}" >-->
 <!--                    <div class="notify_data">-->
@@ -278,8 +278,9 @@
 
   // Add an onclick event listener
   notifUpdate.onclick = function() {
+      console.log('notif');
       $.ajax({
-      url: 'http://localhost:8080/api/notification/update' ,
+      url: '/notification/update' ,
       type: 'POST',
       success: function(response) {
         console.log(response);

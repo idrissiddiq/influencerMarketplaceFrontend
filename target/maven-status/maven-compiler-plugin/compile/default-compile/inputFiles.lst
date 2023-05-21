@@ -60,6 +60,7 @@ C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\I
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\services\JobService.java
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\services\InfluencerTypeService.java
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\request\EditBrandProfileRequest.java
+C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\request\ChangeRegisterRequest.java
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\controllers\RegisterController.java
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\models\request\RegisterBrandRequest.java
 C:\Users\USER\Documents\GitHub\influencerMarketplaceFrontend\src\main\java\com\InfluencerMarketplace\clientapp\exception\FileUploadExceptionAdvice.java

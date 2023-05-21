@@ -5,6 +5,7 @@ com\InfluencerMarketplace\clientapp\models\response\ResponseData.class
 com\InfluencerMarketplace\clientapp\controllers\DashboardController.class
 com\InfluencerMarketplace\clientapp\controllers\ErrorController.class
 com\InfluencerMarketplace\clientapp\models\response\NotifUpdateResponse.class
+com\InfluencerMarketplace\clientapp\models\request\ChangeRegisterRequest.class
 com\InfluencerMarketplace\clientapp\services\InfluencerService$8.class
 com\InfluencerMarketplace\clientapp\models\request\RegisterInfluencerRequest.class
 com\InfluencerMarketplace\clientapp\services\JobService$5.class
@@ -67,11 +68,13 @@ com\InfluencerMarketplace\clientapp\services\NotificationService$2.class
 com\InfluencerMarketplace\clientapp\services\InfluencerLocationService$2.class
 com\InfluencerMarketplace\clientapp\utils\GetAuthContext.class
 com\InfluencerMarketplace\clientapp\models\response\FindAllOpenCampaignResponse$FindAllOpenCampaignResponseBuilder.class
+com\InfluencerMarketplace\clientapp\models\request\ChangeRegisterRequest$ChangeRegisterRequestBuilder.class
 com\InfluencerMarketplace\clientapp\models\request\CreateCampaignRequest$CreateCampaignRequestBuilder.class
 com\InfluencerMarketplace\clientapp\models\response\NotifUpdateResponse$NotifUpdateResponseBuilder.class
 com\InfluencerMarketplace\clientapp\services\InfluencerLocationService$3.class
 com\InfluencerMarketplace\clientapp\models\InfluencerFilePath.class
 com\InfluencerMarketplace\clientapp\models\request\ChangeProfilePhotoRequest$ChangeProfilePhotoRequestBuilder.class
+com\InfluencerMarketplace\clientapp\services\RegisterService$5.class
 com\InfluencerMarketplace\clientapp\services\NotificationService$4.class
 com\InfluencerMarketplace\clientapp\config\TemplateConfig.class
 com\InfluencerMarketplace\clientapp\services\BrandService$2.class
