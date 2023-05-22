@@ -301,10 +301,10 @@
 	  </div>
 	 <div align="center">		 
 		<ul>
-			<li id="youtube" th:if="${profile.youtube != null}"><a th:href="${profile.youtube}"><img src="/images/youtube.png" width="35px" height="35px"><a></li>
-			<li id="tiktok" th:if="${profile.tiktok != null}"><a th:href="${profile.tiktok}" ><img src="/images/tiktok.png" width="25px" height="25px"><a></li>
-			<li id="instagram" th:if="${profile.instagram != null}"><a th:href="${profile.instagram}" ><img src="/images/instagram.png" width="25px" height="25px"><a></li>
-			<li id="facebook" th:if="${profile.facebook != null}"><a th:href="${profile.facebook}" ><img src="/images/facebook.png" width="25px" height="25px"><a></li>
+			<li id="youtube" th:if="${profile.youtube != ''}"><a th:href="${profile.youtube}"><img src="/images/youtube.png" width="35px" height="35px"><a></li>
+			<li id="tiktok" th:if="${profile.tiktok != ''}"><a th:href="${profile.tiktok}" ><img src="/images/tiktok.png" width="25px" height="25px"><a></li>
+			<li id="instagram" th:if="${profile.instagram != ''}"><a th:href="${profile.instagram}" ><img src="/images/instagram.png" width="25px" height="25px"><a></li>
+			<li id="facebook" th:if="${profile.facebook != ''}"><a th:href="${profile.facebook}" ><img src="/images/facebook.png" width="25px" height="25px"><a></li>
 		</ul>
 	 </div>
 	 <br>

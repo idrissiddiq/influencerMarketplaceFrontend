@@ -252,21 +252,33 @@
             function registInfluencerProcess() {
                 let email = $('#emailRegist').val();
                 let fullname = $('#name').val();
-                let city = $('#city').val();
+                let province = $('#influencerLocation').val();
+                let city = $('#locationKab').val();
                 let birthDate = $('#birthDate').val();
                 let username = $('#usernameRegist').val();
                 let detailAddress = $('#detailAddress').val();
+                let youtube = $('#nameYT').val();
+                let tiktok = $('#nameTT').val();
+                let instagram = $('#nameIG').val();
+                let facebook = $('#nameFB').val();
                 if (email != '' && fullname != '' && username != '' && detailAddress !='') {
                     $.ajax({
                         method: "POST",
                         url: '/register/influencer',
                         dataType: "json",
                         data: JSON.stringify({
-                            fullname: fullname,
                             email: email,
-                            username: username,
+                            fullname: fullname,
+                            province: province,
                             city: city,
-                            birthDate: birthDate
+                            birthDate: birthDate,
+                            username: username,
+                            detailAddress: detailAddress,
+                            youtube: youtube,
+                            tiktok: tiktok,
+                            instagram: instagram,
+                            facebook: facebook,
+
                         }),
                         contentType: "application/json",
                         success: function (result) {
