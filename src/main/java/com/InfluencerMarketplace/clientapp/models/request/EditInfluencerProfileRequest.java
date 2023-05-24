@@ -16,5 +16,10 @@ public class EditInfluencerProfileRequest {
     private String email;
     private String city;
     private LocalDate birthDate;
-    private String influenceType;
+    private String province;
+    private String detailAddress;
+    private String instagram;
+    private String tiktok;
+    private String youtube;
+    private String facebook;
 }

@@ -26,11 +26,12 @@ public class DashboardController {
     private CampaignStatusService campaignStatusService;
     private AllReportService allReportService;
     private NotificationService notificationService;
+    private InfluencerLocationService influencerLocationService;
 
     @Autowired
     public DashboardController(InfluencerService influencerService, CampaignService campaignService, BrandService brandService,
                                InfluencerTypeService influencerTypeService, CampaignStatusService campaignStatusService,
-                               AllReportService allReportService, NotificationService notificationService) {
+                               AllReportService allReportService, NotificationService notificationService, InfluencerLocationService influencerLocationService) {
         this.influencerService = influencerService;
         this.campaignService = campaignService;
         this.brandService = brandService;
@@ -38,6 +39,8 @@ public class DashboardController {
         this.campaignStatusService = campaignStatusService;
         this.allReportService = allReportService;
         this.notificationService = notificationService;
+        this.influencerLocationService = influencerLocationService;
+
     }
 
     @GetMapping
@@ -134,6 +137,7 @@ public class DashboardController {
             model.addAttribute("notificationAll", notificationService.findAllNotification());
             model.addAttribute("notifications", notificationService.findNotification());
             model.addAttribute("notificationRead", notificationService.findNotifRead());
+            model.addAttribute("listProv", influencerLocationService.provinsi());
             return "Influencer/profileNew";
         }
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

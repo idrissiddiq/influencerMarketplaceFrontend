@@ -1,5 +1,6 @@
 package com.InfluencerMarketplace.clientapp.services;
 
+import com.InfluencerMarketplace.clientapp.models.Job;
 import com.InfluencerMarketplace.clientapp.models.Location;
 import com.InfluencerMarketplace.clientapp.models.response.ResponseListData;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,14 @@ public class InfluencerLocationService {
     @Autowired
     public InfluencerLocationService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
+    }
+
+
+    public ResponseListData<Location> getProvince(String name){
+        ResponseEntity<ResponseListData<Location>> response = restTemplate.exchange(url+"/search/" + name, HttpMethod.GET,
+                null, new ParameterizedTypeReference<ResponseListData<Location>>(){} );
+
+        return response.getBody();
     }
 
     public ResponseListData<Location> provinsi(){

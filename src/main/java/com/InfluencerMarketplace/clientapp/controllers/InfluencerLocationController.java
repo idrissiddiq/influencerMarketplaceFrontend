@@ -21,6 +21,12 @@ public class InfluencerLocationController {
         this.influencerLocationService = influencerLocationService;
     }
 
+    @GetMapping("/search/{name}")
+    public @ResponseBody
+    ResponseListData<Location> getProvince(@PathVariable String name){
+        return influencerLocationService.getProvince(name);
+    }
+
     @GetMapping("/{id}")
     public @ResponseBody
     ResponseListData<Location> kecamatan(@PathVariable String id){

@@ -4,6 +4,10 @@
     <title>My Social Media Profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+    .required-label::after {
+    content: " *";
+    color: red;
+  }
       /* Add some styles for the page */
       
 	ul{
@@ -310,7 +314,7 @@
 	 <br>
 	 <div align="center">
 		<button class="btn btnsmall" data-bs-toggle="modal" data-bs-target="#edit-profile" style="color:white; background-color: #ff6e6e;"  onclick="showMyProfileData();">Manage My Account<i class="fas fa-pencil"></i></button>
-		<button class="btn btnsmall" data-bs-toggle="modal" data-bs-target="#edit-akun" style="color:white; background-color: #ff6e6e;"><i class="fa fa-pencil"></i>Change Password</i></button>
+		<button class="btn btnsmall" data-bs-toggle="modal" data-bs-target="#edit-akun" style="color:white; background-color: #ff6e6e;" ><i class="fa fa-pencil"></i>Change Password</i></button>
 	</div>
 </div>
 <!-- Modal Edit prifile -->
@@ -327,22 +331,33 @@
             <div class="error-message">
             </div>
             <div class="col">
-              <label class="form-label ">Name:</label>
+              <label class="form-label required-label">Name:</label>
               <input class="form-control" type="text" name="nama" id="edit_name" placeholder="Your Name"
                      required="">
             </div>
 			<div class="col">
-              <label class="form-label ">Birth Date:</label>
+              <label class="form-label required-label">Birth Date:</label>
               <input class="form-control" type="text" name="birthDate" id="edit_birth" placeholder="Your Birth Date"
                      required="">
             </div>
             <div class="col">
-              <label class="form-label ">Address:</label>
+              <label class="form-label required-label">Address:</label>
               <input class="form-control" type="text" name="address" id="edit_address" placeholder="Your Address"
                      required="">
             </div>
+              <div class="col">
+                  <label class="form-label ">Province:</label>
+                  <select id="influencerLocation" name="influencerLocation" onchange="sendSelectedProv()">
+                      <option th:each="listProv : ${listProv.data}" th:text="${listProv.name}" th:value="${listProv.id}"></option>
+                  </select>
+              </div>
+              <div class="col">
+                  <label class="form-label ">Kabupaten:</label>
+                  <select id="locationKab" name="locationKab">
+                  </select>
+              </div>
 			<div class="col">
-              <label class="form-label ">Email:</label>
+              <label class="form-label required-label">Email:</label>
               <input class="form-control" type="text" name="email" id="edit_email" placeholder="Your Email"
                      required="">
             </div><br>
@@ -416,17 +431,17 @@
             <div class="error-message">
             </div>
             <div class="col">
-              <label class="form-label ">Current password:</label>
+              <label class="form-label required-label">Current password:</label>
               <input class="form-control" type="text" name="title" id="current_password" placeholder="Your Password"
                      required="">
             </div>
             <div class="col">
-              <label class="form-label ">New Password:</label>
+              <label class="form-label required-label">New Password:</label>
               <input class="form-control" type="text" name="description" id="new_password" placeholder="New Password"
                      required="">
             </div>
 			<div class="col">
-              <label class="form-label ">Confirm New Password:</label>
+              <label class="form-label required-label">Confirm New Password:</label>
               <input class="form-control" type="text" name="description" id="confirm_password" placeholder="Confirm New Password"
                      required="">
             </div>
@@ -530,14 +545,16 @@
 
             function editMyProfileProcess() {
                 let email = $('#edit_email').val();
-                let name = $('#edit_name').val();
+                let fullname = $('#edit_name').val();
                 let detailAddress = $('#edit_address').val();
+                let province = $('#influencerLocation').val();
+                let city = $('#locationKab').val();
                 let birthDate = $('#edit_birth').val();
                  let youtube = $('#nameYT').val();
                  let instagram = $('#nameIG').val();
                  let facebook = $('#nameFB').val();
                  let tiktok = $('#nameTT').val();
-                if (email != '') {
+                if (email != '' && fullname != '' && birthDate != '' && detailAddress !='') {
                     $.ajax({
                         method: "PUT",
                         url: '/influencer/profile',
@@ -569,6 +586,26 @@
                     $('#editMyProfile').modal('hide');
                 }
             };
+
+            var dropdown = document.getElementById("locationKab");
+            var prov = document.getElementById("influencerLocation");
+
+      function sendSelectedProv() {
+      dropdown.innerHTML = "";
+  var selectedOption = document.getElementById("influencerLocation").value;
+  fetch('/location/' + selectedOption)
+  .then(response => response.json())
+  .then(data => {
+    var options = data.data;
+    for (var i = 0; i < options.length; i++) {
+      var option = document.createElement("option");
+      option.value = options[i].name;
+      option.text = options[i].name;
+      dropdown.add(option);
+    }
+  })
+  .catch(error => console.error(error));
+};
 
             function updatePassword() {
                 Swal.fire({
@@ -635,24 +672,44 @@
                 }
             };
 
-		function showMyProfileData() {
+            let province = null ;
+
+            function showMyProfileData() {
                 $.ajax({
                     method: "GET",
                     url: '/influencer/profile',
                     dataType: "json",
                     contentType: "application/json",
                     success: function (result) {
+                        province = ${result.data.province};
                         $('#edit_name').val(`${result.data.fullname}`);
                         $('#edit_email').val(`${result.data.email}`);
                         $('#edit_birth').val(`${result.data.birthDate}`);
                         $('#edit_address').val(`${result.data.detailAddress}`);
+                        $('#influencerLocation').val(`${result.data.province}`);
+                        $('#locationKab').val(`${result.data.city}`);
                         $('#nameYT').val(`${result.data.youtube}`);
                         $('#nameFB').val(`${result.data.facebook}`);
                         $('#nameTT').val(`${result.data.tiktok}`);
                         $('#nameIG').val(`${result.data.instagram}`);
+
+                        showMyProvince();
                     }
+
                 })
-            }
+            };
+            function showMyProvince(){
+                $.ajax({
+                    method: "GET",
+                    url: '/location/search/' + province,
+                    dataType: "json",
+                    contentType: "application/json",
+                    success: function (result) {
+                        prov.value= ${result.data.id};
+                        var show = prov.options[prov.selectedIndex];
+                        show.text = ${result.data.name};
+                    }
+            };
 
 		function logoutReq() {
             Swal.fire({
