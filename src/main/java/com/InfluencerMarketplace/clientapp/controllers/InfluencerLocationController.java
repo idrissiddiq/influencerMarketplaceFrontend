@@ -2,6 +2,7 @@ package com.InfluencerMarketplace.clientapp.controllers;
 
 import com.InfluencerMarketplace.clientapp.models.Influencer;
 import com.InfluencerMarketplace.clientapp.models.Location;
+import com.InfluencerMarketplace.clientapp.models.response.ResponseData;
 import com.InfluencerMarketplace.clientapp.models.response.ResponseListData;
 import com.InfluencerMarketplace.clientapp.services.InfluencerLocationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,14 @@ public class InfluencerLocationController {
 
     @GetMapping("/search/{name}")
     public @ResponseBody
-    ResponseListData<Location> getProvince(@PathVariable String name){
+    ResponseData<Location> getProvince(@PathVariable String name){
         return influencerLocationService.getProvince(name);
+    }
+
+    @GetMapping("/search/{id}/{name}")
+    public @ResponseBody
+    ResponseData<Location> getKab(@PathVariable Long id, String name){
+        return influencerLocationService.getKab(id, name);
     }
 
     @GetMapping("/{id}")

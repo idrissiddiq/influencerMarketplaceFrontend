@@ -2,6 +2,7 @@ package com.InfluencerMarketplace.clientapp.services;
 
 import com.InfluencerMarketplace.clientapp.models.Job;
 import com.InfluencerMarketplace.clientapp.models.Location;
+import com.InfluencerMarketplace.clientapp.models.response.ResponseData;
 import com.InfluencerMarketplace.clientapp.models.response.ResponseListData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,9 +25,16 @@ public class InfluencerLocationService {
     }
 
 
-    public ResponseListData<Location> getProvince(String name){
-        ResponseEntity<ResponseListData<Location>> response = restTemplate.exchange(url+"/search/" + name, HttpMethod.GET,
-                null, new ParameterizedTypeReference<ResponseListData<Location>>(){} );
+    public ResponseData<Location> getProvince(String name){
+        ResponseEntity<ResponseData<Location>> response = restTemplate.exchange(url+"/search/" + name, HttpMethod.GET,
+                null, new ParameterizedTypeReference<ResponseData<Location>>(){} );
+
+        return response.getBody();
+    }
+
+    public ResponseData<Location> getKab(Long id, String name){
+        ResponseEntity<ResponseData<Location>> response = restTemplate.exchange(url+"/search/" + id.toString() + "/" + name, HttpMethod.GET,
+                null, new ParameterizedTypeReference<ResponseData<Location>>(){} );
 
         return response.getBody();
     }

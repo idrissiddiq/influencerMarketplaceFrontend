@@ -56,6 +56,7 @@ com\InfluencerMarketplace\clientapp\models\response\ResponseData$ResponseDataBui
 com\InfluencerMarketplace\clientapp\services\BrandService$3.class
 com\InfluencerMarketplace\clientapp\models\Brand.class
 com\InfluencerMarketplace\clientapp\services\RegisterService$3.class
+com\InfluencerMarketplace\clientapp\services\InfluencerLocationService$5.class
 com\InfluencerMarketplace\clientapp\models\request\ApproveContractRequest$ApproveContractRequestBuilder.class
 com\InfluencerMarketplace\clientapp\models\response\FindAllInfluencerResponse.class
 com\InfluencerMarketplace\clientapp\controllers\ContractController.class
@@ -108,6 +109,7 @@ com\InfluencerMarketplace\clientapp\models\request\LoginRequest$LoginRequestBuil
 com\InfluencerMarketplace\clientapp\models\request\ReportContractRequest.class
 com\InfluencerMarketplace\clientapp\models\request\EditInfluencerProfileRequest$EditInfluencerProfileRequestBuilder.class
 com\InfluencerMarketplace\clientapp\services\BrandService.class
+com\InfluencerMarketplace\clientapp\services\InfluencerLocationService$6.class
 com\InfluencerMarketplace\clientapp\models\CampaignStatus.class
 com\InfluencerMarketplace\clientapp\config\WebSecurityConfig.class
 com\InfluencerMarketplace\clientapp\models\response\FindAllTableCampaignResponse$FindAllTableCampaignResponseBuilder.class
