@@ -30,7 +30,7 @@ public class InfluencerLocationController {
 
     @GetMapping("/search/{id}/{name}")
     public @ResponseBody
-    ResponseData<Location> getKab(@PathVariable Long id, String name){
+    ResponseData<Location> getKab(@PathVariable Long id, @PathVariable String name){
         return influencerLocationService.getKab(id, name);
     }
 

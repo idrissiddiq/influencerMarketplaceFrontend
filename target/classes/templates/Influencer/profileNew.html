@@ -607,6 +607,26 @@
   .catch(error => console.error(error));
 };
 
+    function sendSelectedKab(id, name) {
+      dropdown.innerHTML = "";
+  fetch('/location/' + id)
+  .then(response => response.json())
+  .then(data => {
+    var options = data.data;
+    for (var i = 0; i < options.length; i++) {
+      var option = document.createElement("option");
+      option.value = options[i].name;
+      option.text = options[i].name;
+      dropdown.add(option);
+    }
+    dropdown.value= name;
+    console.log(name);
+    var show = dropdown.options[dropdown.selectedIndex];
+    show.text = name;
+  })
+  .catch(error => console.error(error));
+};
+
             function updatePassword() {
                 Swal.fire({
                     title: 'Are you sure?',
@@ -672,7 +692,8 @@
                 }
             };
 
-            let province = null ;
+            var province;
+            var kabupaten;
 
             function showMyProfileData() {
                 $.ajax({
@@ -681,7 +702,8 @@
                     dataType: "json",
                     contentType: "application/json",
                     success: function (result) {
-                        province = ${result.data.province};
+                        province = result.data.province;
+                        kabupaten = result.data.city;
                         $('#edit_name').val(`${result.data.fullname}`);
                         $('#edit_email').val(`${result.data.email}`);
                         $('#edit_birth').val(`${result.data.birthDate}`);
@@ -693,23 +715,39 @@
                         $('#nameTT').val(`${result.data.tiktok}`);
                         $('#nameIG').val(`${result.data.instagram}`);
 
-                        showMyProvince();
+                        showMyProvince(result.data.city);
                     }
 
-                })
-            };
-            function showMyProvince(){
+                });
+            }
+            function showMyProvince(name){
                 $.ajax({
                     method: "GET",
                     url: '/location/search/' + province,
                     dataType: "json",
                     contentType: "application/json",
                     success: function (result) {
-                        prov.value= ${result.data.id};
+                        prov.value= result.data.id;
                         var show = prov.options[prov.selectedIndex];
-                        show.text = ${result.data.name};
+                        show.text = result.data.name;
+
+                        sendSelectedKab(result.data.id, name);
                     }
+                });
             };
+            function showMyKab(id){
+                $.ajax({
+                    method: "GET",
+                    url: '/location/search/' + id + '/' + kabupaten,
+                    dataType: "json",
+                    contentType: "application/json",
+                    success: function (result) {
+                        dropdown.value= result.data.name;
+                        var show = dropdown.options[dropdown.selectedIndex];
+                        show.text = result.data.name;
+                    }
+                });
+            }
 
 		function logoutReq() {
             Swal.fire({

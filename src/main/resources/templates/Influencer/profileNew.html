@@ -607,7 +607,7 @@
   .catch(error => console.error(error));
 };
 
-    function sendSelectedKab(id) {
+    function sendSelectedKab(id, name) {
       dropdown.innerHTML = "";
   fetch('/location/' + id)
   .then(response => response.json())
@@ -619,6 +619,10 @@
       option.text = options[i].name;
       dropdown.add(option);
     }
+    dropdown.value= name;
+    console.log(name);
+    var show = dropdown.options[dropdown.selectedIndex];
+    show.text = name;
   })
   .catch(error => console.error(error));
 };
@@ -711,12 +715,12 @@
                         $('#nameTT').val(`${result.data.tiktok}`);
                         $('#nameIG').val(`${result.data.instagram}`);
 
-                        showMyProvince();
+                        showMyProvince(result.data.city);
                     }
 
                 });
             }
-            function showMyProvince(){
+            function showMyProvince(name){
                 $.ajax({
                     method: "GET",
                     url: '/location/search/' + province,
@@ -727,8 +731,7 @@
                         var show = prov.options[prov.selectedIndex];
                         show.text = result.data.name;
 
-                        sendSelectedKab(result.data.id);
-                        showMyKab(result.data.id);
+                        sendSelectedKab(result.data.id, name);
                     }
                 });
             };
