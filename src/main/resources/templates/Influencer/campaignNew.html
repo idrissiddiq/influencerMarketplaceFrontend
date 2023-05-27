@@ -349,12 +349,10 @@
 
   // Add an onclick event listener
   notifUpdate.onclick = function() {
-      console.log('notif');
       $.ajax({
       url: '/notification/update' ,
       type: 'POST',
       success: function(response) {
-        console.log(response);
       },
       error: function(error) {
         console.error(error);
@@ -406,7 +404,6 @@
                             'Your data has been submitted.',
                             'success'
                         )
-                        console.log(id);
                         submitCampaignProcess(id);
 
                     } else if (result.isDenied) {
@@ -428,7 +425,6 @@
                         }),
                         contentType: "application/json",
                         success: function (result) {
-                            console.log("SUCCESS : ", result);
                             $('#createContract').modal('hide');
                             window.location = window.location;
                          //   getCampaign.ajax.reload();

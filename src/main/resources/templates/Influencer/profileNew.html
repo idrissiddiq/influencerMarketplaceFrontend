@@ -337,7 +337,7 @@
             </div>
 			<div class="col">
               <label class="form-label required-label">Birth Date:</label>
-              <input class="form-control" type="text" name="birthDate" id="edit_birth" placeholder="Your Birth Date"
+              <input class="form-control" type="date" name="birthDate" id="edit_birth" placeholder="Your Birth Date"
                      required="">
             </div>
             <div class="col">
@@ -497,12 +497,10 @@
 
   // Add an onclick event listener
   notifUpdate.onclick = function() {
-      console.log('notif');
       $.ajax({
       url: '/notification/update' ,
       type: 'POST',
       success: function(response) {
-        console.log(response);
       },
       error: function(error) {
         console.error(error);
@@ -560,9 +558,11 @@
                         url: '/influencer/profile',
                         dataType: "json",
                         data: JSON.stringify({
-                            name: name,
+                            fullname: fullname,
                             email: email,
                             detailAddress: detailAddress,
+                            province: province,
+                            city: city,
                             birthDate: birthDate,
                             youtube: youtube,
                             instagram: instagram,
@@ -571,7 +571,6 @@
                         }),
                         contentType: "application/json",
                         success: function (result) {
-                            console.log("SUCCESS : ", result);
                             $('#editMyProfile').modal('hide');
                             window.location = window.location;
                          //   getCampaign.ajax.reload();
@@ -582,7 +581,6 @@
                      //   }
                     });
                 } else {
-                    console.log("Error");
                     $('#editMyProfile').modal('hide');
                 }
             };
@@ -620,7 +618,6 @@
       dropdown.add(option);
     }
     dropdown.value= name;
-    console.log(name);
     var show = dropdown.options[dropdown.selectedIndex];
     show.text = name;
   })
@@ -664,7 +661,6 @@
 
                 let oldPassword = $('#current_password').val();
                 let newPassword = $('#new_password').val();
-                console.log(oldPassword);
                 if (newPassword == $('#confirm_password').val()) {
                     $.ajax({
                         method: "PUT",
@@ -676,7 +672,6 @@
                         }),
                         contentType: "application/json",
                         success: function (result) {
-                            console.log("SUCCESS : ", result);
                             $('#updatePassword').modal('hide');
                             window.location = window.location;
                          //   getCampaign.ajax.reload();
@@ -687,7 +682,6 @@
                      //   }
                     });
                 } else {
-                    console.log("Error");
                     $('#updatePassword').modal('hide');
                 }
             };

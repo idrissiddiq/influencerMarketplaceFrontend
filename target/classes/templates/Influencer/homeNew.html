@@ -278,12 +278,10 @@
 
   // Add an onclick event listener
   notifUpdate.onclick = function() {
-      console.log('notif');
       $.ajax({
       url: '/notification/update' ,
       type: 'POST',
       success: function(response) {
-        console.log(response);
       },
       error: function(error) {
         console.error(error);

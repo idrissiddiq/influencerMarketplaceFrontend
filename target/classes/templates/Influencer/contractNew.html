@@ -362,8 +362,6 @@
             function submitInfluencerProcess(id) {
                 let link = $('#link').val();
                 let contractId = id.toString();
-                console.log(link);
-                console.log(contractId);
                 if (link != '') {
                     $.ajax({
                         method: "POST",
@@ -375,7 +373,6 @@
                         }),
                         contentType: "application/json",
                         success: function (result) {
-                            console.log("SUCCESS : ", result);
                             $('#submitStatus').modal('hide');
                            // window.location = window.location;
                         }
@@ -392,12 +389,10 @@
 
   // Add an onclick event listener
   notifUpdate.onclick = function() {
-      console.log('notif');
       $.ajax({
       url: '/notification/update' ,
       type: 'POST',
       success: function(response) {
-        console.log(response);
       },
       error: function(error) {
         console.error(error);
