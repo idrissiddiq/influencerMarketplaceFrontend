@@ -170,17 +170,6 @@
                             top: 2px; right: -5px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);" th:text="${notifRead.data}"></span></div></div>
               <div class="notification_dd"  >
                 <ul class="notification_ul" th:each="notification : ${notifications.data}"  >
-<!--                  <li class="starbucks success"  th:if="${notification.status == R}" >-->
-<!--                    <div class="notify_data">-->
-<!--                      <div class="title"th:text="${notification.message}">-->
-<!--                      </div>-->
-<!--                      <div class="sub_title" th:text="${notification.createDate}">-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                    <div class="notify_status">-->
-<!--                      <p>~</p>-->
-<!--                    </div>-->
-<!--                  </li>-->
                     <li class="starbucks failed" >
                       <div class="notify_data">
                         <div class="title"th:text="${notification.message}">
@@ -196,11 +185,6 @@
                       </div>
                     </li>
                 </ul>
-<!--                <ul class="notification_ul">-->
-<!--                  <li class="show_all">-->
-<!--                    <p class="link" >Show All Activities</p>-->
-<!--                  </li>-->
-<!--                </ul>-->
               </div>
             </div>
           </div>
@@ -292,7 +276,7 @@
 
   function logoutReq() {
             Swal.fire({
-            title: 'Are you sure you want to Logout?',
+            title: 'Are you sure you want to log-out?',
             icon: 'warning',
             showDenyButton: true,
             confirmButtonColor: '#3085d6',

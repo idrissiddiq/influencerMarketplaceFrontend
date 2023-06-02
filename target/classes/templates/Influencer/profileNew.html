@@ -187,7 +187,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.8/dist/sweetalert2.all.min.js"
             integrity="sha256-voaY/mFuF2+Kg/L56O9wmuwvhHf3XcaxCI/Ld9UR+d4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.8/dist/sweetalert2.min.js"
-            integrity="sha256-UEAn96ePJjqidezAU7lnOYeJEArgg4hsNGbwqmcyPrY=" crossorigin="anonymous"></script>
+            integrity="sha256-UEAn96ePJjqidezAU7lnOYeJEArgg4hsNGbwqmcyPrY=" ccrossorigin="anonymous"></script>
 		  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/solid.min.css" rel="stylesheet" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/svg-with-js.min.css" rel="stylesheet" />
@@ -249,9 +249,6 @@
                                             <p style="font-size: 1px;"></p>
                                         </div>
                                     </li>
-<!--                                    <li class="show_all">-->
-<!--                                        <p class="link"  >Show All Activities</p>-->
-<!--                                    </li>-->
                                 </ul>
                             </div>
                         </div>
@@ -361,17 +358,6 @@
               <input class="form-control" type="text" name="email" id="edit_email" placeholder="Your Email"
                      required="">
             </div><br>
-<!--			<div class="col">-->
-<!--              <label class="form-label ">City / kabupaten :</label>-->
-<!--                <select id="influencerLocation" name="influencerLocation" onchange="sendSelectedProv()">-->
-<!--                </select>-->
-<!--            </div><br>-->
-<!--			<div class="col">-->
-<!--              <label class="form-label ">Province:</label>-->
-<!--                <select id="influencerLocation" name="influencerLocation" onchange="sendSelectedProv()">-->
-<!--                </select>-->
-<!--            </div>-->
-<!--			<br>-->
 			<div class="col">
 				<label class="form-label ">Your Sosmed:</label>
 				<div class="col">
@@ -573,12 +559,7 @@
                         success: function (result) {
                             $('#editMyProfile').modal('hide');
                             window.location = window.location;
-                         //   getCampaign.ajax.reload();
-                         //   location.reload();
                         }
-                    //    fail: function(xhr, textStatus, errorThrown){
-                     //       location.reload();
-                     //   }
                     });
                 } else {
                     $('#editMyProfile').modal('hide');
@@ -674,12 +655,6 @@
                         success: function (result) {
                             $('#updatePassword').modal('hide');
                             window.location = window.location;
-                         //   getCampaign.ajax.reload();
-                         //   location.reload();
-                        }
-                    //    fail: function(xhr, textStatus, errorThrown){
-                     //       location.reload();
-                     //   }
                     });
                 } else {
                     $('#updatePassword').modal('hide');

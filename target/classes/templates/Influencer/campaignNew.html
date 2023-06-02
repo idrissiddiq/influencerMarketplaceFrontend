@@ -395,7 +395,6 @@
                     denyButtonText: 'Cancel'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        // document.getElementById(id).submit();
                         $('#createContract').modal('hide');
                         $('body').removeClass('modal-open');
                         $('.modal-backdrop').remove();
@@ -427,12 +426,7 @@
                         success: function (result) {
                             $('#createContract').modal('hide');
                             window.location = window.location;
-                         //   getCampaign.ajax.reload();
-                         //   location.reload();
                         }
-                    //    fail: function(xhr, textStatus, errorThrown){
-                     //       location.reload();
-                     //   }
                     });
             };
     </script>

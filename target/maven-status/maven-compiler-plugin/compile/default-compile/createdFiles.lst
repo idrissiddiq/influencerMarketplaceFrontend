@@ -123,7 +123,6 @@ com\InfluencerMarketplace\clientapp\services\JobService$1.class
 com\InfluencerMarketplace\clientapp\services\InfluencerLocationService.class
 com\InfluencerMarketplace\clientapp\models\User$UserBuilder.class
 com\InfluencerMarketplace\clientapp\services\CampaignService$5.class
-com\InfluencerMarketplace\clientapp\controllers\BrandController.class
 com\InfluencerMarketplace\clientapp\models\response\ResponseListData$ResponseListDataBuilder.class
 com\InfluencerMarketplace\clientapp\models\Instagram.class
 com\InfluencerMarketplace\clientapp\models\response\NotifReadResponse.class
