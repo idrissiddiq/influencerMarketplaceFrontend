@@ -35,6 +35,6 @@ This repository contains the **Frontend code** for an **Influencer Marketplace**
 ### Run the App
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/idrissiddiq/influencerMarketplaceFrontend.git
+cd influencerMarketplaceFrontend
 ./mvnw spring-boot:run
